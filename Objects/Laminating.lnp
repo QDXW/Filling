@@ -22,10 +22,8 @@
 ".\objects\common.o"
 ".\objects\adc.o"
 ".\objects\dma.o"
-".\objects\temp.o"
 ".\objects\devices.o"
 ".\objects\sensor.o"
-".\objects\tempcontrol.o"
 ".\objects\movement.o"
 ".\objects\flash.o"
 ".\objects\crc16.o"
@@ -35,7 +33,8 @@
 ".\objects\comm_can.o"
 ".\objects\comm_can_fifo.o"
 ".\objects\device_action.o"
-".\objects\timer4.o"
+".\objects\motor.o"
+".\objects\timer5.o"
 --library_type=microlib --strict --scatter ".\Objects\Laminating.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

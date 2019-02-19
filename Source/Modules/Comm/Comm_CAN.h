@@ -30,22 +30,24 @@
 /* Receive StdID */                             /* Sender Address   CMD Code */
 
 #define STDID_RX_INVALID                    		(0XFF)
-#define STDID_RX_FILLING							(0x204)
 #define STDID_RX_TEST								(0x003)
 
-#define STDID_START									(0x110)
-#define STDID_FILL_END								(0x112)
+#define STDID_RX_INJECT_ACHIEVE						(0x130)
 #define STDID_INFUSION_PREPARE						(0x113)
-#define STDID_RX_VALVE_LOCK							(0x122)
-#define STDID_EXHAUST_AIR							(0x123)
-#define STDID_RECYCLE_BEAD							(0x125)
+#define STDID_BUMP_WASH								(0x125)
+#define STDID_INJECT_PREPARE						(0X127)
 
-#define STDID_SEND_BUMP						    	(0x300)
+#define STDID_BUMP_INFUSION						    (0x300)
 #define STDID_SEND_BUMP_VOL						    (0x301)
-#define STDID_SEND_INJUCET_TIME						(0x302)
+#define STDID_INFUSION_ACHIEVE						(0x303)
+#define STDID_INFUSION_AIR							(0x304)
+#define STDID_SEND_BACK_ZERO						(0x305)
+#define STDID_WASTE_BUMP							(0X306)
+#define STDID_BUMP_INT_PREPARE						(0X307)
+#define STDID_BUMP_INT_ACHIEVE						(0X309)
+
 
 /******************************************************************************/
-#define STDID_TX_START_FILLING									(0x10B)
 #ifdef  CAN_PA11_PA12
 #define COMM_CAN_RX_PORT 					(GPIOA)
 #define COMM_CAN_RX_PIN 					(GPIO_Pin_11)

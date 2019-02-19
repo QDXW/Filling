@@ -23,8 +23,9 @@ extern void Valve3_Movement(void);
 extern void Valve4_Movement(void);
 extern void Press_Plate_Movement(void);
 extern void Injucet_Bump_Switch(void);
-extern void Exhaus_Air_Act(void);
-extern void Recycle_Bead_Act(void);
+extern void Infusion_Act(void);
+extern void Bump_Wash_Act(void);
+extern void Bump_Initialize (void);
 
 void Injucet_Volume1 (void);
 void Injucet_Volume2 (void);
@@ -33,7 +34,6 @@ void Injucet_Volume4 (void);
 void Injucet_Volume5 (void);
 void Injucet_Volume6 (void);
 void Injucet_Volume7 (void);
-void Injucet_Time (void);
 
 
 #endif /* MODULES_DEVICES_DEVICE_ACTION_H_ */

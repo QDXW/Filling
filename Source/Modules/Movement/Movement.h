@@ -1,3 +1,9 @@
+/*
+ * Movement.h
+ *
+ *  Created on: 2018年9月19日
+ *      Author: Administrator
+ */
 #ifndef SOURCE_MODULES_MOVEMENT_MOVEMENT_H
 #define SOURCE_MODULES_MOVEMENT_MOVEMENT_H
 
@@ -5,33 +11,20 @@
 #include "Project_File.h"
 
 /******************************************************************************/
-typedef struct
-{
-	 uint8 PlaceLump_Flag;			//加个标志位，防止检测有无放置块放下中断被误触发
-	 uint8 FillingPos_Flag;			//加个标志位，防止检测到达灌装位置中断被误触发
-	 uint8 GotoHeatPos_Flag;		//加个标志位，防止检测到加热位置被误触发
-	 uint8 CurrentHeatPos_Flag;	//加个标志位，防止检测到加热位置被误触发
-	 uint8 ConpactionPos_Flag;	//加个标志位，防止检测到再次压紧被误触发
-	 uint8 IncisePos_Flag;			//加个标志位，防止检测切割被误触发
-	 uint8 InciseFinish_Flag;		
-	 uint8 TrunPos_Flag;
-	 uint8 VibratingDisk_Flag;
-}CHECK;
+extern void Infusion_Air_50ul (void);
 
-/******************************************************************************/
-extern CHECK Check;
 
-/******************************************************************************/
-void Movement_Process(void);
-void PlaceLump_Action(void);
-void Filling_Action(void);
-void GotoHeat_Action(void);
-void Heat_Action(void);
-void Conpaction_Action(void);
-void Incise_Action(void);
-void InciseFinish_Action(void);
-void Trun_Action(void);
-void VibratingDisk_Action(void);
+extern void Movement_GotoInitialPosition(void);
+extern void Movement_M1_GotoTarget(MOTOR_DIR dir,uint32 Movement_M1_Step);
+extern void Movement_M2_GotoTarget(MOTOR_DIR dir,uint32 Movement_M2_Step);
+extern void Movement_M3_GotoTarget(MOTOR_DIR dir,uint32 Movement_M3_Step);
+extern void Movement_M4_GotoTarget(MOTOR_DIR dir,uint32 Movement_M4_Step);
+extern void Movement_M5_GotoTarget(MOTOR_DIR dir,uint32 Movement_M5_Step);
+extern void Movement_M6_GotoTarget(MOTOR_DIR dir,uint32 Movement_M6_Step);
+extern void Movement_M7_GotoTarget(MOTOR_DIR dir,uint32 Movement_M7_Step);
+extern void Movement_M8_GotoTarget(MOTOR_DIR dir,uint32 Movement_M8_Step);
+extern void Movement_M9_GotoTarget(MOTOR_DIR dir,uint32 Movement_M9_Step);
+extern void Movement_M10_GotoTarget(MOTOR_DIR dir,uint32 Movement_M10_Step);
 
 
 #endif

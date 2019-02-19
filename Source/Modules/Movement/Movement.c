@@ -1,170 +1,211 @@
+/*
+ * Movement.c
+ *
+ *  Created on: 2019年2月14日
+ *      Author: Administrator
+ */
 /******************************************************************************/
 #include "Movement.h"
 
 /******************************************************************************/
-CHECK Check;
+uint8 Buffer[2] = 0;
 
 /******************************************************************************/
-void Movement_Process(void)
-{
-	if(ExitFlag.PlaceLumpSR == TRUE)
+void Movement_GotoInitialPosition(void)
+{	Delay_ms_SW(3000);
+	if(Pos_Read_Sensor(SWITCH3))
 	{
-		ExitFlag.PlaceLumpSR = FALSE;
-		PlaceLump_Action();
+		Movement_M3_MotorDriver_DIR(DIR_CW);
+		Movement_M3_Start();
 	}
-	else if(ExitFlag.FillingPosSR == TRUE)
+
+	/* 传感器坏了 */
+//	if(Pos_Read_Sensor(SWITCH4))
+//	{
+//		Movement_M4_MotorDriver_DIR(DIR_CW);
+//		Movement_M4_Start();
+//	}
+
+	if(Pos_Read_Sensor(SWITCH5))
 	{
-		ExitFlag.FillingPosSR = FALSE;
-		Filling_Action();
+		Movement_M5_MotorDriver_DIR(DIR_CW);
+		Movement_M5_Start();
 	}
-	else if(ExitFlag.GotoHeatPosSR == TRUE)
+
+	if(Pos_Read_Sensor(SWITCH6))
 	{
-		ExitFlag.GotoHeatPosSR = FALSE;
-		GotoHeat_Action();
+		Movement_M6_MotorDriver_DIR(DIR_CW);
+		Movement_M6_Start();
 	}
-	else if(ExitFlag.CurrentHeatSR == TRUE)
+
+	if(Pos_Read_Sensor(SWITCH7))
 	{
-		Heat_Action();
+		Movement_M7_MotorDriver_DIR(DIR_CW);
+		Movement_M7_Start();
 	}
-	else if(ExitFlag.ConpactionPosSR == TRUE)
+
+	if(Pos_Read_Sensor(SWITCH1))
 	{
-		Conpaction_Action();
+		Movement_M8_MotorDriver_DIR(DIR_CW);
+		Movement_M8_Start();
 	}
-	else if(ExitFlag.IncisePosSR == TRUE)
+
+	if(Pos_Read_Sensor(SWITCH2))
 	{
-		Incise_Action();
+		Movement_M9_MotorDriver_DIR(DIR_CW);
+		Movement_M9_Start();
 	}
-	else if(ExitFlag.InciseFinishSR == TRUE)
+
+/*			暂时未用
+ * if(Pos_Read_Sensor(SWITCH1))
 	{
-		ExitFlag.InciseFinishSR = FALSE;
-		InciseFinish_Action();
+		Movement_M1_MotorDriver_DIR(DIR_CW);
+		Movement_M1_Start();
 	}
-	else if(ExitFlag.TrunPosSR == TRUE)
+
+	if(Pos_Read_Sensor(SWITCH2))
 	{
-		ExitFlag.TrunPosSR = FALSE;
-		Trun_Action();
+		Movement_M2_MotorDriver_DIR(DIR_CW);
+		Movement_M2_Start();
 	}
-	else if(ExitFlag.VibratingDiskSR == TRUE)
+
+	if(Pos_Read_Sensor(SWITCH10))
 	{
-		ExitFlag.VibratingDiskSR = FALSE;
-		Trun_Action();
+		Movement_M10_MotorDriver_DIR(DIR_CW);
+		Movement_M10_Start();
 	}
+*/
 }
 
 /******************************************************************************/
-/*有放置块放下*/
-void PlaceLump_Action(void)
-{		
-/*开启气泵,将放置块推入到灌装位置，等待传感器触发*/
-//	Pump_Control(PUMP1，DISABLE)		//禁止控制放置块后退的运动
-//	Pump_Control(PUMP2，ENABLE)			//开始控制放置块向前的运动
+void Movement_M1_GotoTarget(MOTOR_DIR dir,uint32 Movement_M1_Step)
+{
+	Movement_M1_pulseNumber = Movement_M1_Step;
+	Movement_M1_pulseCount = 0;
+	Movement_M1_start = TRUE;
+	Movement_M1_MotorDriver_DIR(dir);
+	Movement_M1_Start();
+	while(Movement_M1_start);
 }
 
 /******************************************************************************/
-/*放置块到达灌装位置，灌装*/
-void Filling_Action(void)
+void Movement_M2_GotoTarget(MOTOR_DIR dir,uint32 Movement_M2_Step)
 {
-	/*每次动作前都要结束上一个动作的所有事情*/
-//	Pump_Control(PUMP2，DISABLE)		//禁止控制放置块向前的运动
-//	Pump_Control(PUMP1，ENABLE)			//开始控制放置块后退的禁止
-
-	//检查具有试剂条的通道
-	//将其发送给运动板
-	//运动板执行灌装，灌装完成后回复
-	//采用Can中断，记得将灌装标志位改变
-	//等待运动板回复之后，前往加热位置
+	Movement_M2_pulseNumber = Movement_M2_Step;
+	Movement_M2_pulseCount = 0;
+	Movement_M2_start = TRUE;
+	Movement_M2_MotorDriver_DIR(dir);
+	Movement_M2_Start();
+	while(Movement_M2_start);
 }
 
 /******************************************************************************/
-/*灌装完成，前往加热位置*/
-void GotoHeat_Action(void)
+void Movement_M3_GotoTarget(MOTOR_DIR dir,uint32 Movement_M3_Step)
 {
-		/*开启气泵,将放置块推到加热位置，等待传感器触发*/
-//		Pump_Control(PUMP3，DISABLE)	
-//		Pump_Control(PUMP4，ENABLE)	
+	Movement_M3_pulseNumber = Movement_M3_Step;
+	Movement_M3_pulseCount = 0;
+	Movement_M3_start = TRUE;
+	Movement_M3_MotorDriver_DIR(dir);
+	Movement_M3_Start();
+	while(Movement_M3_start);
 }
 
 /******************************************************************************/
-/*当前位置加热位置，可加热*/
-void Heat_Action(void)
+void Movement_M4_GotoTarget(MOTOR_DIR dir,uint32 Movement_M4_Step)
 {
-	/*到达加热位置之后，气泵回去*/
-//		Pump_Control(PUMP4，DISABLE)	
-//		Pump_Control(PUMP3，ENABLE)	
-	if(1)
-	{
-		//检测温度，如果低于目标温度等待
-	}
-	else
-	{
-		/*开启气泵,使气泵下降，覆膜*/
-//		Pump_Control(PUMP5，DISABLE)	
-//		Pump_Control(PUMP6，ENABLE)	
-		//计数
-		//if(计数>time)
-		//关闭气泵，并使其向上运动
-//		Pump_Control(PUMP6，DISABLE)	
-//		Pump_Control(PUMP5，ENABLE)
-			ExitFlag.CurrentHeatSR = FALSE;
-	}
+	Movement_M4_pulseNumber = Movement_M4_Step;
+	Movement_M4_pulseCount = 0;
+	Movement_M4_start = TRUE;
+	Movement_M4_MotorDriver_DIR(dir);
+	Movement_M4_Start();
+	while(Movement_M4_start);
 }
 
 /******************************************************************************/
-void Conpaction_Action(void)
+void Movement_M5_GotoTarget(MOTOR_DIR dir,uint32 Movement_M5_Step)
 {
-			/*开启气泵,使气泵下降，覆膜*/
-//		Pump_Control(PUMP7，DISABLE)	
-//		Pump_Control(PUMP8，ENABLE)	
-		//计数
-		//if(计数>time)
-		//关闭气泵，并使其向上运动
-//		Pump_Control(PUMP7，DISABLE)	
-//		Pump_Control(PUMP8，ENABLE)
-			ExitFlag.ConpactionPosSR = FALSE;
+	Movement_M5_pulseNumber = Movement_M5_Step;
+	Movement_M5_pulseCount = 0;
+	Movement_M5_start = TRUE;
+	Movement_M5_MotorDriver_DIR(dir);
+	Movement_M5_Start();
+	while(Movement_M5_start);
 }
 
 /******************************************************************************/
-void Incise_Action(void)
+void Movement_M6_GotoTarget(MOTOR_DIR dir,uint32 Movement_M6_Step)
 {
-					/*开启气泵,使气泵下降，覆膜*/
-//		Pump_Control(PUMP11，DISABLE)	
-//		Pump_Control(PUMP12，DISABLE)
-//		Pump_Control(PUMP9，ENABLE)	
-//		Pump_Control(PUMP10，ENABLE)	
-
-		//计数
-		//if(计数>time)
-		//关闭气泵，并使其向上运动
-//		Pump_Control(PUMP9，DISABLE)	
-//		Pump_Control(PUMP10，DISABLE)
-//		Pump_Control(PUMP11，ENABLE)	
-//		Pump_Control(PUMP12，ENABLE)
-			ExitFlag.IncisePosSR = TRUE;
+	Movement_M6_pulseNumber = Movement_M6_Step;
+	Movement_M6_pulseCount = 0;
+	Movement_M6_start = TRUE;
+	Movement_M6_MotorDriver_DIR(dir);
+	Movement_M6_Start();
+	while(Movement_M6_start);
 }
 
 /******************************************************************************/
-void InciseFinish_Action(void)
+void Movement_M7_GotoTarget(MOTOR_DIR dir,uint32 Movement_M7_Step)
 {
-			/*开启气泵,将放置块推到转向位置，等待传感器触发*/
-//		Pump_Control(PUMP13，DISABLE)	
-//		Pump_Control(PUMP14，ENABLE)	
+	Movement_M7_pulseNumber = Movement_M7_Step;
+	Movement_M7_pulseCount = 0;
+	Movement_M7_start = TRUE;
+	Movement_M7_MotorDriver_DIR(dir);
+	Movement_M7_Start();
+	while(Movement_M7_start);
 }
 
 /******************************************************************************/
-void Trun_Action(void)
+void Movement_M8_GotoTarget(MOTOR_DIR dir,uint32 Movement_M8_Step)
 {
-	/*先让气泵13,14回去*/
-//		Pump_Control(PUMP14，DISABLE)	
-//		Pump_Control(PUMP13，ENABLE)	
-	/*开启气泵,将放置块推到放置反应盘位置，等待传感器触发*/
-//		Pump_Control(PUMP16，DISABLE)	
-//		Pump_Control(PUMP15，ENABLE)	
+	Movement_M8_pulseNumber = Movement_M8_Step;
+	Movement_M8_pulseCount = 0;
+	Movement_M8_start = TRUE;
+	Movement_M8_MotorDriver_DIR(dir);
+	Movement_M8_Start();
+	while(Movement_M8_start);
 }
 
 /******************************************************************************/
-void VibratingDisk_Action(void)
+void Movement_M9_GotoTarget(MOTOR_DIR dir,uint32 Movement_M9_Step)
 {
-		/*先让气泵13,14回去*/
-//		Pump_Control(PUMP15，DISABLE)	
-//		Pump_Control(PUMP16，ENABLE)	
+	Movement_M9_pulseNumber = Movement_M9_Step;
+	Movement_M9_pulseCount = 0;
+	Movement_M9_start = TRUE;
+	Movement_M9_MotorDriver_DIR(dir);
+	Movement_M9_Start();
+	while(Movement_M9_start);
+}
+
+/******************************************************************************/
+void Movement_M10_GotoTarget(MOTOR_DIR dir,uint32 Movement_M10_Step)
+{
+	Movement_M2_pulseNumber = Movement_M10_Step;
+	Movement_M10_pulseCount = 0;
+	Movement_M10_start = TRUE;
+	Movement_M10_MotorDriver_DIR(dir);
+	Movement_M10_Start();
+	while(Movement_M10_start);
+}
+
+/******************************************************************************/
+void Infusion_Air_50ul (void)
+{
+	Movement_M8_GotoTarget(DIR_CCW,Infusion_Air_50ul_5ml);
+	Movement_M9_GotoTarget(DIR_CCW,Infusion_Air_50ul_5ml);
+	Movement_M3_GotoTarget(DIR_CCW,Infusion_Air_50ul_5ml);
+	Movement_M4_GotoTarget(DIR_CCW,Infusion_Air_50ul_5ml);
+
+	Movement_M5_GotoTarget(DIR_CCW,Infusion_Air_50ul_1ml);
+	Movement_M6_GotoTarget(DIR_CCW,Infusion_Air_50ul_1ml);
+	Movement_M7_GotoTarget(DIR_CCW,Infusion_Air_50ul_1ml);
+
+	while(Movement_M8_start);
+	while(Movement_M9_start);
+	while(Movement_M3_start);
+	while(Movement_M4_start);
+	while(Movement_M5_start);
+	while(Movement_M6_start);
+	while(Movement_M7_start);
+
+	Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
 }

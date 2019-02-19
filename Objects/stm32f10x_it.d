@@ -33,8 +33,7 @@
 .\objects\stm32f10x_it.o: .\Source\FWLib\inc\misc.h
 .\objects\stm32f10x_it.o: .\Source\System\Global_variable.h
 .\objects\stm32f10x_it.o: .\Source\System\Project_File.h
-.\objects\stm32f10x_it.o: .\Source\System\main.h
-.\objects\stm32f10x_it.o: .\Source\Modules\TIMER\Timer4.h
+.\objects\stm32f10x_it.o: .\Source\Modules\Motor\Motor.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Devices\devices.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Common\Common.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Devices\Device_Action.h
@@ -42,14 +41,13 @@
 .\objects\stm32f10x_it.o: .\Source\Modules\HostComm\HostComm.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Sensor\sensor.h
 .\objects\stm32f10x_it.o: .\Source\Modules\CRC16\CRC16.h
-.\objects\stm32f10x_it.o: .\Source\Modules\Temp\TempControl.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Movement\Movement.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Flash\Flash.h
 .\objects\stm32f10x_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\stm32f10x_it.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Comm\Comm.h
 .\objects\stm32f10x_it.o: .\Source\Modules\Comm\Comm_CAN.h
-.\objects\stm32f10x_it.o: .\Source\Modules\Temp\Temp.h
 .\objects\stm32f10x_it.o: .\Source\Modules\adc\adc.h
 .\objects\stm32f10x_it.o: .\Source\Modules\DMA\dma.h
 .\objects\stm32f10x_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

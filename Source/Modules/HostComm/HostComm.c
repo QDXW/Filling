@@ -87,7 +87,6 @@ static void HostComm_TimeOut_Init(void)
 /******************************************************************************/
 void HostComm_Init(void)
 {
-
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
@@ -118,15 +117,15 @@ void HostComm_TimeOut_Reload(void)
 	TIM_HOSTCOMM_TIMEOUT->CNT = TIM_CNT_RELOAD;
 }
 
-/******************************************************************************/
-void TIM2_IRQHandler(void)
-{
-	if (TIM_GetITStatus(TIM_HOSTCOMM_TIMEOUT, TIM_IT_Update) != RESET)
-	{
-		TIM_Cmd(TIM_HOSTCOMM_TIMEOUT, DISABLE);
-		TIM_ClearITPendingBit(TIM_HOSTCOMM_TIMEOUT, TIM_IT_Update);
-	}
-}
+///******************************************************************************/
+//void TIM2_IRQHandler(void)
+//{
+//	if (TIM_GetITStatus(TIM_HOSTCOMM_TIMEOUT, TIM_IT_Update) != RESET)
+//	{
+//		TIM_Cmd(TIM_HOSTCOMM_TIMEOUT, DISABLE);
+//		TIM_ClearITPendingBit(TIM_HOSTCOMM_TIMEOUT, TIM_IT_Update);
+//	}
+//}
 
 /******************************************************************************
 !!! ISR: Host communication interrupt service routine
@@ -178,6 +177,7 @@ void USART1_IRQHandler(void)
 	USART_ClearITPendingBit(USART1,USART_IT_RXNE);
 }
 
+/******************************************************************************/
 int fputc(int ch, FILE *f)
 {
 	USART_SendData(USART1, (uint8_t) ch);

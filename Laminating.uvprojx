@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Source\Modules\adc;.\Source\Modules\Common;.\Source\Modules\CRC16;.\Source\Modules\DMA;.\Source\Modules\HostComm;.\Source\Modules\HostProcess;.\Source\Modules\Temp;.\Source\FWLib\inc;.\Source\CORE;.\Source\ISR;.\Source\System;.\Source\Modules\Devices;.\Source\Modules\Sensor;.\Source\Modules\Laminating;.\Source\Modules\Flash;.\Source\Modules\Movement;.\Source\Modules\Comm;.\Source\Modules\TIMER</IncludePath>
+              <IncludePath>.\Source\Modules\adc;.\Source\Modules\Common;.\Source\Modules\CRC16;.\Source\Modules\DMA;.\Source\Modules\HostComm;.\Source\Modules\HostProcess;.\Source\Modules\Temp;.\Source\FWLib\inc;.\Source\CORE;.\Source\ISR;.\Source\System;.\Source\Modules\Devices;.\Source\Modules\Sensor;.\Source\Modules\Laminating;.\Source\Modules\Flash;.\Source\Modules\Movement;.\Source\Modules\Comm;.\Source\Modules\TIMER;.\Source\Modules\Motor</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -544,11 +544,6 @@
               <FilePath>.\Source\Modules\DMA\dma.c</FilePath>
             </File>
             <File>
-              <FileName>Temp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\Modules\Temp\Temp.c</FilePath>
-            </File>
-            <File>
               <FileName>devices.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\Modules\Devices\devices.c</FilePath>
@@ -557,11 +552,6 @@
               <FileName>sensor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\Modules\Sensor\sensor.c</FilePath>
-            </File>
-            <File>
-              <FileName>TempControl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\Modules\Temp\TempControl.c</FilePath>
             </File>
             <File>
               <FileName>Movement.c</FileName>
@@ -609,9 +599,14 @@
               <FilePath>.\Source\Modules\Devices\Device_Action.c</FilePath>
             </File>
             <File>
-              <FileName>Timer4.c</FileName>
+              <FileName>Motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Source\Modules\TIMER\Timer4.c</FilePath>
+              <FilePath>.\Source\Modules\Motor\Motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Modules\TIMER\Timer5.c</FilePath>
             </File>
           </Files>
         </Group>

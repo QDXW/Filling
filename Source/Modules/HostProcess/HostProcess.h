@@ -16,6 +16,7 @@ typedef struct
 	uint8 length;									/* 接收到帧长度 */
 	uint8 buf[HOSTCOMM_UART_DATA_LEN_MAX];			/* 帧缓存 */
 	uint8 validBuf[HOSTCOMM_UART_DATA_LEN_MAX/8];	/* 提取的帧有效数据 */
+
 } HostComm_UartRxTypedef;
 
 /******************************************************************************/
@@ -35,8 +36,8 @@ typedef enum
 	CMD_CODE_APPARATUS_ACHIEVE,
 	CMD_CODE_INITIALIZE,
 	CMD_CODE_CONNECT,
-	CMD_CODE_EXHAUST_AIR,
-	CMD_CODE_RECYCLE,
+	CMD_CODE_INFUSION,
+	CMD_CODE_WASH,
 	CMD_CODE_INJECT,
 	CMD_CODE_WARM_TEMP,
 	CMD_CODE_WARM_TIME,
@@ -65,6 +66,9 @@ typedef enum
 	CMD_CODE_INJUCET_VOLUME6,
 	CMD_CODE_INJUCET_VOLUME7,
 
+	CMD_CODE_RETURN_ZERO,
+	CMD_CODE_BUMP_INT,
+
 	CMD_CODE_INJUCET_TIME,
 
 } OFFSET_HOSTCOMM;
@@ -74,17 +78,15 @@ typedef struct{
 
 } LAMINATING;
 
-
-extern LAMINATING Laminating;
 /******************************************************************************/
+extern LAMINATING Laminating;
+extern Judge TEMP_HEAT_START;
+extern Judge DevicesInit_enable;
 extern HostComm_UartRxTypedef HostComm_UartRx;
 
-extern Judge DevicesInit_enable;
-extern Judge TEMP_HEAT_START;
 /******************************************************************************/
 extern void HostComm_Process(void);
+extern void HostComm_Cmd_Process (void);
 extern uint8 HostComm_Cmd_Send_RawData(uint16 length, uint8 dataBuf[],OFFSET_HOSTCOMM CMD_CODE);
-extern void Exhaust_Air_Process(void);
-extern void Recycle_Bead_Process(void);
 
 #endif

@@ -34,8 +34,7 @@
 .\objects\laminating.o: .\Source\System\Project_File.h
 .\objects\laminating.o: .\Source\System\Global_variable.h
 .\objects\laminating.o: .\Source\System\Project_File.h
-.\objects\laminating.o: .\Source\System\main.h
-.\objects\laminating.o: .\Source\Modules\TIMER\Timer4.h
+.\objects\laminating.o: .\Source\Modules\Motor\Motor.h
 .\objects\laminating.o: .\Source\Modules\Devices\devices.h
 .\objects\laminating.o: .\Source\Modules\Common\Common.h
 .\objects\laminating.o: .\Source\Modules\Devices\Device_Action.h
@@ -43,13 +42,12 @@
 .\objects\laminating.o: .\Source\Modules\HostComm\HostComm.h
 .\objects\laminating.o: .\Source\Modules\Sensor\sensor.h
 .\objects\laminating.o: .\Source\Modules\CRC16\CRC16.h
-.\objects\laminating.o: .\Source\Modules\Temp\TempControl.h
 .\objects\laminating.o: .\Source\Modules\Movement\Movement.h
 .\objects\laminating.o: .\Source\Modules\Flash\Flash.h
 .\objects\laminating.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\laminating.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\laminating.o: .\Source\Modules\Comm\Comm.h
 .\objects\laminating.o: .\Source\Modules\Comm\Comm_CAN.h
-.\objects\laminating.o: .\Source\Modules\Temp\Temp.h
 .\objects\laminating.o: .\Source\Modules\adc\adc.h
 .\objects\laminating.o: .\Source\Modules\DMA\dma.h
 .\objects\laminating.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

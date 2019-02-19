@@ -118,26 +118,24 @@ static void Comm_CAN_FilterInit(void)
 {
 	/* Set reception filter mechanism */
 	Comm_CAN_FilterNumInit(0,
-			STDID_RX_FILLING,
-			STDID_RX_TEST,
-			STDID_SEND_INJUCET_TIME,
-			STDID_RX_INVALID);
+			STDID_WASTE_BUMP,
+			STDID_INFUSION_ACHIEVE,
+			STDID_BUMP_INT_PREPARE,
+			STDID_INJECT_PREPARE);
 		
 	/* @TODO */
 
 	Comm_CAN_FilterNumInit(1,
-			STDID_START,
-			STDID_INFUSION_PREPARE,
-			STDID_FILL_END,
-			STDID_RX_VALVE_LOCK);
+			STDID_RX_INJECT_ACHIEVE,
+			STDID_INFUSION_AIR,
+			STDID_SEND_BACK_ZERO,
+			STDID_BUMP_INT_ACHIEVE);
 	
 	Comm_CAN_FilterNumInit(2,
-			STDID_EXHAUST_AIR,
-			STDID_RECYCLE_BEAD,
+			STDID_SEND_BUMP_VOL,
+			STDID_BUMP_WASH,
 			STDID_SEND_BUMP,
-			STDID_SEND_BUMP_VOL);
-
-
+			STDID_INFUSION_PREPARE);
 }
 
 /******************************************************************************/
@@ -149,6 +147,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 	{
 		
 		CAN_Receive(CAN1, CAN_FIFO0, &RxMessage);
+
 		/* CAN获取到的数据入列 */
 		if(Comm_CanRxData(&RxMessage) == SUCCESS)
 			Comm_CAN_FIFO_RxDataPut(&RxMessage, &RxDataFIFO);

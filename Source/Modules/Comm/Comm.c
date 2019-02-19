@@ -231,49 +231,29 @@ void Comm_CAN_SendOnePackage(uint16 stdId, uint8 *dataPtr, uint8 len)
 uint8 flag = 0;
 void Comm_CanRxDataGet(void)            
 {
-	uint8 buf[2] = {1,1};
+	uint8 buf[2] = {0,0};
 	uint8 Status;
 	CAN_ReceiveDataTypedef RxMsg;
 	Status = Comm_CAN_FIFO_RxDataGet(&RxDataFIFO, &RxMsg);
 	
+
 	/* 获取成功 */
 	if(Status == SUCCESS)
 	{
 		switch(RxMsg.StdId)
 		{
-			case STDID_FILL_END:
-				buf[0] = 0;
-				Send_Flag = 1;
-				HostComm_Cmd_Send_RawData(1, buf,CMD_CODE_INJECT);
-				Delay_ms_SW(10);
-				Send_Flag = 0;
-
-				if(!(Heat_Status & 0x01))
-				{
-					Valve2_Lock(CLOSED);
-					Delay_ms_SW(800);
-
-//					/* 后方挡柱 */
-//					buf[1] = 0X01,buf[0] = 0X04;
-//					Comm_CanDirectSend(STDID_RX_VALVE_LOCK,buf,2);
-//					Delay_ms_SW(3);
-//
-//					/* 前方挡柱 */
-//					buf[1] = 0X01,buf[0] = 0X03;
-//					Comm_CanDirectSend(STDID_RX_VALVE_LOCK,buf,2);
-//
-					Delay_ms_SW(1100);
-					Valve2_Lock(OPEN);
-
-					Valve_Lock |= GPIO_ReadInputDataBit(PORT_SWITCH_2, PIN_SWITCH_2)?( 1<<4):(0<<4);
-
-					if(Valve_Lock & 0x10)
-					{
-						/* 已经进行过第一次加热  */
-						Heat_Status |=  1<<0;
-					}
-				}
+			/* 等待各个泵抽液完成  */
+			case STDID_INFUSION_ACHIEVE:
+				HostComm_Cmd_Send_RawData(1, buf,CMD_CODE_INFUSION);
 				break;
+
+			case STDID_RX_INJECT_ACHIEVE:
+				buf[0] = 0;
+				HostComm_Cmd_Send_RawData(1, buf,CMD_CODE_INJECT);
+				Delay_ms_SW(2);
+				Comm_CanDirectSend(STDID_SEND_BACK_ZERO,buf,1);
+				break;
+
 			default:
 				break;
 		}

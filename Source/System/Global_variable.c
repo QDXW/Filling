@@ -9,14 +9,36 @@
 #include "Global_variable.h"
 
 /******************************************************************************/
-uint8 cmdType = 0,cmdCode = 0,contReceive = 0,Exhaust_Air = 2,Recycle_Bead = 2;
+uint8 HostComm_RecBufAvailable = 0,Bump_Switch = 255;
 uint8 recBuffer[30] = {0},cmdBuffer[30] = {0},respBuffer[30] = {0};
-uint8  Valve_Lock = 0,Temp_Switch = 0,Heat_Status = 0,Start_Temp = 1;
-uint8 L100_Switch = 0,L100_Apparatus = 0,HostComm_RecBufAvailable = 0;
+uint8 cmdType = 0,cmdCode = 0,contReceive = 0,Bump_Wash = 0;
+uint8 Waste_Bump = 0,Bump_Init = 0;
 
-uint8 Temp_Count = 3,Send_Flag = 0,Bump_Switch = 255;
-
-uint16 recCount = 0,Warm_Time = 6999,Time_second = 0,Control_Temperature = 180;
+uint16 recCount = 0;
+uint16 Wash_time_second = 0;
 uint16 HostComm_RecBufSize = 0,cmdLength = 0,respLength = 0,Fiber_Optic = 0;
 
-float Temper_HOT1 = 0,Temper_HOT2 = 0;
+/***************************Motor Driver***************************************/
+uint8 Movement_M1_start = 0,Movement_M2_start = 0;
+uint8 Movement_M3_start = 0,Movement_M4_start = 0;
+uint8 Movement_M5_start = 0,Movement_M6_start = 0;
+uint8 Movement_M7_start = 0,Movement_M8_start = 0;
+uint8 Movement_M9_start = 0,Movement_M10_start = 0;
+
+uint32 Movement_M1_pulseCount = 0,Movement_M1_pulseNumber = 0;
+uint32 Movement_M2_pulseCount = 0,Movement_M2_pulseNumber = 0;
+uint32 Movement_M3_pulseCount = 0,Movement_M3_pulseNumber = 0;
+uint32 Movement_M4_pulseCount = 0,Movement_M4_pulseNumber = 0;
+uint32 Movement_M5_pulseCount = 0,Movement_M5_pulseNumber = 0;
+uint32 Movement_M6_pulseCount = 0,Movement_M6_pulseNumber = 0;
+uint32 Movement_M7_pulseCount = 0,Movement_M7_pulseNumber = 0;
+uint32 Movement_M8_pulseCount = 0,Movement_M8_pulseNumber = 0;
+uint32 Movement_M9_pulseCount = 0,Movement_M9_pulseNumber = 0;
+uint32 Movement_M10_pulseCount = 0,Movement_M10_pulseNumber = 0;
+
+/***************************Filling********************************************/
+float  Base_Calculation_1ml = 0.0,Base_Calculation_5ml= 0.0;
+
+uint32 Infusion_Air_50ul_1ml = 0,Infusion_Air_50ul_5ml = 0;
+uint32 PumpPrecision_Step_1ml = 0,PumpPrecision_Step_5ml = 0;
+

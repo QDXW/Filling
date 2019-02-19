@@ -33,8 +33,8 @@
 .\objects\timer4.o: .\Source\FWLib\inc\misc.h
 .\objects\timer4.o: .\Source\System\Global_variable.h
 .\objects\timer4.o: .\Source\System\Project_File.h
-.\objects\timer4.o: .\Source\System\main.h
 .\objects\timer4.o: .\Source\Modules\TIMER\Timer4.h
+.\objects\timer4.o: .\Source\Modules\Motor\Motor.h
 .\objects\timer4.o: .\Source\Modules\Devices\devices.h
 .\objects\timer4.o: .\Source\Modules\Common\Common.h
 .\objects\timer4.o: .\Source\Modules\Devices\Device_Action.h
@@ -42,14 +42,12 @@
 .\objects\timer4.o: .\Source\Modules\HostComm\HostComm.h
 .\objects\timer4.o: .\Source\Modules\Sensor\sensor.h
 .\objects\timer4.o: .\Source\Modules\CRC16\CRC16.h
-.\objects\timer4.o: .\Source\Modules\Temp\TempControl.h
 .\objects\timer4.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\timer4.o: .\Source\Modules\Movement\Movement.h
 .\objects\timer4.o: .\Source\Modules\Flash\Flash.h
 .\objects\timer4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\timer4.o: .\Source\Modules\Comm\Comm.h
 .\objects\timer4.o: .\Source\Modules\Comm\Comm_CAN.h
-.\objects\timer4.o: .\Source\Modules\Temp\Temp.h
 .\objects\timer4.o: .\Source\Modules\adc\adc.h
 .\objects\timer4.o: .\Source\Modules\DMA\dma.h
 .\objects\timer4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
