@@ -46,5 +46,20 @@ extern FLAG ExitFlag;
 void PosSensor_Init(void);
 uint8 Pos_Read_Sensor(SWITCH_NUM Switch);
 
+extern void PosSensor_M1_ENABLE(void);
+extern void PosSensor_M1_DISABLE(void);
+
+extern void PosSensor_M3_ENABLE(void);
+extern void PosSensor_M3_DISABLE(void);
+
+extern void PosSensor_M4_ENABLE(void);
+extern void PosSensor_M4_DISABLE(void);
+
+extern void PosSensor_M6_ENABLE(void);
+extern void PosSensor_M6_DISABLE(void);
+
+extern void PosSensor_M10_ENABLE(void);
+extern void PosSensor_M10_DISABLE(void);
+
 
 #endif

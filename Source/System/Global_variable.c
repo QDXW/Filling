@@ -36,9 +36,19 @@ uint32 Movement_M8_pulseCount = 0,Movement_M8_pulseNumber = 0;
 uint32 Movement_M9_pulseCount = 0,Movement_M9_pulseNumber = 0;
 uint32 Movement_M10_pulseCount = 0,Movement_M10_pulseNumber = 0;
 
-/***************************Filling********************************************/
+
 float  Base_Calculation_1ml = 0.0,Base_Calculation_5ml= 0.0;
 
 uint32 Infusion_Air_50ul_1ml = 0,Infusion_Air_50ul_5ml = 0;
 uint32 PumpPrecision_Step_1ml = 0,PumpPrecision_Step_5ml = 0;
 
+uint32 PumpPrecision_Step_R1 = 0;
+uint32 PumpPrecision_Step_R2 = 0;
+uint32 PumpPrecision_Step_M = 0;
+uint32 PumpPrecision_Step_W = 0;
+uint32 PumpPrecision_Step_BASE = 0;
+
+/***************************USB & CAN Command********************************************/
+uint8 CAN_Buffer[2] = {0,0};
+
+uint8 sBuffer[2] = {1},fBuffer[2] = {0},Buffer[2] = {0};

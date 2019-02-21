@@ -38,12 +38,12 @@ void HostComm_Cmd_Process (void)
 			Infusion_Act();
 			break;
 
-		case CMD_CODE_WASH:
-			Bump_Wash_Act();
+		case CMD_CODE_INJECT:
+			Inject_Act();
 			break;
 
-		case CMD_CODE_INJECT:
-			Start_Filling();
+		case CMD_CODE_WASH:
+			Bump_Wash_Act();
 			break;
 
 		case CMD_CODE_INJUCET_BUMP:

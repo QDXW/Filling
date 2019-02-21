@@ -33,6 +33,18 @@
 #include "math.h"
 #include "string.h"
 
+
+/******************************************************************************/
+#define CH1_ENABLED                 1
+#define CH2_ENABLED                 0
+
+/******************************************************************************/
+#define TIMER1_M10_R1_R2_ENABLED    1 /* M10 - R1 - R2 */
+#define TIMER2_M3_M_W1_ENABLED      1 /* M3 - M - W1 */
+#define TIMER3_M6_W2_W3_ENABLED     1 /* M6 - W2 - W3 */
+#define TIMER4_M4_W6_BASE_ENABLED   1 /* M4 - W6 - BASE */
+#define TIMER5_M1_W4_W5_ENABLED     1 /* M1 - W4 - W5 */
+
 /******************************************************************************/
 #define PORT_SWITCH_1 				(GPIOA)
 #define PIN_SWITCH_1 				(GPIO_Pin_3)

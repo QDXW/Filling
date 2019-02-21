@@ -8,45 +8,115 @@ FLAG ExitFlag;
 /******************************************************************************/
 void PosSensor_Init(void)
 {
-	Common_EXTI_Init(PORT_SWITCH_1, PIN_SWITCH_1,
-			GPIO_PortSourceGPIOA, GPIO_PinSource3, EXTI_Line3,
-			EXTI_Trigger_Rising, ENABLE, EXTI3_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_2, PIN_SWITCH_2,
-			GPIO_PortSourceGPIOC, GPIO_PinSource4, EXTI_Line4,
-			EXTI_Trigger_Rising, ENABLE, EXTI4_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_3, PIN_SWITCH_3,
-			GPIO_PortSourceGPIOC, GPIO_PinSource5, EXTI_Line5,
-			EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_4, PIN_SWITCH_4,
-			GPIO_PortSourceGPIOB, GPIO_PinSource0, EXTI_Line0,
-			EXTI_Trigger_Rising, ENABLE, EXTI0_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_5, PIN_SWITCH_5,
-			GPIO_PortSourceGPIOB, GPIO_PinSource1, EXTI_Line1,
-			EXTI_Trigger_Rising, ENABLE, EXTI1_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_6, PIN_SWITCH_6,
-				GPIO_PortSourceGPIOE, GPIO_PinSource7, EXTI_Line7,
-				EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_7, PIN_SWITCH_7,
-			GPIO_PortSourceGPIOE, GPIO_PinSource8, EXTI_Line8,
-			EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_8, PIN_SWITCH_8,
-			GPIO_PortSourceGPIOE, GPIO_PinSource9, EXTI_Line9,
-			EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X01, 0X01);
-
-	Common_EXTI_Init(PORT_SWITCH_9, PIN_SWITCH_9,
-			GPIO_PortSourceGPIOE, GPIO_PinSource10, EXTI_Line10,
-			EXTI_Trigger_Rising, ENABLE, EXTI15_10_IRQn, 0X01, 0X01);
-
+	/**************************************************************************/
+#if TIMER1_M10_R1_R2_ENABLED
 	Common_EXTI_Init(PORT_SWITCH_10, PIN_SWITCH_10,
 			GPIO_PortSourceGPIOE, GPIO_PinSource11, EXTI_Line11,
-			EXTI_Trigger_Rising, ENABLE, EXTI15_10_IRQn, 0X01, 0X01);
+			EXTI_Trigger_Rising, ENABLE, EXTI15_10_IRQn, 0X00, 0X010);
+#endif
+
+	/**************************************************************************/
+#if TIMER2_M3_M_W1_ENABLED
+	Common_EXTI_Init(PORT_SWITCH_3, PIN_SWITCH_3,
+			GPIO_PortSourceGPIOC, GPIO_PinSource5, EXTI_Line5,
+			EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X00, 0X03);
+#endif
+
+	/**************************************************************************/
+#if TIMER3_M6_W2_W3_ENABLED
+	Common_EXTI_Init(PORT_SWITCH_6, PIN_SWITCH_6,
+				GPIO_PortSourceGPIOE, GPIO_PinSource7, EXTI_Line7,
+				EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X00, 0X06);
+#endif
+
+	/**************************************************************************/
+#if TIMER4_M4_W6_BASE_ENABLED
+	Common_EXTI_Init(PORT_SWITCH_4, PIN_SWITCH_4,
+			GPIO_PortSourceGPIOB, GPIO_PinSource0, EXTI_Line0,
+			EXTI_Trigger_Rising, ENABLE, EXTI0_IRQn, 0X00, 0X04);
+#endif
+
+	/**************************************************************************/
+#if TIMER5_M1_W4_W5_ENABLED
+	Common_EXTI_Init(PORT_SWITCH_1, PIN_SWITCH_1,
+			GPIO_PortSourceGPIOA, GPIO_PinSource3, EXTI_Line3,
+			EXTI_Trigger_Rising, ENABLE, EXTI3_IRQn, 0X00, 0X01);
+#endif
+}
+
+/******************************************************************************/
+void PosSensor_M10_ENABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_10, PIN_SWITCH_10,
+			GPIO_PortSourceGPIOE, GPIO_PinSource11, EXTI_Line11,
+			EXTI_Trigger_Rising, ENABLE, EXTI15_10_IRQn, 0X00, 0X010);
+}
+
+void PosSensor_M10_DISABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_10, PIN_SWITCH_10,
+			GPIO_PortSourceGPIOE, GPIO_PinSource11, EXTI_Line11,
+			EXTI_Trigger_Rising, DISABLE, EXTI15_10_IRQn, 0X00, 0X010);
+}
+
+/******************************************************************************/
+void PosSensor_M3_ENABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_3, PIN_SWITCH_3,
+			GPIO_PortSourceGPIOC, GPIO_PinSource5, EXTI_Line5,
+			EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X00, 0X03);
+}
+
+void PosSensor_M3_DISABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_3, PIN_SWITCH_3,
+			GPIO_PortSourceGPIOC, GPIO_PinSource5, EXTI_Line5,
+			EXTI_Trigger_Rising, DISABLE, EXTI9_5_IRQn, 0X00, 0X03);
+}
+
+/******************************************************************************/
+void PosSensor_M6_ENABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_6, PIN_SWITCH_6,
+				GPIO_PortSourceGPIOE, GPIO_PinSource7, EXTI_Line7,
+				EXTI_Trigger_Rising, ENABLE, EXTI9_5_IRQn, 0X00, 0X06);
+}
+
+void PosSensor_M6_DISABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_6, PIN_SWITCH_6,
+				GPIO_PortSourceGPIOE, GPIO_PinSource7, EXTI_Line7,
+				EXTI_Trigger_Rising, DISABLE, EXTI9_5_IRQn, 0X00, 0X06);
+}
+
+/******************************************************************************/
+void PosSensor_M4_ENABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_4, PIN_SWITCH_4,
+			GPIO_PortSourceGPIOB, GPIO_PinSource0, EXTI_Line0,
+			EXTI_Trigger_Rising, ENABLE, EXTI0_IRQn, 0X00, 0X04);
+}
+
+void PosSensor_M4_DISABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_4, PIN_SWITCH_4,
+			GPIO_PortSourceGPIOB, GPIO_PinSource0, EXTI_Line0,
+			EXTI_Trigger_Rising, DISABLE, EXTI0_IRQn, 0X00, 0X04);
+}
+
+/******************************************************************************/
+void PosSensor_M1_ENABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_1, PIN_SWITCH_1,
+			GPIO_PortSourceGPIOA, GPIO_PinSource3, EXTI_Line3,
+			EXTI_Trigger_Rising, ENABLE, EXTI3_IRQn, 0X00, 0X01);
+}
+
+void PosSensor_M1_DISABLE(void)
+{
+	Common_EXTI_Init(PORT_SWITCH_1, PIN_SWITCH_1,
+			GPIO_PortSourceGPIOA, GPIO_PinSource3, EXTI_Line3,
+			EXTI_Trigger_Rising, DISABLE, EXTI3_IRQn, 0X00, 0X01);
 }
 
 /******************************************************************************/

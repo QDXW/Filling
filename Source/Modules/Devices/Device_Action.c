@@ -8,17 +8,28 @@
 #include "Device_Action.h"
 
 /******************************************************************************/
-uint8 sBuffer[2] = {1},fBuffer[2] = {0},Buffer[2] = {0};
+void Infusion_Act (void)
+{
+	if(cmdBuffer[5])
+	{
+		HostComm_Cmd_Send_RawData(1, sBuffer,CMD_CODE_INFUSION);
+		Infusion_Air_50ul();
+	}
+	else
+	{
+		HostComm_Cmd_Send_RawData(1, fBuffer,CMD_CODE_INFUSION);
+	}
+}
 
 /******************************************************************************/
-void Start_Filling (void)
+void Inject_Act (void)
 {
 	if(cmdBuffer[5])
 	{
 		Buffer[0] = 1;
 		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_INJECT);
-		Buffer[0] = 0;
-		Comm_CanDirectSend(STDID_INJECT_PREPARE,Buffer,1);
+		CAN_Buffer[0] = 0;
+		Comm_CanDirectSend(STDID_INJECT_PREPARE,CAN_Buffer,1);
 	}
 	else
 	{
@@ -36,28 +47,11 @@ void Bump_Initialize (void)
 		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_BUMP_INT);
 		Buffer[0] = 0;
 		Comm_CanDirectSend(STDID_BUMP_INT_PREPARE,Buffer,1);
-		Delay_ms_SW(9000);
-		Buffer[0] = 0;
-		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_BUMP_INT);
 	}
 	else
 	{
 		Buffer[0] = 0;
 		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_BUMP_INT);
-	}
-}
-
-/******************************************************************************/
-void Infusion_Act (void)
-{
-	if(cmdBuffer[5])
-	{
-		HostComm_Cmd_Send_RawData(1, sBuffer,CMD_CODE_INFUSION);
-		Infusion_Air_50ul();
-	}
-	else
-	{
-		HostComm_Cmd_Send_RawData(1, fBuffer,CMD_CODE_INFUSION);
 	}
 }
 

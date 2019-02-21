@@ -44,10 +44,17 @@
 #define STDID_SEND_BACK_ZERO						(0x305)
 #define STDID_WASTE_BUMP							(0X306)
 #define STDID_BUMP_INT_PREPARE						(0X307)
-#define STDID_BUMP_INT_ACHIEVE						(0X309)
+#define STDID_BUMP_INT								(0X308)
+#define STDID_SEND_BUMP								(0X30A)
 
+#define STDID_RX_INFUSION                    		(0X140)
+#define STDID_RX_INJECT                    			(0X141)
+
+#define STDID_RX_INJECT_CH1               			(0X141)
+#define STDID_RX_INJECT_CH2                			(0X142)
 
 /******************************************************************************/
+#define STDID_TX_START_FILLING									(0x10B)
 #ifdef  CAN_PA11_PA12
 #define COMM_CAN_RX_PORT 					(GPIOA)
 #define COMM_CAN_RX_PIN 					(GPIO_Pin_11)

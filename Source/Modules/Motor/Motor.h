@@ -12,7 +12,7 @@
 #include "Project_File.h"
 
 /******************************************************************************/
-#define PUMP_PRECISION_PWM_PERIOD_1ML		(800)
+#define PUMP_PRECISION_PWM_PERIOD_1ML		(1200)
 #define PUMP_PRECISION_PWM_PERIOD_5ML		(800)
 
 /******************************************************************************/
@@ -200,6 +200,10 @@ extern void Movement_M10_MotorDriver_DIR(MOTOR_DIR dir);
 extern void Movement_M10_MotorDriver_EN(POWER_LEVEL status);
 extern void Movement_M10_MotorDriver_PWM(FunctionalState status);
 
-
+extern void Motor_TIMER1_M10_Init(void);
+extern void Motor_TIMER2_M3_Init(void);
+extern void Motor_TIMER3_M6_Init(void);
+extern void Motor_TIMER4_M4_Init(void);
+extern void Motor_TIMER5_M1_Init(void);
 
 #endif /* MODULES_MOTOR_MOTOR_H_ */

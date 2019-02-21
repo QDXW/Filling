@@ -43,5 +43,16 @@ extern float  Base_Calculation_1ml,Base_Calculation_5ml;
 extern uint32 Infusion_Air_50ul_1ml,Infusion_Air_50ul_5ml;
 extern uint32 PumpPrecision_Step_1ml,PumpPrecision_Step_5ml;
 
+extern uint32 PumpPrecision_Step_R1;
+extern uint32 PumpPrecision_Step_R2;
+extern uint32 PumpPrecision_Step_M;
+extern uint32 PumpPrecision_Step_W;
+extern uint32 PumpPrecision_Step_BASE;
+
+/***************************USB & CAN Command********************************************/
+extern uint8 CAN_Buffer[2];
+extern uint8 sBuffer[2],fBuffer[2],Buffer[2];
+
+
 
 #endif /* SYSTEM_GLOBAL_VARIABLE_H_ */

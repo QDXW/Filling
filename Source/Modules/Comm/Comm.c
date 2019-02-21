@@ -10,6 +10,7 @@
 #include "string.h"
 #include "Movement.h"
 #include "sensor.h"
+#include "Project_File.h"
 
 void Comm_Init(void)
 {
@@ -231,31 +232,53 @@ void Comm_CAN_SendOnePackage(uint16 stdId, uint8 *dataPtr, uint8 len)
 uint8 flag = 0;
 void Comm_CanRxDataGet(void)            
 {
-	uint8 buf[2] = {0,0};
 	uint8 Status;
 	CAN_ReceiveDataTypedef RxMsg;
 	Status = Comm_CAN_FIFO_RxDataGet(&RxDataFIFO, &RxMsg);
 	
-
 	/* 获取成功 */
 	if(Status == SUCCESS)
 	{
 		switch(RxMsg.StdId)
 		{
-			/* 等待各个泵抽液完成  */
-			case STDID_INFUSION_ACHIEVE:
-				HostComm_Cmd_Send_RawData(1, buf,CMD_CODE_INFUSION);
-				break;
+		case STDID_RX_INFUSION:
+			/* 抽液 */
+			ProcessCMD_Extract();
+//			Delay_ms_SW(2);
+//			HostComm_Cmd_Send_RawData(1, buf, CMD_CODE_INFUSION);
+			break;
 
-			case STDID_RX_INJECT_ACHIEVE:
-				buf[0] = 0;
-				HostComm_Cmd_Send_RawData(1, buf,CMD_CODE_INJECT);
-				Delay_ms_SW(2);
-				Comm_CanDirectSend(STDID_SEND_BACK_ZERO,buf,1);
-				break;
+#if CH1_ENABLED
+		case STDID_RX_INJECT_CH1:
+			/* 注液 */
+			ProcessCMD_Inject(RxMsg.Data);
+			/* 抽空气 */
+			Infusion_Air_50ul();
+			break;
+#endif
 
-			default:
-				break;
+#if CH2_ENABLED
+		case STDID_RX_INJECT_CH2:
+			/* 注液 */
+			ProcessCMD_Inject(RxMsg.Data);
+			/* 抽空气 */
+			Infusion_Air_50ul();
+			break;
+#endif
+
+		case STDID_BUMP_INT:
+			/* 回初始位置 */
+			Movement_GotoInitialPosition();
+			/* 抽空气 */
+			Infusion_Air_50ul();
+
+			Buffer[0] = 0;
+			Delay_ms_SW(1000);
+			HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_BUMP_INT);
+			break;
+
+		default:
+			break;
 		}
 	}
 }

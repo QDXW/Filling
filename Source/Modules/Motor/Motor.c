@@ -17,26 +17,43 @@ void Motor_Init(void)
 /******************************************************************************/
 void RAM_PUMP_Init (void)
 {
-	Motor_M1_Init();
-	Motor_M2_Init();
-	Motor_M3_Init();
-	Motor_M4_Init();
-	Motor_M5_Init();
-	Motor_M6_Init();
-	Motor_M7_Init();
-	Motor_M8_Init();
-	Motor_M9_Init();
-	Motor_M10_Init();
+	/**************************************************************************/
+	/* TIMER1 */
+#if TIMER1_M10_R1_R2_ENABLED
+	Motor_TIMER1_M10_Init();
+#endif
+	/**************************************************************************/
+	/* TIMER2 */
+#if TIMER2_M3_M_W1_ENABLED
+	Motor_TIMER2_M3_Init();
+#endif
+	/**************************************************************************/
+	/* TIMER3 */
+#if TIMER3_M6_W2_W3_ENABLED
+	Motor_TIMER3_M6_Init();
+#endif
+	/**************************************************************************/
+	/* TIMER4 */
+#if TIMER4_M4_W6_BASE_ENABLED
+	Motor_TIMER4_M4_Init();
+#endif
+	/**************************************************************************/
+	/* TIMER5 */
+#if TIMER5_M1_W4_W5_ENABLED
+	Motor_TIMER5_M1_Init();
+#endif
 }
 
 /******************************************************************************/
-void Motor_M1_Init(void)
+void Motor_TIMER5_M1_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
+
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB,ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
 
 	/* Initialize pins */
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -52,18 +69,16 @@ void Motor_M1_Init(void)
 	GPIO_Init(PORT_MOTOR_M1_DIR, &GPIO_InitStructure);
 	Movement_M1_MotorDriver_DIR(DIR_CCW);
 
-	/* TIM5_CH1 */
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 
 	/* STP */
 	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M1_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_Init(PORT_MOTOR_M1_STP, &GPIO_InitStructure);
 
 	/* Time base structure */
 	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
+	TIM_TimeBaseStructure.TIM_Period = 299;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
 	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
@@ -72,7 +87,7 @@ void Motor_M1_Init(void)
 	/* Enable the TIM5 Update Interrupt */
 	NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 4;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
@@ -82,6 +97,11 @@ void Motor_M1_Init(void)
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
 	TIM_OC1Init(TIM5, &TIM_OCInitStructure);
 	TIM_OC1PreloadConfig(TIM5, TIM_OCPreload_Enable);
+
+	TIM5->CCR1 = 0;
+	TIM5->CCR2 = 0;
+	TIM5->CCR3 = 0;
+	TIM5->CCR4 = 0;
 
 	Movement_M1_MotorDriver_PWM(DISABLE);
 }
@@ -132,13 +152,16 @@ void Movement_M1_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M2_Init(void)
+void Motor_TIMER2_M3_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB,ENABLE);
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 
 	/* Initialize pins */
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -154,18 +177,30 @@ void Motor_M2_Init(void)
 	GPIO_Init(PORT_MOTOR_M2_DIR, &GPIO_InitStructure);
 	Movement_M2_MotorDriver_DIR(DIR_CCW);
 
-	/* TIM2_CH2 */
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	/* EN */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M3_EN;
+	GPIO_Init(PORT_MOTOR_M3_EN, &GPIO_InitStructure);
+	Movement_M3_MotorDriver_EN(LEVEL_LOW);
+
+	/* CW */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M3_DIR;
+	GPIO_Init(PORT_MOTOR_M3_DIR, &GPIO_InitStructure);
+	Movement_M3_MotorDriver_DIR(DIR_CCW);
+
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 
 	/* STP */
 	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M2_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_Init(PORT_MOTOR_M2_STP, &GPIO_InitStructure);
+
+	/* STP */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M3_STP;
+	GPIO_Init(PORT_MOTOR_M3_STP, &GPIO_InitStructure);
 
 	/* Time base structure */
 	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
+	TIM_TimeBaseStructure.TIM_Period = 299;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
 	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
@@ -179,13 +214,26 @@ void Motor_M2_Init(void)
 	NVIC_Init(&NVIC_InitStructure);
 
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
+	GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2,ENABLE);
+
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
+
 	TIM_OC2Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
 
+	TIM_OC3Init(TIM2, &TIM_OCInitStructure);
+	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
+
+	TIM2->CCR1 = 0;
+	TIM2->CCR2 = 0;
+	TIM2->CCR3 = 0;
+	TIM2->CCR4 = 0;
+
 	Movement_M2_MotorDriver_PWM(DISABLE);
+	Movement_M3_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -234,64 +282,6 @@ void Movement_M2_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M3_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	TIM_OCInitTypeDef TIM_OCInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB,ENABLE);
-	/* Initialize pins */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-
-	/* EN */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M3_EN;
-	GPIO_Init(PORT_MOTOR_M3_EN, &GPIO_InitStructure);
-	Movement_M3_MotorDriver_EN(LEVEL_LOW);
-
-	/* CW */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M3_DIR;
-	GPIO_Init(PORT_MOTOR_M3_DIR, &GPIO_InitStructure);
-	Movement_M3_MotorDriver_DIR(DIR_CCW);
-
-	/* TIM2_CH3 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-	/* STP */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M3_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_Init(PORT_MOTOR_M3_STP, &GPIO_InitStructure);
-
-	  /* Time base structure */
-	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
-
-	/* Enable the TIM2 Update Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
-	GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2,ENABLE);
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
-	TIM_OC3Init(TIM2, &TIM_OCInitStructure);
-	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
-
-	Movement_M3_MotorDriver_PWM(DISABLE);
-}
-
-/******************************************************************************/
 void Movement_M3_MotorDriver_EN(POWER_LEVEL status)
 {
 	if(LEVEL_HIGH == status)
@@ -320,7 +310,14 @@ void Movement_M3_MotorDriver_PWM(FunctionalState status)
 void Movement_M3_Start(void)
 {
 	/* 50% */
+#if CH1_ENABLED
+	TIM2->ARR = PUMP_PRECISION_PWM_PERIOD_1ML;
+#endif
+
+#if CH2_ENABLED
 	TIM2->ARR = PUMP_PRECISION_PWM_PERIOD_5ML;
+#endif
+
 	TIM2->CCR3 = TIM2->ARR / 2;
 	Movement_M3_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M3_MotorDriver_PWM(ENABLE);
@@ -337,13 +334,19 @@ void Movement_M3_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M4_Init(void)
+void Motor_TIMER4_M4_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
+
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOD,ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+
+	GPIO_PinRemapConfig(GPIO_Remap_TIM4,ENABLE);
+
 	/* Initialize pins */
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
@@ -358,15 +361,26 @@ void Motor_M4_Init(void)
 	GPIO_Init(PORT_MOTOR_M4_DIR, &GPIO_InitStructure);
 	Movement_M4_MotorDriver_DIR(DIR_CCW);
 
-	/* TIM4_CH3 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+	/* EN */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M5_EN;
+	GPIO_Init(PORT_MOTOR_M5_EN, &GPIO_InitStructure);
+	Movement_M5_MotorDriver_EN(LEVEL_LOW);
+
+	/* CW */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M5_DIR;
+	GPIO_Init(PORT_MOTOR_M5_DIR, &GPIO_InitStructure);
+	Movement_M5_MotorDriver_DIR(DIR_CCW);
+
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 
 	/* STP */
 	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M4_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_Init(PORT_MOTOR_M4_STP, &GPIO_InitStructure);
+
+	/* STP */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M5_STP;
+	GPIO_Init(PORT_MOTOR_M5_STP, &GPIO_InitStructure);
 
 	  /* Time base structure */
 	TIM_TimeBaseStructure.TIM_Prescaler = 71;
@@ -379,19 +393,28 @@ void Motor_M4_Init(void)
 	/* Enable the TIM4 Update Interrupt */
 	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
 	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
-	GPIO_PinRemapConfig(GPIO_Remap_TIM4,ENABLE);
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
+
 	TIM_OC3Init(TIM4, &TIM_OCInitStructure);
 	TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
 
+	TIM_OC4Init(TIM4, &TIM_OCInitStructure);
+	TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
+
+	TIM4->CCR1 = 0;
+	TIM4->CCR2 = 0;
+	TIM4->CCR3 = 0;
+	TIM4->CCR4 = 0;
+
 	Movement_M4_MotorDriver_PWM(DISABLE);
+	Movement_M5_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -440,64 +463,6 @@ void Movement_M4_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M5_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	TIM_OCInitTypeDef TIM_OCInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE | RCC_APB2Periph_GPIOD,ENABLE);
-	/* Initialize pins */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-
-	/* EN */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M5_EN;
-	GPIO_Init(PORT_MOTOR_M5_EN, &GPIO_InitStructure);
-	Movement_M5_MotorDriver_EN(LEVEL_LOW);
-
-	/* CW */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M5_DIR;
-	GPIO_Init(PORT_MOTOR_M5_DIR, &GPIO_InitStructure);
-	Movement_M5_MotorDriver_DIR(DIR_CCW);
-
-	/* TIM4_CH4 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-
-	/* STP */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M5_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_Init(PORT_MOTOR_M5_STP, &GPIO_InitStructure);
-
-	  /* Time base structure */
-	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
-
-	/* Enable the TIM4 Update Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
-	GPIO_PinRemapConfig(GPIO_Remap_TIM4,ENABLE);
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
-	TIM_OC4Init(TIM4, &TIM_OCInitStructure);
-	TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-	Movement_M5_MotorDriver_PWM(DISABLE);
-}
-
-/******************************************************************************/
 void Movement_M5_MotorDriver_EN(POWER_LEVEL status)
 {
 	if(LEVEL_HIGH == status)
@@ -543,13 +508,17 @@ void Movement_M5_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M6_Init(void)
+void Motor_TIMER3_M6_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD,ENABLE);
+
+	/* TIM3_CH1 */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+
 	/* Initialize pins */
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
@@ -564,17 +533,56 @@ void Motor_M6_Init(void)
 	GPIO_Init(PORT_MOTOR_M6_DIR, &GPIO_InitStructure);
 	Movement_M6_MotorDriver_DIR(DIR_CW);
 
-	/* TIM3_CH1 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+	/* EN */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M7_EN;
+	GPIO_Init(PORT_MOTOR_M7_EN, &GPIO_InitStructure);
+	Movement_M7_MotorDriver_EN(LEVEL_LOW);
+
+	/* CW */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M7_DIR;
+	GPIO_Init(PORT_MOTOR_M7_DIR, &GPIO_InitStructure);
+	Movement_M7_MotorDriver_DIR(DIR_CCW);
+
+	/* EN */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M8_EN;
+	GPIO_Init(PORT_MOTOR_M8_EN, &GPIO_InitStructure);
+	Movement_M8_MotorDriver_EN(LEVEL_LOW);
+
+	/* CW */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M8_DIR;
+	GPIO_Init(PORT_MOTOR_M8_DIR, &GPIO_InitStructure);
+	Movement_M8_MotorDriver_DIR(DIR_CCW);
+
+	/* EN */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M9_EN;
+	GPIO_Init(PORT_MOTOR_M9_EN, &GPIO_InitStructure);
+	Movement_M9_MotorDriver_EN(LEVEL_LOW);
+
+	/* CW */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M9_DIR;
+	GPIO_Init(PORT_MOTOR_M9_DIR, &GPIO_InitStructure);
+	Movement_M9_MotorDriver_DIR(DIR_CCW);
+
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 
 	/* STP */
 	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M6_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_Init(PORT_MOTOR_M6_STP, &GPIO_InitStructure);
 
-	  /* Time base structure */
+	/* STP */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M7_STP;
+	GPIO_Init(PORT_MOTOR_M7_STP, &GPIO_InitStructure);
+
+	/* STP */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M8_STP;
+	GPIO_Init(PORT_MOTOR_M8_STP, &GPIO_InitStructure);
+
+	/* STP */
+	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M9_STP;
+	GPIO_Init(PORT_MOTOR_M9_STP, &GPIO_InitStructure);
+
+	/* Time base structure */
 	TIM_TimeBaseStructure.TIM_Prescaler = 71;
 	TIM_TimeBaseStructure.TIM_Period = 9999;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
@@ -585,7 +593,7 @@ void Motor_M6_Init(void)
 	/* Enable the TIM3 Update Interrupt */
 	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
@@ -598,10 +606,28 @@ void Motor_M6_Init(void)
 	TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_High;
 	TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
 	TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Reset;
+
 	TIM_OC1Init(TIM3, &TIM_OCInitStructure);
 	TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
 
+	TIM_OC2Init(TIM3, &TIM_OCInitStructure);
+	TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
+
+	TIM_OC3Init(TIM3, &TIM_OCInitStructure);
+	TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
+
+	TIM_OC4Init(TIM3, &TIM_OCInitStructure);
+	TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);
+
+	TIM3->CCR1 = 0;
+	TIM3->CCR2 = 0;
+	TIM3->CCR3 = 0;
+	TIM3->CCR4 = 0;
+
 	Movement_M6_MotorDriver_PWM(DISABLE);
+	Movement_M7_MotorDriver_PWM(DISABLE);
+	Movement_M8_MotorDriver_PWM(DISABLE);
+	Movement_M9_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -633,7 +659,7 @@ void Movement_M6_MotorDriver_PWM(FunctionalState status)
 void Movement_M6_Start(void)
 {
 	/* 50% */
-	TIM3->ARR = PUMP_PRECISION_PWM_PERIOD_1ML;
+	TIM3->ARR = PUMP_PRECISION_PWM_PERIOD_5ML;
 	TIM3->CCR1 = TIM3->ARR / 2;
 	Movement_M6_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M6_MotorDriver_PWM(ENABLE);
@@ -647,64 +673,6 @@ void Movement_M6_Stop(void)
 	Movement_M6_start = FALSE;
 //	Movement_M6_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M6_MotorDriver_PWM(DISABLE);
-}
-
-/******************************************************************************/
-void Motor_M7_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	TIM_OCInitTypeDef TIM_OCInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD,ENABLE);
-	/* Initialize pins */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-
-	/* EN */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M7_EN;
-	GPIO_Init(PORT_MOTOR_M7_EN, &GPIO_InitStructure);
-	Movement_M7_MotorDriver_EN(LEVEL_LOW);
-
-	/* CW */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M7_DIR;
-	GPIO_Init(PORT_MOTOR_M7_DIR, &GPIO_InitStructure);
-	Movement_M7_MotorDriver_DIR(DIR_CCW);
-
-	/* TIM3_CH2 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-
-	/* STP */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M7_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_Init(PORT_MOTOR_M7_STP, &GPIO_InitStructure);
-
-	  /* Time base structure */
-	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
-
-	/* Enable the TIM3 Update Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-	GPIO_PinRemapConfig(GPIO_FullRemap_TIM3,ENABLE);
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
-	TIM_OC2Init(TIM3, &TIM_OCInitStructure);
-	TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
-
-	Movement_M7_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -753,64 +721,6 @@ void Movement_M7_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M8_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	TIM_OCInitTypeDef TIM_OCInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD,ENABLE);
-	/* Initialize pins */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-
-	/* EN */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M8_EN;
-	GPIO_Init(PORT_MOTOR_M8_EN, &GPIO_InitStructure);
-	Movement_M8_MotorDriver_EN(LEVEL_LOW);
-
-	/* CW */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M8_DIR;
-	GPIO_Init(PORT_MOTOR_M8_DIR, &GPIO_InitStructure);
-	Movement_M8_MotorDriver_DIR(DIR_CCW);
-
-	/* TIM3_CH3 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-
-	/* STP */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M8_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_Init(PORT_MOTOR_M8_STP, &GPIO_InitStructure);
-
-	  /* Time base structure */
-	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
-
-	/* Enable the TIM3 Update Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-	GPIO_PinRemapConfig(GPIO_FullRemap_TIM3,ENABLE);
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
-	TIM_OC3Init(TIM3, &TIM_OCInitStructure);
-	TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
-
-	Movement_M8_MotorDriver_PWM(DISABLE);
-}
-
-/******************************************************************************/
 void Movement_M8_MotorDriver_EN(POWER_LEVEL status)
 {
 	if(LEVEL_HIGH == status)
@@ -853,64 +763,6 @@ void Movement_M8_Stop(void)
 	Movement_M8_start = FALSE;
 //	Movement_M8_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M8_MotorDriver_PWM(DISABLE);
-}
-
-/******************************************************************************/
-void Motor_M9_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	TIM_OCInitTypeDef TIM_OCInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD,ENABLE);
-	/* Initialize pins */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-
-	/* EN */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M9_EN;
-	GPIO_Init(PORT_MOTOR_M9_EN, &GPIO_InitStructure);
-	Movement_M9_MotorDriver_EN(LEVEL_LOW);
-
-	/* CW */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M9_DIR;
-	GPIO_Init(PORT_MOTOR_M9_DIR, &GPIO_InitStructure);
-	Movement_M9_MotorDriver_DIR(DIR_CCW);
-
-	/* TIM3_CH4 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-
-	/* STP */
-	GPIO_InitStructure.GPIO_Pin = PIN_MOTOR_M9_STP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_Init(PORT_MOTOR_M9_STP, &GPIO_InitStructure);
-
-	  /* Time base structure */
-	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
-
-	/* Enable the TIM3 Update Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-	GPIO_PinRemapConfig(GPIO_FullRemap_TIM3,ENABLE);
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
-	TIM_OC4Init(TIM3, &TIM_OCInitStructure);
-	TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);
-
-	Movement_M9_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -959,7 +811,7 @@ void Movement_M9_Stop(void)
 }
 
 /******************************************************************************/
-void Motor_M10_Init(void)
+void Motor_TIMER1_M10_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
@@ -992,7 +844,7 @@ void Motor_M10_Init(void)
 
 	/* Time base structure */
 	TIM_TimeBaseStructure.TIM_Prescaler = 71;
-	TIM_TimeBaseStructure.TIM_Period = 9999;
+	TIM_TimeBaseStructure.TIM_Period = 299;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
 	TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
@@ -1001,7 +853,7 @@ void Motor_M10_Init(void)
 	/* Enable the TIM8 Update Interrupt */
 	NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
@@ -1017,6 +869,12 @@ void Motor_M10_Init(void)
 	TIM_OC1Init(TIM1, &TIM_OCInitStructure);
 
 	TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
+
+	TIM1->CCR1 = 0;
+	TIM1->CCR2 = 0;
+	TIM1->CCR3 = 0;
+	TIM1->CCR4 = 0;
+
 	Movement_M10_MotorDriver_PWM(DISABLE);
 }
 
@@ -1049,7 +907,7 @@ void Movement_M10_MotorDriver_PWM(FunctionalState status)
 void Movement_M10_Start(void)
 {
 	/* 50% */
-	TIM1->ARR = PUMP_PRECISION_PWM_PERIOD_5ML;
+	TIM1->ARR = PUMP_PRECISION_PWM_PERIOD_1ML;
 	TIM1->CCR1 = TIM1->ARR / 2;
 	Movement_M10_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M10_MotorDriver_PWM(ENABLE);
@@ -1071,18 +929,18 @@ void TIM1_UP_IRQHandler (void)
 	if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
 	{
 		/* 泵1电机运动步数计数  */
-		if(Movement_M1_start)
+		if(Movement_M10_start)
 		{
-			Movement_M1_pulseCount++;
+			Movement_M10_pulseCount++;
 
 			/* Move specified steps */
-			if ((Movement_M1_pulseCount >= Movement_M1_pulseNumber))
+			if ((Movement_M10_pulseCount >= Movement_M10_pulseNumber))
 			{
-				Movement_M1_Stop();
+				Movement_M10_Stop();
 
 				/* Clear flags */
-				Movement_M1_pulseCount = 0;
-				Movement_M1_start = FALSE;
+				Movement_M10_pulseCount = 0;
+				Movement_M10_start = FALSE;
 			}
 		}
 		/* Clear the interrupt pending flag */
@@ -1095,22 +953,6 @@ void TIM2_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
 	{
-		/* 泵2电机运动步数计数  */
-		if(Movement_M2_start)
-		{
-			Movement_M2_pulseCount++;
-
-			/* Move specified steps */
-			if ((Movement_M2_pulseCount >= Movement_M2_pulseNumber))
-			{
-				Movement_M2_Stop();
-
-				/* Clear flags */
-				Movement_M2_pulseCount = 0;
-				Movement_M2_start = FALSE;
-			}
-		}
-
 		/* 泵3电机运动步数计数  */
 		if(Movement_M3_start)
 		{
@@ -1136,38 +978,6 @@ void TIM3_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
 	{
-		/* X轴电机运动步数计数  */
-		if(Movement_M8_start)
-		{
-			Movement_M8_pulseCount++;
-
-			/* Move specified steps */
-			if ((Movement_M8_pulseCount >= Movement_M8_pulseNumber))
-			{
-				Movement_M8_Stop();
-
-				/* Clear flags */
-				Movement_M8_pulseCount = 0;
-				Movement_M8_start = FALSE;
-			}
-		}
-
-		/* Z轴电机运动步数计数  */
-		if(Movement_M9_start)
-		{
-			Movement_M9_pulseCount++;
-
-			/* Move specified steps */
-			if ((Movement_M9_pulseCount >= Movement_M9_pulseNumber))
-			{
-				Movement_M9_Stop();
-
-				/* Clear flags */
-				Movement_M9_pulseCount = 0;
-				Movement_M9_start = FALSE;
-			}
-		}
-
 		/* 泵6电机运动步数计数  */
 		if(Movement_M6_start)
 		{
@@ -1181,22 +991,6 @@ void TIM3_IRQHandler(void)
 				/* Clear flags */
 				Movement_M6_pulseCount = 0;
 				Movement_M6_start = FALSE;
-			}
-		}
-
-		/* 泵7电机运动步数计数  */
-		if(Movement_M7_start)
-		{
-			Movement_M7_pulseCount++;
-
-			/* Move specified steps */
-			if ((Movement_M7_pulseCount >= Movement_M7_pulseNumber))
-			{
-				Movement_M7_Stop();
-
-				/* Clear flags */
-				Movement_M7_pulseCount = 0;
-				Movement_M7_start = FALSE;
 			}
 		}
 
@@ -1223,22 +1017,6 @@ void TIM4_IRQHandler(void)
 				/* Clear flags */
 				Movement_M4_pulseCount = 0;
 				Movement_M4_start = FALSE;
-			}
-		}
-
-		/* 泵5电机运动步数计数  */
-		if(Movement_M5_start)
-		{
-			Movement_M5_pulseCount++;
-
-			/* Move specified steps */
-			if ((Movement_M5_pulseCount >= Movement_M5_pulseNumber))
-			{
-				Movement_M5_Stop();
-
-				/* Clear flags */
-				Movement_M5_pulseCount = 0;
-				Movement_M5_start = FALSE;
 			}
 		}
 
@@ -1270,35 +1048,5 @@ void TIM5_IRQHandler(void)
 
 		/* Clear the interrupt pending flag */
 		TIM_ClearFlag(TIM5, TIM_FLAG_Update);
-	}
-}
-
-/******************************************************************************/
-void TIM6_IRQHandler(void)
-{
-	if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)
-	{
-		/* Clear the interrupt pending flag */
-		TIM_ClearFlag(TIM6, TIM_FLAG_Update);
-	}
-}
-
-/******************************************************************************/
-void TIM7_IRQHandler(void)
-{
-	if (TIM_GetITStatus(TIM7, TIM_IT_Update) != RESET)
-	{
-		/* Clear the interrupt pending flag */
-		TIM_ClearFlag(TIM7, TIM_FLAG_Update);
-	}
-}
-
-/******************************************************************************/
-void TIM8_UP_IRQHandler(void)
-{
-	if (TIM_GetITStatus(TIM8, TIM_IT_Update) != RESET)
-	{
-		/* Clear the interrupt pending flag */
-		TIM_ClearFlag(TIM8, TIM_FLAG_Update);
 	}
 }

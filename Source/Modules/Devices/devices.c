@@ -13,8 +13,11 @@ DIAP_PUMP_NUM DIAP_PUMP;
 /******************************************************************************/
 void Devices_Init(void)
 {
+	/* 初始化参数  */
+	Set_Initialize_Parameter();
+
 	/* 隔膜泵初始化 */
-	DIAP_PUMP_Init();
+//	DIAP_PUMP_Init();
 
 	/* 阀门初始化  */
 	VAVLE_Init();
@@ -23,21 +26,29 @@ void Devices_Init(void)
 	Motor_Init();
 
 	/* 隔膜泵全部关闭  */
-	DIAP_PUMP_CLOSED();
+//	DIAP_PUMP_CLOSED();
 
 	/* 阀门全部关闭  */
-	VAVLE_CLOSED();
+//	VAVLE_CLOSED();
 }
 
 /******************************************************************************/
 void Set_Initialize_Parameter(void)
 {
-	Base_Calculation_5ml = 6.4;
-	Base_Calculation_1ml = 32;
-	PumpPrecision_Step_5ml = 1920;
-	PumpPrecision_Step_1ml = 1600;
-	Infusion_Air_50ul_5ml = 320;
-	Infusion_Air_50ul_1ml = 1600;
+	Base_Calculation_1ml = 2 * 4;
+	Base_Calculation_5ml = 0.4 * 4;
+
+	Infusion_Air_50ul_1ml = 50 * Base_Calculation_1ml;
+	Infusion_Air_50ul_5ml = 50 * Base_Calculation_5ml;
+
+	PumpPrecision_Step_R1 = 100 * Base_Calculation_1ml;
+	PumpPrecision_Step_R2 = 100 * Base_Calculation_1ml;
+	PumpPrecision_Step_M = 100 * Base_Calculation_1ml;
+	PumpPrecision_Step_W = 300 * Base_Calculation_5ml;
+	PumpPrecision_Step_BASE = 300 * Base_Calculation_5ml;
+
+//	PumpPrecision_Step_5ml = 1920;
+//	PumpPrecision_Step_1ml = 1600;
 }
 
 /******************************************************************************/

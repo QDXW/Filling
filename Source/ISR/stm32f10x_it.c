@@ -44,6 +44,7 @@ void EXTI15_10_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line11) != RESET)
 	{
 		Movement_M10_pulseCount = Movement_M10_pulseNumber;
+		Movement_M10_initPos = 1;
 		Movement_M10_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line11);
 	}
@@ -75,6 +76,7 @@ void EXTI9_5_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line5) != RESET)
 	{
 		Movement_M3_pulseCount = Movement_M3_pulseNumber;
+		Movement_M3_initPos = 1;
 		Movement_M3_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line5);
 	}
@@ -87,6 +89,7 @@ void EXTI9_5_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line7) != RESET)
 	{
 		Movement_M6_pulseCount = Movement_M6_pulseNumber;
+		Movement_M6_initPos = 1;
 		Movement_M6_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line7);
 	}
@@ -122,8 +125,9 @@ void EXTI3_IRQHandler(void)
 {
 	if(EXTI_GetITStatus(EXTI_Line3) != RESET)
 	{
-		Movement_M8_pulseCount = Movement_M8_pulseNumber;
-		Movement_M8_Stop();
+		Movement_M1_pulseCount = Movement_M1_pulseNumber;
+		Movement_M1_initPos = 1;
+		Movement_M1_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line3);
 	}
 }
@@ -133,7 +137,7 @@ void EXTI2_IRQHandler(void)
 {
 	if(EXTI_GetITStatus(EXTI_Line2) != RESET)
 	{
-		EXTI_ClearITPendingBit(EXTI_Line0);
+		EXTI_ClearITPendingBit(EXTI_Line2);
 	}
 }
 
@@ -144,7 +148,7 @@ void EXTI1_IRQHandler(void)
 	{
 		Movement_M5_pulseCount = Movement_M5_pulseNumber;
 		Movement_M5_Stop();
-		EXTI_ClearITPendingBit(EXTI_Line0);
+		EXTI_ClearITPendingBit(EXTI_Line1);
 	}
 }
 
@@ -154,6 +158,7 @@ void EXTI0_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line0) != RESET)
 	{
 		Movement_M4_pulseCount = Movement_M4_pulseNumber;
+		Movement_M4_initPos = 1;
 		Movement_M4_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}

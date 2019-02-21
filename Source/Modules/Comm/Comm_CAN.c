@@ -127,15 +127,21 @@ static void Comm_CAN_FilterInit(void)
 
 	Comm_CAN_FilterNumInit(1,
 			STDID_RX_INJECT_ACHIEVE,
-			STDID_INFUSION_AIR,
+			STDID_INFUSION_PREPARE,
 			STDID_SEND_BACK_ZERO,
-			STDID_BUMP_INT_ACHIEVE);
+			STDID_BUMP_INT);
 	
 	Comm_CAN_FilterNumInit(2,
 			STDID_SEND_BUMP_VOL,
 			STDID_BUMP_WASH,
 			STDID_SEND_BUMP,
-			STDID_INFUSION_PREPARE);
+			STDID_RX_INJECT);
+
+	Comm_CAN_FilterNumInit(3,
+			STDID_RX_INFUSION,
+			STDID_RX_INJECT,
+			STDID_RX_INJECT_CH1,
+			STDID_RX_INJECT_CH2);
 }
 
 /******************************************************************************/

@@ -10,10 +10,18 @@
 /******************************************************************************/
 #include "Project_File.h"
 
+extern uint8 Movement_M1_initPos;
+extern uint8 Movement_M3_initPos;
+extern uint8 Movement_M4_initPos;
+extern uint8 Movement_M6_initPos;
+extern uint8 Movement_M10_initPos;
+
 /******************************************************************************/
-extern void Infusion_Air_50ul (void);
+extern void Infusion_Air_50ul(void);
+extern void ProcessCMD_Extract(void);
+extern void ProcessCMD_Inject(uint8 *data);
 
-
+/******************************************************************************/
 extern void Movement_GotoInitialPosition(void);
 extern void Movement_M1_GotoTarget(MOTOR_DIR dir,uint32 Movement_M1_Step);
 extern void Movement_M2_GotoTarget(MOTOR_DIR dir,uint32 Movement_M2_Step);
@@ -25,6 +33,5 @@ extern void Movement_M7_GotoTarget(MOTOR_DIR dir,uint32 Movement_M7_Step);
 extern void Movement_M8_GotoTarget(MOTOR_DIR dir,uint32 Movement_M8_Step);
 extern void Movement_M9_GotoTarget(MOTOR_DIR dir,uint32 Movement_M9_Step);
 extern void Movement_M10_GotoTarget(MOTOR_DIR dir,uint32 Movement_M10_Step);
-
 
 #endif
