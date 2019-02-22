@@ -12,6 +12,7 @@
 #include "comDef.h"
 #include "stm32f10x.h"
 #include "Global_variable.h"
+#include "Comm_CAN.h"
 #include "Motor.h"
 #include "devices.h"
 #include "Common.h"
@@ -25,14 +26,11 @@
 #include "Flash.h"
 #include <stdio.h>
 #include "Timer5.h"
-#include "../Modules/TIMER/Timer5.h"
 #include "Comm.h"
-#include "Comm_CAN.h"
 #include "adc.h"
 #include "dma.h"
 #include "math.h"
 #include "string.h"
-
 
 /******************************************************************************/
 #define CH1_ENABLED                 1

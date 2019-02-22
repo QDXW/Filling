@@ -5,6 +5,10 @@
 #include "Project_File.h"
 
 /******************************************************************************/
+#define SUBDIVISION_1ML					(4)
+#define SUBDIVISION_5ML					(4)
+
+/******************************************************************************/
 #define PORT_DIAP_PUMP_1					(GPIOD)
 #define PIN_DIAP_PUMP_1						(GPIO_Pin_4)
 

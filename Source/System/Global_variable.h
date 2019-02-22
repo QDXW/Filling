@@ -50,7 +50,7 @@ extern uint32 PumpPrecision_Step_W;
 extern uint32 PumpPrecision_Step_BASE;
 
 /***************************USB & CAN Command********************************************/
-extern uint8 CAN_Buffer[2];
+extern uint8 CAN_Buffer[2],L100_Filling;
 extern uint8 sBuffer[2],fBuffer[2],Buffer[2];
 
 

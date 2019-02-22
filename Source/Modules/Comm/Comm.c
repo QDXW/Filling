@@ -241,19 +241,45 @@ void Comm_CanRxDataGet(void)
 	{
 		switch(RxMsg.StdId)
 		{
+#if CH1_ENABLED
 		case STDID_RX_INFUSION:
 			/* ³éÒº */
 			ProcessCMD_Extract();
-//			Delay_ms_SW(2);
-//			HostComm_Cmd_Send_RawData(1, buf, CMD_CODE_INFUSION);
 			break;
+#endif
+
+#if CH1_ENABLED
+		case STDID_INFUSION_ACHIEVE_BLACK_ZERO:
+			Buffer[0] = 0;
+			if(L100_Filling)
+			{
+				Comm_CanDirectSend(STDID_INJECT_PREPARE,Buffer,1);
+			}
+			else
+			{
+				HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_INFUSION);
+			}
+			break;
+#endif
+
+#if CH2_ENABLED
+		case STDID_INFUSION_PREPARE:
+			/* ³éÒº */
+			Infusion_Air_50ul();
+			break;
+#endif
+
+#if CH2_ENABLED
+		case STDID_RX_INFUSION:
+			/* ³éÒº */
+			ProcessCMD_Extract();
+			break;
+#endif
 
 #if CH1_ENABLED
 		case STDID_RX_INJECT_CH1:
 			/* ×¢Òº */
 			ProcessCMD_Inject(RxMsg.Data);
-			/* ³é¿ÕÆø */
-			Infusion_Air_50ul();
 			break;
 #endif
 
@@ -262,7 +288,13 @@ void Comm_CanRxDataGet(void)
 			/* ×¢Òº */
 			ProcessCMD_Inject(RxMsg.Data);
 			/* ³é¿ÕÆø */
-			Infusion_Air_50ul();
+//			Infusion_Air_50ul();
+			break;
+#endif
+
+#if CH1_ENABLED
+		case STDID_RX_INJECT_ACHIEVE:
+			Inject_Achieve(RxMsg.Data);
 			break;
 #endif
 

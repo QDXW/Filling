@@ -19,6 +19,7 @@ void HostComm_Process(void)
 /******************************************************************************/
 void HostComm_Cmd_Process (void)
 {
+#if CH1_ENABLED
 	uint8 sBuffer[2] = {1};
 
 	/* Command type */
@@ -40,6 +41,10 @@ void HostComm_Cmd_Process (void)
 
 		case CMD_CODE_INJECT:
 			Inject_Act();
+			break;
+
+		case CMD_CODE_BUMP_FILLING:
+			Filling_Act();
 			break;
 
 		case CMD_CODE_WASH:
@@ -92,6 +97,7 @@ void HostComm_Cmd_Process (void)
 
 		memset(cmdBuffer,0,30);
 	}
+#endif
 }
 
 /******************************************************************************/

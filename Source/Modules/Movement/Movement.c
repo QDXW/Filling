@@ -18,6 +18,22 @@ uint8 Movement_M10_initPos = 0;
 void Movement_GotoInitialPosition(void)
 {
 #if TIMER1_M10_R1_R2_ENABLED
+	PosSensor_M10_ENABLE();
+#endif
+#if TIMER2_M3_M_W1_ENABLED
+	PosSensor_M3_ENABLE();
+#endif
+#if TIMER3_M6_W2_W3_ENABLED
+	PosSensor_M6_ENABLE();
+#endif
+#if TIMER4_M4_W6_BASE_ENABLED
+	PosSensor_M4_ENABLE();
+#endif
+#if TIMER5_M1_W4_W5_ENABLED
+	PosSensor_M1_ENABLE();
+#endif
+
+#if TIMER1_M10_R1_R2_ENABLED
 	if(Pos_Read_Sensor(SWITCH10))
 	{
 		Movement_M10_initPos = 0;
@@ -250,8 +266,6 @@ void Infusion_Air_50ul(void)
 	while(Movement_M1_start);
 	while(Movement_M4_start);
 #endif
-
-//	Comm_CanDirectSend(STDID_INFUSION_PREPARE, CAN_Buffer, 1);
 }
 
 /******************************************************************************/
@@ -329,7 +343,9 @@ void ProcessCMD_Extract(void)
 #endif
 #endif
 
+#if CH1_ENABLED
 	Comm_CanDirectSend(STDID_INFUSION_ACHIEVE,CAN_Buffer,1);
+#endif
 }
 
 /******************************************************************************/
@@ -369,5 +385,36 @@ void ProcessCMD_Inject(uint8 *data)
 //	while(Movement_M4_start);
 #endif
 
+#if CH1_ENABLED
 	Comm_CanDirectSend(STDID_SEND_BACK_ZERO,CAN_Buffer,1);
+#endif
+}
+
+/******************************************************************************/
+void Inject_Achieve(uint8 *data)
+{
+	if(data[0])
+	{
+		/* 未注完5次  */
+		Buffer[0] = 0;
+		if(L100_Filling)
+		{
+			Delay_ms_SW(5);
+			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
+#if CH1_ENABLED
+			Infusion_Air_50ul();
+#endif
+		}
+		else
+		{
+			HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_INJECT);
+		}
+	}
+	else
+	{
+		/* 注完5次  */
+		Buffer[0] = 0;
+		L100_Filling = 0;
+		HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_BUMP_FILLING);
+	}
 }

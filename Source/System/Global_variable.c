@@ -49,6 +49,6 @@ uint32 PumpPrecision_Step_W = 0;
 uint32 PumpPrecision_Step_BASE = 0;
 
 /***************************USB & CAN Command********************************************/
-uint8 CAN_Buffer[2] = {0,0};
+uint8 CAN_Buffer[2] = {0,0},L100_Filling = 0;
 
 uint8 sBuffer[2] = {1},fBuffer[2] = {0},Buffer[2] = {0};

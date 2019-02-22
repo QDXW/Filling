@@ -32,6 +32,7 @@
 .\objects\main.o: .\Source\FWLib\inc\misc.h
 .\objects\main.o: Source\System\Global_variable.h
 .\objects\main.o: Source\System\Project_File.h
+.\objects\main.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\main.o: .\Source\Modules\Motor\Motor.h
 .\objects\main.o: .\Source\Modules\Devices\devices.h
 .\objects\main.o: .\Source\Modules\Common\Common.h
@@ -46,7 +47,6 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\main.o: .\Source\Modules\Comm\Comm.h
-.\objects\main.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\main.o: .\Source\Modules\adc\adc.h
 .\objects\main.o: .\Source\Modules\DMA\dma.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

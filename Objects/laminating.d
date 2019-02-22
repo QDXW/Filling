@@ -34,6 +34,7 @@
 .\objects\laminating.o: .\Source\System\Project_File.h
 .\objects\laminating.o: .\Source\System\Global_variable.h
 .\objects\laminating.o: .\Source\System\Project_File.h
+.\objects\laminating.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\laminating.o: .\Source\Modules\Motor\Motor.h
 .\objects\laminating.o: .\Source\Modules\Devices\devices.h
 .\objects\laminating.o: .\Source\Modules\Common\Common.h
@@ -47,7 +48,6 @@
 .\objects\laminating.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\laminating.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\laminating.o: .\Source\Modules\Comm\Comm.h
-.\objects\laminating.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\laminating.o: .\Source\Modules\adc\adc.h
 .\objects\laminating.o: .\Source\Modules\DMA\dma.h
 .\objects\laminating.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

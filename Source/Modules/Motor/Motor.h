@@ -12,8 +12,8 @@
 #include "Project_File.h"
 
 /******************************************************************************/
-#define PUMP_PRECISION_PWM_PERIOD_1ML		(1200)
-#define PUMP_PRECISION_PWM_PERIOD_5ML		(800)
+#define PUMP_PRECISION_PWM_PERIOD_1ML		(1600)
+#define PUMP_PRECISION_PWM_PERIOD_5ML		(1600)
 
 /******************************************************************************/
 #define PORT_MOTOR_M1_EN			(GPIOA)

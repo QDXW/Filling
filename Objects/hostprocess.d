@@ -33,6 +33,7 @@
 .\objects\hostprocess.o: .\Source\FWLib\inc\misc.h
 .\objects\hostprocess.o: .\Source\System\Global_variable.h
 .\objects\hostprocess.o: .\Source\System\Project_File.h
+.\objects\hostprocess.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\hostprocess.o: .\Source\Modules\Motor\Motor.h
 .\objects\hostprocess.o: .\Source\Modules\Devices\devices.h
 .\objects\hostprocess.o: .\Source\Modules\Common\Common.h
@@ -47,7 +48,6 @@
 .\objects\hostprocess.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\hostprocess.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\hostprocess.o: .\Source\Modules\Comm\Comm.h
-.\objects\hostprocess.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\hostprocess.o: .\Source\Modules\adc\adc.h
 .\objects\hostprocess.o: .\Source\Modules\DMA\dma.h
 .\objects\hostprocess.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

@@ -29,14 +29,14 @@ void Devices_Init(void)
 //	DIAP_PUMP_CLOSED();
 
 	/* 阀门全部关闭  */
-//	VAVLE_CLOSED();
+	VAVLE_CLOSED();
 }
 
 /******************************************************************************/
 void Set_Initialize_Parameter(void)
 {
-	Base_Calculation_1ml = 2 * 4;
-	Base_Calculation_5ml = 0.4 * 4;
+	Base_Calculation_1ml = 2 * SUBDIVISION_1ML;
+	Base_Calculation_5ml = 0.4 * SUBDIVISION_5ML;
 
 	Infusion_Air_50ul_1ml = 50 * Base_Calculation_1ml;
 	Infusion_Air_50ul_5ml = 50 * Base_Calculation_5ml;

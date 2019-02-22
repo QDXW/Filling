@@ -33,6 +33,7 @@
 .\objects\sensor.o: .\Source\FWLib\inc\misc.h
 .\objects\sensor.o: .\Source\System\Global_variable.h
 .\objects\sensor.o: .\Source\System\Project_File.h
+.\objects\sensor.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\sensor.o: .\Source\Modules\Motor\Motor.h
 .\objects\sensor.o: .\Source\Modules\Devices\devices.h
 .\objects\sensor.o: .\Source\Modules\Common\Common.h
@@ -47,7 +48,6 @@
 .\objects\sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\sensor.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\sensor.o: .\Source\Modules\Comm\Comm.h
-.\objects\sensor.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\sensor.o: .\Source\Modules\adc\adc.h
 .\objects\sensor.o: .\Source\Modules\DMA\dma.h
 .\objects\sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

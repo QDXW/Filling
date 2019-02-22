@@ -32,6 +32,7 @@
 .\objects\global_variable.o: .\Source\FWLib\inc\stm32f10x_wwdg.h
 .\objects\global_variable.o: .\Source\FWLib\inc\misc.h
 .\objects\global_variable.o: Source\System\Global_variable.h
+.\objects\global_variable.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\global_variable.o: .\Source\Modules\Motor\Motor.h
 .\objects\global_variable.o: .\Source\System\Project_File.h
 .\objects\global_variable.o: .\Source\Modules\Devices\devices.h
@@ -47,7 +48,6 @@
 .\objects\global_variable.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\global_variable.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\global_variable.o: .\Source\Modules\Comm\Comm.h
-.\objects\global_variable.o: .\Source\Modules\Comm\Comm_CAN.h
 .\objects\global_variable.o: .\Source\Modules\adc\adc.h
 .\objects\global_variable.o: .\Source\Modules\DMA\dma.h
 .\objects\global_variable.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

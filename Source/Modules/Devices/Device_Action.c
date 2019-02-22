@@ -6,6 +6,7 @@
  */
 /******************************************************************************/
 #include "Device_Action.h"
+#include "Comm_CAN.h"
 
 /******************************************************************************/
 void Infusion_Act (void)
@@ -13,6 +14,8 @@ void Infusion_Act (void)
 	if(cmdBuffer[5])
 	{
 		HostComm_Cmd_Send_RawData(1, sBuffer,CMD_CODE_INFUSION);
+		Delay_ms_SW(5);
+		Comm_CanDirectSend(STDID_INFUSION_PREPARE, CAN_Buffer, 1);
 		Infusion_Air_50ul();
 	}
 	else
@@ -35,6 +38,25 @@ void Inject_Act (void)
 	{
 		Buffer[0] = 0;
 		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_INJECT);
+	}
+}
+
+/******************************************************************************/
+void Filling_Act (void)
+{
+	if(cmdBuffer[5])
+	{
+		Buffer[0] = 1;
+		L100_Filling = 1;
+		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_BUMP_FILLING);
+		Delay_ms_SW(5);
+		Comm_CanDirectSend(STDID_INFUSION_PREPARE, CAN_Buffer, 1);
+		Infusion_Air_50ul();
+	}
+	else
+	{
+		Buffer[0] = 0;
+		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_BUMP_FILLING);
 	}
 }
 
