@@ -50,8 +50,7 @@ void Filling_Act (void)
 		L100_Filling = 1;
 		HostComm_Cmd_Send_RawData(1, Buffer,CMD_CODE_BUMP_FILLING);
 		Delay_ms_SW(5);
-		Comm_CanDirectSend(STDID_INFUSION_PREPARE, CAN_Buffer, 1);
-		Infusion_Air_50ul();
+		Comm_CanDirectSend(STDID_SEND_BACK_ZERO, CAN_Buffer, 1);
 	}
 	else
 	{

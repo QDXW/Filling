@@ -397,18 +397,14 @@ void Inject_Achieve(uint8 *data)
 	{
 		/* Î´×¢Íê5´Î  */
 		Buffer[0] = 0;
-		if(L100_Filling)
-		{
-			Delay_ms_SW(500);
-			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
+		Delay_ms_SW(500);
+		Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
+
 #if CH1_ENABLED
-			Infusion_Air_50ul();
+		Delay_ms_SW(1000);
+		Infusion_Air_50ul();
 #endif
-		}
-		else
-		{
-			HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_INJECT);
-		}
+
 	}
 	else
 	{

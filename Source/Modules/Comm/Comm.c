@@ -260,12 +260,37 @@ void Comm_CanRxDataGet(void)
 			break;
 #endif
 
+#if CH1_ENABLED
+		case STDID_SEND_BACK_ZERO_ACHIEVE:
+			/* 初始化泵 */
+			Movement_GotoInitialPosition();
+
+			/* 抽空气  */
+			Infusion_Air_50ul();
+
+			/* 抽液准备 */
+			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
+			break;
+#endif
+
 #if CH2_ENABLED
-		case STDID_INFUSION_PREPARE:
-			/* 抽液 */
+		case STDID_SEND_BACK_ZERO_ACHIEVE:
+			/* 初始化泵 */
+			Movement_GotoInitialPosition();
+
+			/* 抽空气  */
 			Infusion_Air_50ul();
 			break;
 #endif
+
+#if CH2_ENABLED
+		case STDID_INFUSION_PREPARE:
+			Delay_ms_SW(1000);
+			/* 抽空气  */
+			Infusion_Air_50ul();
+			break;
+#endif
+
 
 #if CH1_ENABLED
 		case STDID_RX_INJECT_CH1:

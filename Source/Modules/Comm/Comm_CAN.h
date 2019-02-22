@@ -50,6 +50,7 @@
 #define STDID_RX_INJECT_CH1               			(0X141)
 #define STDID_RX_INJECT_CH2                			(0X142)
 #define STDID_INFUSION_ACHIEVE_BLACK_ZERO			(0X143)
+#define STDID_SEND_BACK_ZERO_ACHIEVE				(0X144)
 
 /******************************************************************************/
 #define STDID_TX_START_FILLING									(0x10B)

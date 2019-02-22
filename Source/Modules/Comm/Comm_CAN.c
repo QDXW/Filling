@@ -135,7 +135,7 @@ static void Comm_CAN_FilterInit(void)
 			STDID_SEND_BUMP_VOL,
 			STDID_BUMP_WASH,
 			STDID_SEND_BUMP,
-			STDID_RX_INVALID);
+			STDID_SEND_BACK_ZERO_ACHIEVE);
 
 	Comm_CAN_FilterNumInit(3,
 			STDID_RX_INFUSION,
