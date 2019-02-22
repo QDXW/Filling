@@ -241,12 +241,10 @@ void Comm_CanRxDataGet(void)
 	{
 		switch(RxMsg.StdId)
 		{
-#if CH1_ENABLED
 		case STDID_RX_INFUSION:
 			/* ณ้าบ */
 			ProcessCMD_Extract();
 			break;
-#endif
 
 #if CH1_ENABLED
 		case STDID_INFUSION_ACHIEVE_BLACK_ZERO:
@@ -266,13 +264,6 @@ void Comm_CanRxDataGet(void)
 		case STDID_INFUSION_PREPARE:
 			/* ณ้าบ */
 			Infusion_Air_50ul();
-			break;
-#endif
-
-#if CH2_ENABLED
-		case STDID_RX_INFUSION:
-			/* ณ้าบ */
-			ProcessCMD_Extract();
 			break;
 #endif
 

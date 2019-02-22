@@ -358,13 +358,13 @@ void ProcessCMD_Inject(uint8 *data)
 //	Movement_M3_GotoTarget(DIR_CW, PumpPrecision_Step_M);
 //	Movement_M6_GotoTarget(DIR_CW, PumpPrecision_Step_W);
 //
-////	Movement_M1_GotoTarget(DIR_CW, PumpPrecision_Step_W);
+//	Movement_M1_GotoTarget(DIR_CW, PumpPrecision_Step_W);
 //	Movement_M4_GotoTarget(DIR_CW, PumpPrecision_Step_W);
 //
 //	while(Movement_M10_start);
 //	while(Movement_M3_start);
 //	while(Movement_M6_start);
-////	while(Movement_M1_start);
+//	while(Movement_M1_start);
 //	while(Movement_M4_start);
 #endif
 
@@ -375,19 +375,19 @@ void ProcessCMD_Inject(uint8 *data)
 //	Movement_M3_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
 //	Movement_M6_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
 //
-////	Movement_M1_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
+//	Movement_M1_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
 //	Movement_M4_GotoTarget(DIR_CCW,PumpPrecision_Step_BASE);
 //
 //	while(Movement_M10_start);
 //	while(Movement_M3_start);
 //	while(Movement_M6_start);
-////	while(Movement_M1_start);
+//	while(Movement_M1_start);
 //	while(Movement_M4_start);
 #endif
 
-#if CH1_ENABLED
-	Comm_CanDirectSend(STDID_SEND_BACK_ZERO,CAN_Buffer,1);
-#endif
+//#if CH1_ENABLED
+//	Comm_CanDirectSend(STDID_SEND_BACK_ZERO,CAN_Buffer,1);
+//#endif
 }
 
 /******************************************************************************/
@@ -399,7 +399,7 @@ void Inject_Achieve(uint8 *data)
 		Buffer[0] = 0;
 		if(L100_Filling)
 		{
-			Delay_ms_SW(5);
+			Delay_ms_SW(500);
 			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
 #if CH1_ENABLED
 			Infusion_Air_50ul();
