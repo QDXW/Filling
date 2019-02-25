@@ -35,14 +35,6 @@ void HostComm_Cmd_Process (void)
 			HostComm_Cmd_Send_RawData(1, sBuffer,CMD_CODE_CONNECT);
 			break;
 
-		case CMD_CODE_INFUSION:
-			Infusion_Act();
-			break;
-
-		case CMD_CODE_INJECT:
-			Inject_Act();
-			break;
-
 		case CMD_CODE_BUMP_FILLING:
 			Filling_Act();
 			break;
@@ -51,46 +43,54 @@ void HostComm_Cmd_Process (void)
 			Bump_Wash_Act();
 			break;
 
-		case CMD_CODE_INJUCET_BUMP:
-			Injucet_Bump_Switch();
-			break;
-
-		case CMD_CODE_INJUCET_VOLUME1:
+		case CMD_CODE_INJUCET_VOLUME_R1:
 			Injucet_Volume1();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME2:
+		case CMD_CODE_INJUCET_VOLUME_R2:
 			Injucet_Volume2();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME3:
+		case CMD_CODE_INJUCET_VOLUME_M:
 			Injucet_Volume3();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME4:
+		case CMD_CODE_INJUCET_VOLUME_W1:
 			Injucet_Volume4();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME5:
+		case CMD_CODE_INJUCET_VOLUME_W2:
 			Injucet_Volume5();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME6:
+		case CMD_CODE_INJUCET_VOLUME_W3:
 			Injucet_Volume6();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME7:
+		case CMD_CODE_INJUCET_VOLUME_W4:
 			Injucet_Volume7();
 			break;
 
-		case CMD_CODE_RETURN_ZERO:
-			Comm_CanDirectSend(STDID_SEND_BACK_ZERO,sBuffer,1);
+		case CMD_CODE_INJUCET_VOLUME_W5:
 			break;
 
-		case CMD_CODE_BUMP_INT:
-			Bump_Initialize();
+		case CMD_CODE_INJUCET_VOLUME_W6:
 			break;
 
+		case CMD_CODE_INJUCET_VOLUME_BASE:
+			break;
+
+//		case CMD_CODE_INFUSION:
+//			Infusion_Act();
+//			break;
+
+//		case CMD_CODE_INJECT:
+//			Inject_Act();
+//			break;
+
+//		case CMD_CODE_INJUCET_BUMP:
+//			Injucet_Bump_Switch();
+//			break;
 		default:
 			break;
 		}

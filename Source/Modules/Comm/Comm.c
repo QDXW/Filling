@@ -247,28 +247,15 @@ void Comm_CanRxDataGet(void)
 			break;
 
 #if CH1_ENABLED
-		case STDID_INFUSION_ACHIEVE_BLACK_ZERO:
-			Buffer[0] = 0;
-			if(L100_Filling)
-			{
-				Comm_CanDirectSend(STDID_INJECT_PREPARE,Buffer,1);
-			}
-			else
-			{
-				HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_INFUSION);
-			}
-			break;
-#endif
-
-#if CH1_ENABLED
 		case STDID_SEND_BACK_ZERO_ACHIEVE:
+			/* 抽液准备 */
+			Comm_CanDirectSend(STDID_INFUSION_PREPARE_CH2,Buffer,1);
+
 			/* 初始化泵 */
 			Movement_GotoInitialPosition();
-
+			Delay_ms_SW(1000);
 			/* 抽空气  */
 			Infusion_Air_50ul();
-
-			/* 抽液准备 */
 			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
 			break;
 #endif
@@ -277,14 +264,14 @@ void Comm_CanRxDataGet(void)
 		case STDID_SEND_BACK_ZERO_ACHIEVE:
 			/* 初始化泵 */
 			Movement_GotoInitialPosition();
-
+			Delay_ms_SW(100);
 			/* 抽空气  */
 			Infusion_Air_50ul();
 			break;
 #endif
 
 #if CH2_ENABLED
-		case STDID_INFUSION_PREPARE:
+		case STDID_INFUSION_PREPARE_CH2:
 			Delay_ms_SW(1000);
 			/* 抽空气  */
 			Infusion_Air_50ul();
@@ -307,23 +294,29 @@ void Comm_CanRxDataGet(void)
 //			Infusion_Air_50ul();
 			break;
 #endif
-
+			STDID_BUMP_INT_PREPARE
 #if CH1_ENABLED
 		case STDID_RX_INJECT_ACHIEVE:
 			Inject_Achieve(RxMsg.Data);
 			break;
 #endif
 
-		case STDID_BUMP_INT:
-			/* 回初始位置 */
-			Movement_GotoInitialPosition();
-			/* 抽空气 */
-			Infusion_Air_50ul();
-
+#if CH1_ENABLED
+		case STDID_FILLING_ACHIEVE:
+			/* 灌装完成 */
 			Buffer[0] = 0;
-			Delay_ms_SW(1000);
-			HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_BUMP_INT);
+			HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_BUMP_FILLING);
 			break;
+#endif
+
+		case STDID_BUMP_WASH_START:
+			VAVLE_OPEN();
+		break;
+
+		case STDID_PUMP_WASH_ACHIEVE:
+			VAVLE_CLOSED();
+			DIAP_PUMP_CLOSED();
+		break;
 
 		default:
 			break;

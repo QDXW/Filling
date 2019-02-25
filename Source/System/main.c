@@ -8,18 +8,22 @@
 /******************************************************************************/
 #include "Project_File.h"
 
+/******************************************************************************/
 void Pump_Test(void);
+void RCC_Configuration (void);
 
 /******************************************************************************/
 int main(void)
 {
 	SysTick_Init();
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOE, ENABLE);
+	RCC_Configuration();				/* RCC Initialize */
 
 	HostComm_Init();
 
 	Comm_Init();
+
+	TIM6_Int_Init(9999,7199);
 
 	PosSensor_Init();
 
@@ -34,6 +38,7 @@ int main(void)
 	}
 }
 
+/******************************************************************************/
 void Pump_Test(void)
 {
 	/**************************************************************************/
@@ -81,4 +86,10 @@ void Pump_Test(void)
 #if TIMER5_M1_W4_W5_ENABLED
 	while(Movement_M1_start);
 #endif
+}
+
+/******************************************************************************/
+void RCC_Configuration (void)
+{
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOE, ENABLE);
 }

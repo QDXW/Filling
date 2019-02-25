@@ -17,7 +17,6 @@ extern uint8 respBuffer[30],HostComm_RecBufAvailable,Bump_Init;
 extern uint8 cmdType,cmdCode,recBuffer[30],cmdBuffer[30],contReceive;
 
 extern uint16 recCount,HostComm_RecBufSize,cmdLength,respLength,Fiber_Optic;
-extern uint16 Wash_time_second;
 
 /***************************Motor Driver***************************************/
 extern uint8 Movement_M1_start,Movement_M2_start;

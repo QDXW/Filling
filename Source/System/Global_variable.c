@@ -15,7 +15,6 @@ uint8 cmdType = 0,cmdCode = 0,contReceive = 0,Bump_Wash = 0;
 uint8 Waste_Bump = 0,Bump_Init = 0;
 
 uint16 recCount = 0;
-uint16 Wash_time_second = 0;
 uint16 HostComm_RecBufSize = 0,cmdLength = 0,respLength = 0,Fiber_Optic = 0;
 
 /***************************Motor Driver***************************************/

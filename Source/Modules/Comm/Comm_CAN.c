@@ -139,9 +139,15 @@ static void Comm_CAN_FilterInit(void)
 
 	Comm_CAN_FilterNumInit(3,
 			STDID_RX_INFUSION,
-			STDID_INFUSION_ACHIEVE_BLACK_ZERO,
+			STDID_FILLING_ACHIEVE,
 			STDID_RX_INJECT_CH1,
 			STDID_RX_INJECT_CH2);
+
+	Comm_CAN_FilterNumInit(4,
+			STDID_INFUSION_PREPARE_CH2,
+			STDID_PUMP_WASH_PREARE,
+			STDID_PUMP_WASH_ACHIEVE,
+			STDID_BUMP_WASH_START);
 }
 
 /******************************************************************************/

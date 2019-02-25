@@ -398,12 +398,13 @@ void Inject_Achieve(uint8 *data)
 		/* 未注完5次  */
 		Buffer[0] = 0;
 		Delay_ms_SW(500);
-		Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
-
+		Comm_CanDirectSend(STDID_INFUSION_PREPARE_CH2,Buffer,1);
 #if CH1_ENABLED
 		Delay_ms_SW(1000);
 		Infusion_Air_50ul();
 #endif
+
+		Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
 
 	}
 	else
@@ -411,6 +412,6 @@ void Inject_Achieve(uint8 *data)
 		/* 注完5次  */
 		Buffer[0] = 0;
 		L100_Filling = 0;
-		HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_BUMP_FILLING);
+		Comm_CanDirectSend(STDID_BUMP_INT_PREPARE,Buffer,1);
 	}
 }

@@ -23,6 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h" 
+uint8 Wash_Sencond = 0;
 
 /******************************************************************************/
 void SysTick_Handler(void)
@@ -161,6 +162,32 @@ void EXTI0_IRQHandler(void)
 		Movement_M4_initPos = 1;
 		Movement_M4_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line0);
+	}
+}
+
+/******************************************************************************/
+void TIM6_IRQHandler(void)
+{
+	if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)
+	{
+
+#if CH1_ENABLED
+		if(Waste_Bump)
+		{
+			Wash_Sencond++;
+			if(Wash_Sencond > 5)
+			{
+				Wash_Sencond = 0;
+				DIAP_PUMP_CLOSED();
+			}
+		}
+		else
+		{
+			Wash_Sencond = 0;
+		}
+#endif
+		/* Clear the interrupt pending flag */
+		TIM_ClearFlag(TIM6, TIM_FLAG_Update);
 	}
 }
 

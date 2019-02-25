@@ -16,17 +16,17 @@ void Devices_Init(void)
 	/* 初始化参数  */
 	Set_Initialize_Parameter();
 
-	/* 隔膜泵初始化 */
-//	DIAP_PUMP_Init();
-
 	/* 阀门初始化  */
 	VAVLE_Init();
+
+	/* 隔膜泵初始化 */
+	DIAP_PUMP_Init();
 
 	/* 柱塞泵初始化  */
 	Motor_Init();
 
 	/* 隔膜泵全部关闭  */
-//	DIAP_PUMP_CLOSED();
+	DIAP_PUMP_CLOSED();
 
 	/* 阀门全部关闭  */
 	VAVLE_CLOSED();
@@ -172,24 +172,28 @@ void DIAP_PUMP_Control(DIAP_PUMP_NUM DIAP_PUMP,FunctionalState status)
 /******************************************************************************/
 void DIAP_PUMP_OPEN(void)
 {
+#if CH1_ENABLED
 	DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
 	DIAP_PUMP_Control(DIAP_PUMP2,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP3,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP4,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP5,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP6,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP7,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP8,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP9,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP10,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP15,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP16,ENABLE);
+	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP5,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP6,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP7,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP8,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP9,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
+	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
+	Delay_ms_SW(40);
+#endif
 }
 
 /******************************************************************************/
 void DIAP_PUMP_CLOSED(void)
 {
-	DIAP_PUMP_Control(DIAP_PUMP1,DISABLE);
+#if CH1_ENABLED
+	DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
 	DIAP_PUMP_Control(DIAP_PUMP2,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
@@ -201,6 +205,8 @@ void DIAP_PUMP_CLOSED(void)
 	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
+	Delay_ms_SW(40);
+#endif
 }
 
 /******************************************************************************/
@@ -209,6 +215,9 @@ void VAVLE_Init (void)
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |RCC_APB2Periph_GPIOB |RCC_APB2Periph_GPIOC |
 				RCC_APB2Periph_GPIOE | RCC_APB2Periph_GPIOD, ENABLE);
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
 
 	/* Initialize pins */
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -221,10 +230,6 @@ void VAVLE_Init (void)
 	/* Valve 2 */
 	GPIO_InitStructure.GPIO_Pin = PIN_VALVE2;
 	GPIO_Init(PORT_VALVE2, &GPIO_InitStructure);
-
-	/* Valve 3 */
-	GPIO_InitStructure.GPIO_Pin = PIN_VALVE3;
-	GPIO_Init(PORT_VALVE3, &GPIO_InitStructure);
 
 	/* Valve 4 */
 	GPIO_InitStructure.GPIO_Pin = PIN_VALVE4;
@@ -253,6 +258,10 @@ void VAVLE_Init (void)
 	/* Valve 10 */
 	GPIO_InitStructure.GPIO_Pin = PIN_VALVE10;
 	GPIO_Init(PORT_VALVE10, &GPIO_InitStructure);
+
+	/* Valve 3 */
+	GPIO_InitStructure.GPIO_Pin = PIN_VALVE3;
+	GPIO_Init(PORT_VALVE3, &GPIO_InitStructure);
 }
 
 /******************************************************************************/
@@ -263,6 +272,7 @@ void VAVLE_OPEN (void)
 	Valve3_Control(ENABLE);
 	Valve4_Control(ENABLE);
 	Valve5_Control(ENABLE);
+	Delay_ms_SW(60);
 	Valve6_Control(ENABLE);
 	Valve7_Control(ENABLE);
 	Valve8_Control(ENABLE);
@@ -273,16 +283,17 @@ void VAVLE_OPEN (void)
 /******************************************************************************/
 void VAVLE_CLOSED (void)
 {
-	Valve1_Control(DISABLE);
-	Valve2_Control(DISABLE);
-	Valve3_Control(DISABLE);
-	Valve4_Control(DISABLE);
-	Valve5_Control(DISABLE);
 	Valve6_Control(DISABLE);
 	Valve7_Control(DISABLE);
 	Valve8_Control(DISABLE);
 	Valve9_Control(DISABLE);
 	Valve10_Control(DISABLE);
+	Valve1_Control(DISABLE);
+	Valve2_Control(DISABLE);
+	Valve3_Control(DISABLE);
+	Valve4_Control(DISABLE);
+	Valve5_Control(DISABLE);
+	Delay_ms_SW(60);
 }
 
 /******************************************************************************/

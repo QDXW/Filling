@@ -36,6 +36,7 @@
 #define STDID_INFUSION_PREPARE						(0x113)
 #define STDID_BUMP_WASH								(0x125)
 #define STDID_INJECT_PREPARE						(0X127)
+#define STDID_BUMP_WASH_START						(0x128)
 #define STDID_BUMP_INFUSION						    (0x300)
 #define STDID_SEND_BUMP_VOL						    (0x301)
 #define STDID_INFUSION_ACHIEVE						(0x303)
@@ -46,11 +47,17 @@
 #define STDID_BUMP_INT								(0X308)
 #define STDID_SEND_BUMP								(0X30A)
 
+/***************************¹à×°ÃüÁî*******************************************/
 #define STDID_RX_INFUSION                    		(0X140)
 #define STDID_RX_INJECT_CH1               			(0X141)
 #define STDID_RX_INJECT_CH2                			(0X142)
-#define STDID_INFUSION_ACHIEVE_BLACK_ZERO			(0X143)
+#define STDID_FILLING_ACHIEVE						(0X143)
 #define STDID_SEND_BACK_ZERO_ACHIEVE				(0X144)
+#define STDID_INFUSION_PREPARE_CH2					(0X145)
+
+/***************************ÇåÏ´ÃüÁî*******************************************/
+#define STDID_PUMP_WASH_PREARE						(0X150)
+#define STDID_PUMP_WASH_ACHIEVE						(0X151)
 
 /******************************************************************************/
 #define STDID_TX_START_FILLING									(0x10B)

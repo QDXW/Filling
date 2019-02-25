@@ -12,6 +12,6 @@
 #include "Project_File.h"
 
 /******************************************************************************/
-extern void TIM5_Int_Init(u16 arr,u16 psc);
+extern void TIM6_Int_Init(u16 arr,u16 psc);
 
 #endif /* MANAGEMENT_TIMER_TIMER4_H_ */
