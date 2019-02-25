@@ -246,38 +246,24 @@ void Comm_CanRxDataGet(void)
 			ProcessCMD_Extract();
 			break;
 
-#if CH1_ENABLED
-		case STDID_SEND_BACK_ZERO_ACHIEVE:
-			/* ³éÒº×¼±¸ */
-			Comm_CanDirectSend(STDID_INFUSION_PREPARE_CH2,Buffer,1);
-
-			/* ³õÊ¼»¯±Ã */
-			Movement_GotoInitialPosition();
-			Delay_ms_SW(1000);
-			/* ³é¿ÕÆø  */
-			Infusion_Air_50ul();
-			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
-			break;
-#endif
-
-#if CH2_ENABLED
 		case STDID_SEND_BACK_ZERO_ACHIEVE:
 			/* ³õÊ¼»¯±Ã */
 			Movement_GotoInitialPosition();
 			Delay_ms_SW(100);
+
 			/* ³é¿ÕÆø  */
-			Infusion_Air_50ul();
-			break;
+			Infusion_Air_70ul();
+#if CH1_ENABLED
+			Comm_CanDirectSend(STDID_INFUSION_PREPARE,Buffer,1);
 #endif
+			break;
 
 #if CH2_ENABLED
 		case STDID_INFUSION_PREPARE_CH2:
-			Delay_ms_SW(1000);
 			/* ³é¿ÕÆø  */
 			Infusion_Air_50ul();
 			break;
 #endif
-
 
 #if CH1_ENABLED
 		case STDID_RX_INJECT_CH1:
@@ -290,11 +276,9 @@ void Comm_CanRxDataGet(void)
 		case STDID_RX_INJECT_CH2:
 			/* ×¢Òº */
 			ProcessCMD_Inject(RxMsg.Data);
-			/* ³é¿ÕÆø */
-//			Infusion_Air_50ul();
 			break;
 #endif
-			STDID_BUMP_INT_PREPARE
+
 #if CH1_ENABLED
 		case STDID_RX_INJECT_ACHIEVE:
 			Inject_Achieve(RxMsg.Data);
@@ -310,7 +294,11 @@ void Comm_CanRxDataGet(void)
 #endif
 
 		case STDID_BUMP_WASH_START:
+			/* ´ò¿ª·§ÃÅ¼°¸ôÄ¤±Ã   ¹Ø±Õ·ÏÒº¸ôÄ¤±Ã */
 			VAVLE_OPEN();
+			DIAP_PUMP_CLOSED();
+			DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
+			Waste_Bump_Open = 1;
 		break;
 
 		case STDID_PUMP_WASH_ACHIEVE:

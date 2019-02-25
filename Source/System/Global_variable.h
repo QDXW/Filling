@@ -15,6 +15,7 @@
 extern uint8 Recycle_Bead,Bump_Switch,Bump_Wash,Waste_Bump;
 extern uint8 respBuffer[30],HostComm_RecBufAvailable,Bump_Init;
 extern uint8 cmdType,cmdCode,recBuffer[30],cmdBuffer[30],contReceive;
+extern uint8 Waste_Bump_Open,Waste_Bump_Closed,Waste_Bump_Count;
 
 extern uint16 recCount,HostComm_RecBufSize,cmdLength,respLength,Fiber_Optic;
 
@@ -40,8 +41,10 @@ extern uint32 Movement_M10_pulseCount,Movement_M10_pulseNumber;
 extern float  Base_Calculation_1ml,Base_Calculation_5ml;
 
 extern uint32 Infusion_Air_50ul_1ml,Infusion_Air_50ul_5ml;
+extern uint32 Infusion_Air_70ul_1ml,Infusion_Air_70ul_5ml;
 extern uint32 PumpPrecision_Step_1ml,PumpPrecision_Step_5ml;
 
+extern uint8 a;
 extern uint32 PumpPrecision_Step_R1;
 extern uint32 PumpPrecision_Step_R2;
 extern uint32 PumpPrecision_Step_M;

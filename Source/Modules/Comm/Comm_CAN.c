@@ -124,7 +124,6 @@ static void Comm_CAN_FilterInit(void)
 			STDID_INJECT_PREPARE);
 		
 	/* @TODO */
-
 	Comm_CAN_FilterNumInit(1,
 			STDID_RX_INJECT_ACHIEVE,
 			STDID_INFUSION_PREPARE,

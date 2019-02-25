@@ -172,20 +172,63 @@ void TIM6_IRQHandler(void)
 	{
 
 #if CH1_ENABLED
-		if(Waste_Bump)
+		if(Waste_Bump_Open)
 		{
 			Wash_Sencond++;
-			if(Wash_Sencond > 5)
+			if(Wash_Sencond > 29)
 			{
 				Wash_Sencond = 0;
-				DIAP_PUMP_CLOSED();
+				Waste_Bump_Closed = 1;
+
+				/* 关闭阀门及隔膜泵   打开废液隔膜泵 */
+				VAVLE_CLOSED();
+				DIAP_PUMP_OPEN();
 			}
 		}
 		else
 		{
-			Wash_Sencond = 0;
+			Waste_Bump_Open = 0;
+		}
+
+		if(Waste_Bump_Closed)
+		{
+			Wash_Sencond++;
+			if(Wash_Sencond > 9)
+			{
+				Waste_Bump_Count++;
+				Wash_Sencond = 0;
+				Waste_Bump_Closed = 0;
+				Waste_Bump_Open = 1;
+				/* 开始清洗  */
+				Buffer[0] = 0X01;
+				Comm_CanDirectSend(STDID_BUMP_WASH_START, Buffer, 1);
+				if(Waste_Bump_Count > 4)
+				{
+					DIAP_PUMP_CLOSED();
+					Waste_Bump_Open = 0;
+					Waste_Bump_Count = 0;
+					Waste_Bump_Closed = 0;
+
+					/* 停止清洗  */
+					Buffer[0] = 0X00;
+					Comm_CanDirectSend(STDID_PUMP_WASH_PREARE, Buffer, 1);
+					HostComm_Cmd_Send_RawData(1, fBuffer,CMD_CODE_WASH);
+				}
+				else
+				{
+					/* 打开阀门及隔膜泵   关闭废液隔膜泵 */
+					VAVLE_OPEN();
+					DIAP_PUMP_CLOSED();
+					DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
+				}
+			}
+		}
+		else
+		{
+			Waste_Bump_Closed = 0;
 		}
 #endif
+
 		/* Clear the interrupt pending flag */
 		TIM_ClearFlag(TIM6, TIM_FLAG_Update);
 	}

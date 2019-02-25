@@ -91,7 +91,9 @@ void Bump_Wash_Act (void)
 	else
 	{
 		DIAP_PUMP_OPEN();
-		Waste_Bump = 1;
+		Waste_Bump_Count = 0;
+		Waste_Bump_Open = 0;
+		Waste_Bump_Closed = 0;
 		HostComm_Cmd_Send_RawData(1, fBuffer,CMD_CODE_WASH);
 
 		/* Í£Ö¹ÇåÏ´  */

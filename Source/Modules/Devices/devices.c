@@ -41,6 +41,9 @@ void Set_Initialize_Parameter(void)
 	Infusion_Air_50ul_1ml = 50 * Base_Calculation_1ml;
 	Infusion_Air_50ul_5ml = 50 * Base_Calculation_5ml;
 
+	Infusion_Air_70ul_1ml = 70 * Base_Calculation_1ml;
+	Infusion_Air_70ul_5ml = 70 * Base_Calculation_5ml;
+
 	PumpPrecision_Step_R1 = 100 * Base_Calculation_1ml;
 	PumpPrecision_Step_R2 = 100 * Base_Calculation_1ml;
 	PumpPrecision_Step_M = 100 * Base_Calculation_1ml;
@@ -185,7 +188,6 @@ void DIAP_PUMP_OPEN(void)
 	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
-	Delay_ms_SW(40);
 #endif
 }
 
@@ -193,7 +195,7 @@ void DIAP_PUMP_OPEN(void)
 void DIAP_PUMP_CLOSED(void)
 {
 #if CH1_ENABLED
-	DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
+	DIAP_PUMP_Control(DIAP_PUMP1,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP2,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
@@ -205,7 +207,6 @@ void DIAP_PUMP_CLOSED(void)
 	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
 	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
-	Delay_ms_SW(40);
 #endif
 }
 
@@ -272,7 +273,6 @@ void VAVLE_OPEN (void)
 	Valve3_Control(ENABLE);
 	Valve4_Control(ENABLE);
 	Valve5_Control(ENABLE);
-	Delay_ms_SW(60);
 	Valve6_Control(ENABLE);
 	Valve7_Control(ENABLE);
 	Valve8_Control(ENABLE);
@@ -293,7 +293,6 @@ void VAVLE_CLOSED (void)
 	Valve3_Control(DISABLE);
 	Valve4_Control(DISABLE);
 	Valve5_Control(DISABLE);
-	Delay_ms_SW(60);
 }
 
 /******************************************************************************/
