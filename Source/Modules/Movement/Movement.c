@@ -133,68 +133,72 @@ void Movement_GotoInitialPosition(void)
 }
 
 /******************************************************************************/
-void ProcessCMD_Inject_Double_Row (void)
+void ProcessCMD_Inject_Single_Row (void)
 {
 #if CH1_ENABLED
-#if TIMER2_M3_M_W1_ENABLED
 	Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_M + Infusion_Air_50ul_1ml));
-#endif
-
-#if TIMER3_M6_W2_W3_ENABLED
 	Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-#endif
-
-#if TIMER1_M10_R1_R2_ENABLED
 	Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R1 + Infusion_Air_50ul_1ml));
-#endif
 
-#if TIMER2_M3_M_W1_ENABLED
-while(Movement_M3_start);
-#endif
-
-#if TIMER3_M6_W2_W3_ENABLED
-while(Movement_M6_start);
-#endif
-
-#if TIMER1_M10_R1_R2_ENABLED
-while(Movement_M10_start);
-#endif
+	while(Movement_M3_start);
+	while(Movement_M6_start);
+	while(Movement_M10_start);
 #endif
 
 
 #if CH2_ENABLED
-#if TIMER2_M3_M_W1_ENABLED
-	Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
+	Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+	Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_BASE);
+	Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+	Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
+
+	while(Movement_M3_start);
+	while(Movement_M4_start);
+	while(Movement_M6_start);
+	while(Movement_M10_start);
+#endif
+}
+
+/******************************************************************************/
+void ProcessCMD_Inject_Double_Row (uint8 *data)
+{
+#if CH1_ENABLED
+	Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_M);
+	Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+	Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R1);
+
+	while(Movement_M3_start);
+	while(Movement_M6_start);
+	while(Movement_M10_start);
 #endif
 
-#if TIMER4_M4_W6_BASE_ENABLED
-	Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_BASE + Infusion_Air_50ul_5ml));
+#if CH2_ENABLED
+	if(data[0])
+	{
+		Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
+		Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_BASE + Infusion_Air_50ul_5ml));
+		Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
+		Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R2 + Infusion_Air_50ul_1ml));
+
+		while(Movement_M3_start);
+		while(Movement_M4_start)
+		while(Movement_M6_start);
+		while(Movement_M10_start);
+	}
+	else
+	{
+		Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_BASE);
+		Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
+
+		while(Movement_M3_start);
+		while(Movement_M4_start)
+		while(Movement_M6_start);
+		while(Movement_M10_start);
+	}
 #endif
 
-#if TIMER3_M6_W2_W3_ENABLED
-	Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-#endif
-
-#if TIMER1_M10_R1_R2_ENABLED
-	Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R2 + Infusion_Air_50ul_1ml));
-#endif
-
-#if TIMER2_M3_M_W1_ENABLED
-while(Movement_M3_start);
-#endif
-
-#if TIMER4_M4_W6_BASE_ENABLED
-while(Movement_M4_start);
-#endif
-
-#if TIMER3_M6_W2_W3_ENABLED
-while(Movement_M6_start);
-#endif
-
-#if TIMER1_M10_R1_R2_ENABLED
-while(Movement_M10_start);
-#endif
-#endif
 }
 
 /******************************************************************************/
@@ -372,25 +376,25 @@ void Infusion_Air_70ul(void)
 /******************************************************************************/
 void ProcessCMD_Extract(void)
 {
-	/**************************************************************************/
+/******************************************************************************/
 #if CH1_ENABLED
 #if TIMER1_M10_R1_R2_ENABLED
-	Movement_M10_GotoTarget(DIR_CCW, PumpPrecision_Step_R1);
+	Movement_M10_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_R1));
 #endif
 #if TIMER2_M3_M_W1_ENABLED
-	Movement_M3_GotoTarget(DIR_CCW, PumpPrecision_Step_M);
+	Movement_M3_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_M));
 #endif
 #if TIMER3_M6_W2_W3_ENABLED
-	Movement_M6_GotoTarget(DIR_CCW, PumpPrecision_Step_W);
+	Movement_M6_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W));
 #endif
 #if TIMER5_M1_W4_W5_ENABLED
-	Movement_M1_GotoTarget(DIR_CCW, PumpPrecision_Step_W);
+	Movement_M1_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W));
 #endif
 #if TIMER4_M4_W6_BASE_ENABLED
-	Movement_M4_GotoTarget(DIR_CCW, PumpPrecision_Step_W);
+	Movement_M4_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W));
 #endif
 
-	/**************************************************************************/
+/******************************************************************************/
 #if TIMER1_M10_R1_R2_ENABLED
 	while(Movement_M10_start);
 #endif
@@ -408,25 +412,25 @@ void ProcessCMD_Extract(void)
 #endif
 #endif
 
-	/**************************************************************************/
+/******************************************************************************/
 #if CH2_ENABLED
 #if TIMER1_M10_R1_R2_ENABLED
-	Movement_M10_GotoTarget(DIR_CCW,PumpPrecision_Step_R2);
+	Movement_M10_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_R2));
 #endif
 #if TIMER2_M3_M_W1_ENABLED
-	Movement_M3_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
+	Movement_M3_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W));
 #endif
 #if TIMER3_M6_W2_W3_ENABLED
-	Movement_M6_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
+	Movement_M6_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W));
 #endif
 #if TIMER5_M1_W4_W5_ENABLED
-	Movement_M1_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
+	Movement_M1_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W));
 #endif
 #if TIMER4_M4_W6_BASE_ENABLED
-	Movement_M4_GotoTarget(DIR_CCW,PumpPrecision_Step_BASE);
+	Movement_M4_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_BASE));
 #endif
 
-	/**************************************************************************/
+/******************************************************************************/
 #if TIMER1_M10_R1_R2_ENABLED
 	while(Movement_M10_start);
 #endif
@@ -453,42 +457,12 @@ void ProcessCMD_Extract(void)
 void ProcessCMD_Inject(uint8 *data)
 {
 #if CH1_ENABLED
-	ProcessCMD_Inject_Double_Row();
-
-//	Movement_M10_GotoTarget(DIR_CW, PumpPrecision_Step_R1);
-//	Movement_M3_GotoTarget(DIR_CW, PumpPrecision_Step_M);
-//	Movement_M6_GotoTarget(DIR_CW, PumpPrecision_Step_W);
-//
-//	Movement_M1_GotoTarget(DIR_CW, PumpPrecision_Step_W);
-//	Movement_M4_GotoTarget(DIR_CW, PumpPrecision_Step_W);
-//
-//	while(Movement_M10_start);
-//	while(Movement_M3_start);
-//	while(Movement_M6_start);
-//	while(Movement_M1_start);
-//	while(Movement_M4_start);
+	ProcessCMD_Inject_Single_Row();
 #endif
 
 #if CH2_ENABLED
-	ProcessCMD_Inject_Double_Row();
-
-//	Movement_M10_GotoTarget(DIR_CCW,PumpPrecision_Step_R2);
-//	Movement_M3_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
-//	Movement_M6_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
-//
-//	Movement_M1_GotoTarget(DIR_CCW,PumpPrecision_Step_W);
-//	Movement_M4_GotoTarget(DIR_CCW,PumpPrecision_Step_BASE);
-//
-//	while(Movement_M10_start);
-//	while(Movement_M3_start);
-//	while(Movement_M6_start);
-//	while(Movement_M1_start);
-//	while(Movement_M4_start);
+	ProcessCMD_Inject_Single_Row();
 #endif
-
-//#if CH1_ENABLED
-//	Comm_CanDirectSend(STDID_SEND_BACK_ZERO,CAN_Buffer,1);
-//#endif
 }
 
 /******************************************************************************/

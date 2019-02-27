@@ -44,53 +44,25 @@ void HostComm_Cmd_Process (void)
 			break;
 
 		case CMD_CODE_INJUCET_VOLUME_R1:
-			Injucet_Volume1();
+			Injucet_Volume_R1();
 			break;
 
 		case CMD_CODE_INJUCET_VOLUME_R2:
-			Injucet_Volume2();
+			Injucet_Volume_R2();
 			break;
 
 		case CMD_CODE_INJUCET_VOLUME_M:
-			Injucet_Volume3();
+			Injucet_Volume_M();
 			break;
 
-		case CMD_CODE_INJUCET_VOLUME_W1:
-			Injucet_Volume4();
-			break;
-
-		case CMD_CODE_INJUCET_VOLUME_W2:
-			Injucet_Volume5();
-			break;
-
-		case CMD_CODE_INJUCET_VOLUME_W3:
-			Injucet_Volume6();
-			break;
-
-		case CMD_CODE_INJUCET_VOLUME_W4:
-			Injucet_Volume7();
-			break;
-
-		case CMD_CODE_INJUCET_VOLUME_W5:
-			break;
-
-		case CMD_CODE_INJUCET_VOLUME_W6:
+		case CMD_CODE_INJUCET_VOLUME_W:
+			Injucet_Volume_W();
 			break;
 
 		case CMD_CODE_INJUCET_VOLUME_BASE:
+			Injucet_Volume_BASE();
 			break;
 
-//		case CMD_CODE_INFUSION:
-//			Infusion_Act();
-//			break;
-
-//		case CMD_CODE_INJECT:
-//			Inject_Act();
-//			break;
-
-//		case CMD_CODE_INJUCET_BUMP:
-//			Injucet_Bump_Switch();
-//			break;
 		default:
 			break;
 		}

@@ -13,9 +13,6 @@
 #include "stm32f10x.h"
 
 /******************************************************************************/
-extern uint8 flag;
-
-/******************************************************************************/
 void Comm_Init(void);
 void Comm_Process(void);
 void Comm_CanRxDataGet(void);

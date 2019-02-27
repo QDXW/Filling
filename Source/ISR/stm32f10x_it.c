@@ -183,6 +183,9 @@ void TIM6_IRQHandler(void)
 				/* 关闭阀门及隔膜泵   打开废液隔膜泵 */
 				VAVLE_CLOSED();
 				DIAP_PUMP_OPEN();
+				/* 清洗  */
+				Buffer[0] = 0X01;
+				Comm_CanDirectSend(STDID_PUMP_WASH_ACHIEVE,Buffer,1);
 			}
 		}
 		else

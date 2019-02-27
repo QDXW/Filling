@@ -32,6 +32,7 @@
 #define STDID_RX_INVALID                    		(0XFF)
 #define STDID_RX_TEST								(0x003)
 
+#define STDID_RX_INJECT								(0x120)
 #define STDID_RX_INJECT_ACHIEVE						(0x130)
 #define STDID_INFUSION_PREPARE						(0x113)
 #define STDID_BUMP_WASH								(0x125)
@@ -48,16 +49,16 @@
 #define STDID_SEND_BUMP								(0X30A)
 
 /***************************¹à×°ÃüÁî*******************************************/
-#define STDID_RX_INFUSION                    		(0X140)
-#define STDID_RX_INJECT_CH1               			(0X141)
-#define STDID_RX_INJECT_CH2                			(0X142)
-#define STDID_FILLING_ACHIEVE						(0X143)
-#define STDID_SEND_BACK_ZERO_ACHIEVE				(0X144)
-#define STDID_INFUSION_PREPARE_CH2					(0X145)
+#define STDID_RX_INFUSION                    		(0x140)
+#define STDID_RX_INJECT_CH1               			(0x141)
+#define STDID_RX_INJECT_CH2                			(0x142)
+#define STDID_FILLING_ACHIEVE						(0x143)
+#define STDID_SEND_BACK_ZERO_ACHIEVE				(0x144)
+#define STDID_INFUSION_PREPARE_CH2					(0x145)
 
 /***************************ÇåÏ´ÃüÁî*******************************************/
-#define STDID_PUMP_WASH_PREARE						(0X150)
-#define STDID_PUMP_WASH_ACHIEVE						(0X151)
+#define STDID_PUMP_WASH_PREARE						(0x150)
+#define STDID_PUMP_WASH_ACHIEVE						(0x151)
 
 /******************************************************************************/
 #define STDID_TX_START_FILLING									(0x10B)

@@ -229,7 +229,6 @@ void Comm_CAN_SendOnePackage(uint16 stdId, uint8 *dataPtr, uint8 len)
 
 /******************************************************************************/
 /* 从FIFO中获取数据并处理 */
-uint8 flag = 0;
 void Comm_CanRxDataGet(void)            
 {
 	uint8 Status;
@@ -279,6 +278,11 @@ void Comm_CanRxDataGet(void)
 			break;
 #endif
 
+		case STDID_RX_INJECT:
+			/* 注液 */
+			ProcessCMD_Inject_Double_Row(RxMsg.Data);
+			break;
+
 #if CH1_ENABLED
 		case STDID_RX_INJECT_ACHIEVE:
 			Inject_Achieve(RxMsg.Data);
@@ -305,6 +309,12 @@ void Comm_CanRxDataGet(void)
 			VAVLE_CLOSED();
 			DIAP_PUMP_CLOSED();
 		break;
+
+#if CH2_ENABLED
+		case STDID_SEND_BUMP_VOL:
+			Set_Volume(RxMsg.Data);
+		break;
+#endif
 
 		default:
 			break;

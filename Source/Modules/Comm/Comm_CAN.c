@@ -147,6 +147,12 @@ static void Comm_CAN_FilterInit(void)
 			STDID_PUMP_WASH_PREARE,
 			STDID_PUMP_WASH_ACHIEVE,
 			STDID_BUMP_WASH_START);
+
+	Comm_CAN_FilterNumInit(5,
+			STDID_RX_INJECT,
+			STDID_RX_INVALID,
+			STDID_RX_INVALID,
+			STDID_RX_INVALID);
 }
 
 /******************************************************************************/
