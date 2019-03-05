@@ -136,22 +136,28 @@ void Movement_GotoInitialPosition(void)
 void ProcessCMD_Inject_Single_Row (void)
 {
 #if CH1_ENABLED
+	Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
 	Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_M + Infusion_Air_50ul_1ml));
+	Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
 	Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
 	Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R1 + Infusion_Air_50ul_1ml));
 
+	while(Movement_M1_start);
 	while(Movement_M3_start);
+	while(Movement_M4_start);
 	while(Movement_M6_start);
 	while(Movement_M10_start);
 #endif
 
 
 #if CH2_ENABLED
+	Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 	Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_BASE);
+	Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 	Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 	Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
 
+	while(Movement_M1_start);
 	while(Movement_M3_start);
 	while(Movement_M4_start);
 	while(Movement_M6_start);
@@ -163,11 +169,15 @@ void ProcessCMD_Inject_Single_Row (void)
 void ProcessCMD_Inject_Double_Row (uint8 *data)
 {
 #if CH1_ENABLED
+	Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 	Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_M);
+	Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 	Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 	Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R1);
 
+	while(Movement_M1_start);
 	while(Movement_M3_start);
+	while(Movement_M4_start);
 	while(Movement_M6_start);
 	while(Movement_M10_start);
 #endif
@@ -175,11 +185,13 @@ void ProcessCMD_Inject_Double_Row (uint8 *data)
 #if CH2_ENABLED
 	if(data[0])
 	{
+		Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
 		Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
 		Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_BASE + Infusion_Air_50ul_5ml));
 		Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
 		Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R2 + Infusion_Air_50ul_1ml));
 
+		while(Movement_M1_start);
 		while(Movement_M3_start);
 		while(Movement_M4_start)
 		while(Movement_M6_start);
@@ -187,11 +199,13 @@ void ProcessCMD_Inject_Double_Row (uint8 *data)
 	}
 	else
 	{
+		Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 		Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 		Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_BASE);
 		Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
 		Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
 
+		while(Movement_M1_start);
 		while(Movement_M3_start);
 		while(Movement_M4_start)
 		while(Movement_M6_start);

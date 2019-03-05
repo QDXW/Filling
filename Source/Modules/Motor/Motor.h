@@ -13,7 +13,7 @@
 
 /******************************************************************************/
 #define PUMP_PRECISION_PWM_PERIOD_1ML		(1600)
-#define PUMP_PRECISION_PWM_PERIOD_5ML		(1600)
+#define PUMP_PRECISION_PWM_PERIOD_5ML		(2000)
 
 /******************************************************************************/
 #define PORT_MOTOR_M1_EN			(GPIOA)
