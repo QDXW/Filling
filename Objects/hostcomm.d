@@ -4,7 +4,7 @@
 .\objects\hostcomm.o: .\Source\System\comDef.h
 .\objects\hostcomm.o: .\Source\System\stm32f10x.h
 .\objects\hostcomm.o: .\Source\CORE\core_cm3.h
-.\objects\hostcomm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hostcomm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hostcomm.o: .\Source\System\system_stm32f10x.h
 .\objects\hostcomm.o: .\Source\System\stm32f10x_conf.h
 .\objects\hostcomm.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\hostcomm.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\hostcomm.o: .\Source\Modules\Movement\Movement.h
 .\objects\hostcomm.o: .\Source\Modules\Flash\Flash.h
-.\objects\hostcomm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\hostcomm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\hostcomm.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\hostcomm.o: .\Source\Modules\Comm\Comm.h
 .\objects\hostcomm.o: .\Source\Modules\adc\adc.h
 .\objects\hostcomm.o: .\Source\Modules\DMA\dma.h
-.\objects\hostcomm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\hostcomm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\hostcomm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\hostcomm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

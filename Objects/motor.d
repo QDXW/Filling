@@ -4,7 +4,7 @@
 .\objects\motor.o: .\Source\System\comDef.h
 .\objects\motor.o: .\Source\System\stm32f10x.h
 .\objects\motor.o: .\Source\CORE\core_cm3.h
-.\objects\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\motor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\motor.o: .\Source\System\system_stm32f10x.h
 .\objects\motor.o: .\Source\System\stm32f10x_conf.h
 .\objects\motor.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\motor.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\motor.o: .\Source\Modules\Movement\Movement.h
 .\objects\motor.o: .\Source\Modules\Flash\Flash.h
-.\objects\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\motor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\motor.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\motor.o: .\Source\Modules\Comm\Comm.h
 .\objects\motor.o: .\Source\Modules\adc\adc.h
 .\objects\motor.o: .\Source\Modules\DMA\dma.h
-.\objects\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\motor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\motor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

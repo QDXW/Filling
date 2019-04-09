@@ -4,7 +4,7 @@
 .\objects\sensor.o: .\Source\System\comDef.h
 .\objects\sensor.o: .\Source\System\stm32f10x.h
 .\objects\sensor.o: .\Source\CORE\core_cm3.h
-.\objects\sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sensor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sensor.o: .\Source\System\system_stm32f10x.h
 .\objects\sensor.o: .\Source\System\stm32f10x_conf.h
 .\objects\sensor.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\sensor.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\sensor.o: .\Source\Modules\Movement\Movement.h
 .\objects\sensor.o: .\Source\Modules\Flash\Flash.h
-.\objects\sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sensor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\sensor.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\sensor.o: .\Source\Modules\Comm\Comm.h
 .\objects\sensor.o: .\Source\Modules\adc\adc.h
 .\objects\sensor.o: .\Source\Modules\DMA\dma.h
-.\objects\sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sensor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\sensor.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

@@ -133,14 +133,33 @@ void Movement_GotoInitialPosition(void)
 }
 
 /******************************************************************************/
-void ProcessCMD_Inject_Single_Row (void)
+void ProcessCMD_Inject_Single_Row (uint8 *data)
 {
 #if CH1_ENABLED
-	Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-	Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_M + Infusion_Air_50ul_1ml));
-	Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-	Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-	Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R1 + Infusion_Air_50ul_1ml));
+	if(Pos_Read_Sensor(SWITCH1))
+	{
+		Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+
+	if(Pos_Read_Sensor(SWITCH3))
+	{
+		Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_M + 30*Base_Calculation_1ml));
+	}
+
+	if(Pos_Read_Sensor(SWITCH4))
+	{
+		Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+
+	if(Pos_Read_Sensor(SWITCH6))
+	{
+		Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+
+	if(Pos_Read_Sensor(SWITCH10))
+	{
+		Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R1 + 30*Base_Calculation_1ml));
+	}
 
 	while(Movement_M1_start);
 	while(Movement_M3_start);
@@ -149,13 +168,28 @@ void ProcessCMD_Inject_Single_Row (void)
 	while(Movement_M10_start);
 #endif
 
-
 #if CH2_ENABLED
-	Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
+	if(Pos_Read_Sensor(SWITCH1))
+	{
+		Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+
+	if(Pos_Read_Sensor(SWITCH3))
+	{
+		Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+	if(Pos_Read_Sensor(SWITCH4))
+	{
+		Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+	if(Pos_Read_Sensor(SWITCH6))
+	{
+		Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+	}
+	if(Pos_Read_Sensor(SWITCH10))
+	{
+		Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R2 + 10 * Base_Calculation_1ml));
+	}
 
 	while(Movement_M1_start);
 	while(Movement_M3_start);
@@ -169,11 +203,60 @@ void ProcessCMD_Inject_Single_Row (void)
 void ProcessCMD_Inject_Double_Row (uint8 *data)
 {
 #if CH1_ENABLED
-	Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_M);
-	Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-	Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R1);
+	if(data[0] == 1)
+	{
+		if(Pos_Read_Sensor(SWITCH1))
+		{
+			Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH3))
+		{
+			Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_M + 10 * Base_Calculation_1ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH4))
+		{
+			Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH6))
+		{
+			Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH10))
+		{
+			Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R1 + 10 * Base_Calculation_1ml));
+		}
+	}
+	else
+	{
+		if(Pos_Read_Sensor(SWITCH1))
+		{
+			Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		}
+
+		if(Pos_Read_Sensor(SWITCH3))
+		{
+			Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_M);
+		}
+
+		if(Pos_Read_Sensor(SWITCH4))
+		{
+			Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		}
+
+		if(Pos_Read_Sensor(SWITCH6))
+		{
+			Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		}
+
+		if(Pos_Read_Sensor(SWITCH10))
+		{
+			Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R1);
+		}
+	}
 
 	while(Movement_M1_start);
 	while(Movement_M3_start);
@@ -183,36 +266,67 @@ void ProcessCMD_Inject_Double_Row (uint8 *data)
 #endif
 
 #if CH2_ENABLED
-	if(data[0])
+	if(data[0] == 2)
 	{
-		Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-		Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-		Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_BASE + Infusion_Air_50ul_5ml));
-		Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + Infusion_Air_50ul_5ml));
-		Movement_M10_GotoTarget(DIR_CW,(PumpPrecision_Step_R2 + Infusion_Air_50ul_1ml));
+		if(Pos_Read_Sensor(SWITCH1))
+		{
+			Movement_M1_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+		}
 
-		while(Movement_M1_start);
-		while(Movement_M3_start);
-		while(Movement_M4_start)
-		while(Movement_M6_start);
-		while(Movement_M10_start);
+		if(Pos_Read_Sensor(SWITCH3))
+		{
+			Movement_M3_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH4))
+		{
+			Movement_M4_GotoTarget(DIR_CW,(PumpPrecision_Step_BASE + 30*Base_Calculation_5ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH6))
+		{
+			Movement_M6_GotoTarget(DIR_CW,(PumpPrecision_Step_W + 30*Base_Calculation_5ml));
+		}
+
+		if(Pos_Read_Sensor(SWITCH10))
+		{
+			Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2 + 30*Base_Calculation_1ml);
+		}
 	}
 	else
 	{
-		Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-		Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-		Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_BASE);
-		Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
-		Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
+		if(Pos_Read_Sensor(SWITCH1))
+		{
+			Movement_M1_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		}
 
-		while(Movement_M1_start);
-		while(Movement_M3_start);
-		while(Movement_M4_start)
-		while(Movement_M6_start);
-		while(Movement_M10_start);
+		if(Pos_Read_Sensor(SWITCH3))
+		{
+			Movement_M3_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		}
+
+		if(Pos_Read_Sensor(SWITCH4))
+		{
+			Movement_M4_GotoTarget(DIR_CW,PumpPrecision_Step_BASE);
+		}
+
+		if(Pos_Read_Sensor(SWITCH6))
+		{
+			Movement_M6_GotoTarget(DIR_CW,PumpPrecision_Step_W);
+		}
+
+		if(Pos_Read_Sensor(SWITCH10))
+		{
+			Movement_M10_GotoTarget(DIR_CW,PumpPrecision_Step_R2);
+		}
 	}
-#endif
 
+	while(Movement_M1_start);
+	while(Movement_M3_start);
+	while(Movement_M4_start)
+	while(Movement_M6_start);
+	while(Movement_M10_start);
+#endif
 }
 
 /******************************************************************************/
@@ -393,19 +507,19 @@ void ProcessCMD_Extract(void)
 /******************************************************************************/
 #if CH1_ENABLED
 #if TIMER1_M10_R1_R2_ENABLED
-	Movement_M10_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_R1));
+	Movement_M10_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_R1 + 40 * Base_Calculation_1ml));
 #endif
 #if TIMER2_M3_M_W1_ENABLED
-	Movement_M3_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_M));
+	Movement_M3_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_M + 40 * Base_Calculation_1ml));
 #endif
 #if TIMER3_M6_W2_W3_ENABLED
-	Movement_M6_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W));
+	Movement_M6_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W + 60*Base_Calculation_5ml));
 #endif
 #if TIMER5_M1_W4_W5_ENABLED
-	Movement_M1_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W));
+	Movement_M1_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W + 60*Base_Calculation_5ml));
 #endif
 #if TIMER4_M4_W6_BASE_ENABLED
-	Movement_M4_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W));
+	Movement_M4_GotoTarget(DIR_CCW, (5 * PumpPrecision_Step_W + 60*Base_Calculation_5ml));
 #endif
 
 /******************************************************************************/
@@ -429,19 +543,19 @@ void ProcessCMD_Extract(void)
 /******************************************************************************/
 #if CH2_ENABLED
 #if TIMER1_M10_R1_R2_ENABLED
-	Movement_M10_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_R2));
+	Movement_M10_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_R2 + 40 * Base_Calculation_1ml));
 #endif
 #if TIMER2_M3_M_W1_ENABLED
-	Movement_M3_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W));
+	Movement_M3_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W + 60*Base_Calculation_5ml));
 #endif
 #if TIMER3_M6_W2_W3_ENABLED
-	Movement_M6_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W));
+	Movement_M6_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W + 60*Base_Calculation_5ml));
 #endif
 #if TIMER5_M1_W4_W5_ENABLED
-	Movement_M1_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W));
+	Movement_M1_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_W + 60*Base_Calculation_5ml));
 #endif
 #if TIMER4_M4_W6_BASE_ENABLED
-	Movement_M4_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_BASE));
+	Movement_M4_GotoTarget(DIR_CCW,(5 *PumpPrecision_Step_BASE + 60*Base_Calculation_5ml));
 #endif
 
 /******************************************************************************/
@@ -463,6 +577,7 @@ void ProcessCMD_Extract(void)
 #endif
 
 #if CH1_ENABLED
+	Delay_ms_SW(15000);
 	Comm_CanDirectSend(STDID_INFUSION_ACHIEVE,CAN_Buffer,1);
 #endif
 }
@@ -471,11 +586,11 @@ void ProcessCMD_Extract(void)
 void ProcessCMD_Inject(uint8 *data)
 {
 #if CH1_ENABLED
-	ProcessCMD_Inject_Single_Row();
+	ProcessCMD_Inject_Single_Row(data);
 #endif
 
 #if CH2_ENABLED
-	ProcessCMD_Inject_Single_Row();
+	ProcessCMD_Inject_Single_Row(data);
 #endif
 }
 

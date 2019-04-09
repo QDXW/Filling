@@ -16,6 +16,7 @@ extern uint8 Recycle_Bead,Bump_Switch,Bump_Wash,Waste_Bump;
 extern uint8 respBuffer[30],HostComm_RecBufAvailable,Bump_Init;
 extern uint8 cmdType,cmdCode,recBuffer[30],cmdBuffer[30],contReceive;
 extern uint8 Waste_Bump_Open,Waste_Bump_Closed,Waste_Bump_Count;
+extern uint8 Wash_Sencond;
 
 extern uint16 recCount,HostComm_RecBufSize,cmdLength,respLength,Fiber_Optic;
 

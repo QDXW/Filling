@@ -704,7 +704,7 @@ void Movement_M7_MotorDriver_PWM(FunctionalState status)
 void Movement_M7_Start(void)
 {
 	/* 50% */
-	TIM3->ARR = PUMP_PRECISION_PWM_PERIOD_1ML;
+	TIM3->ARR = 1800;
 	TIM3->CCR2 = TIM3->ARR / 2;
 	Movement_M7_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M7_MotorDriver_PWM(ENABLE);
@@ -794,7 +794,7 @@ void Movement_M9_MotorDriver_PWM(FunctionalState status)
 void Movement_M9_Start(void)
 {
 	/* 50% */
-	TIM3->ARR = PUMP_PRECISION_PWM_PERIOD_5ML;
+	TIM3->ARR = 1800;
 	TIM3->CCR4 = TIM3->ARR / 2;
 	Movement_M9_MotorDriver_EN(LEVEL_HIGH);
 	Movement_M9_MotorDriver_PWM(ENABLE);

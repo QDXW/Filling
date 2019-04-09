@@ -4,7 +4,7 @@
 .\objects\device_action.o: .\Source\System\comDef.h
 .\objects\device_action.o: .\Source\System\stm32f10x.h
 .\objects\device_action.o: .\Source\CORE\core_cm3.h
-.\objects\device_action.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\device_action.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\device_action.o: .\Source\System\system_stm32f10x.h
 .\objects\device_action.o: .\Source\System\stm32f10x_conf.h
 .\objects\device_action.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\device_action.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\device_action.o: .\Source\Modules\Movement\Movement.h
 .\objects\device_action.o: .\Source\Modules\Flash\Flash.h
-.\objects\device_action.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\device_action.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\device_action.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\device_action.o: .\Source\Modules\Comm\Comm.h
 .\objects\device_action.o: .\Source\Modules\adc\adc.h
 .\objects\device_action.o: .\Source\Modules\DMA\dma.h
-.\objects\device_action.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\device_action.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\device_action.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\device_action.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

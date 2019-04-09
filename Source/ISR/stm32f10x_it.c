@@ -23,7 +23,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h" 
-uint8 Wash_Sencond = 0;
 
 /******************************************************************************/
 void SysTick_Handler(void)
@@ -38,7 +37,7 @@ void EXTI15_10_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line10) != RESET)
 	{
 		Movement_M9_pulseCount = Movement_M9_pulseNumber;
-		Movement_M9_Stop();
+//		Movement_M9_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line10);
 	}
 
@@ -98,7 +97,7 @@ void EXTI9_5_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line8) != RESET)
 	{
 		Movement_M7_pulseCount = Movement_M7_pulseNumber;
-		Movement_M7_Stop();
+//		Movement_M7_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line8);
 	}
 
@@ -116,7 +115,7 @@ void EXTI4_IRQHandler(void)
  	if(EXTI_GetITStatus(EXTI_Line4) != RESET)
 	{
  		Movement_M9_pulseCount = Movement_M9_pulseNumber;
-		Movement_M9_Stop();
+//		Movement_M9_Stop();
 		EXTI_ClearITPendingBit(EXTI_Line4);
 	}
 }
@@ -175,17 +174,36 @@ void TIM6_IRQHandler(void)
 		if(Waste_Bump_Open)
 		{
 			Wash_Sencond++;
-			if(Wash_Sencond > 29)
+			if(Wash_Sencond > 50)
 			{
+				Waste_Bump_Open = 0;
 				Wash_Sencond = 0;
 				Waste_Bump_Closed = 1;
 
 				/* 关闭阀门及隔膜泵   打开废液隔膜泵 */
-				VAVLE_CLOSED();
-				DIAP_PUMP_OPEN();
-				/* 清洗  */
-				Buffer[0] = 0X01;
-				Comm_CanDirectSend(STDID_PUMP_WASH_ACHIEVE,Buffer,1);
+				VAVLE_OPEN();
+				DIAP_PUMP_CLOSED();
+
+				/* 开始清洗  */
+				Buffer[0] = 0X00;
+				Comm_CanDirectSend(STDID_BUMP_WASH_START, Buffer, 1);
+//				/* 清洗  */
+//				Buffer[0] = 0X01;
+//				Comm_CanDirectSend(STDID_PUMP_WASH_ACHIEVE,Buffer,1);
+				if(Waste_Bump_Count > 4)
+				{
+					VAVLE_CLOSED();
+					DIAP_PUMP_CLOSED();
+					Waste_Bump_Open = 0;
+					Waste_Bump_Count = 0;
+					Wash_Sencond = 0;
+					Waste_Bump_Closed = 0;
+
+					/* 停止清洗  */
+					Buffer[0] = 0X00;
+					Comm_CanDirectSend(STDID_PUMP_WASH_PREARE, Buffer, 1);
+					HostComm_Cmd_Send_RawData(1, fBuffer,CMD_CODE_WASH);
+				}
 			}
 		}
 		else
@@ -196,34 +214,19 @@ void TIM6_IRQHandler(void)
 		if(Waste_Bump_Closed)
 		{
 			Wash_Sencond++;
-			if(Wash_Sencond > 9)
+			if(Wash_Sencond > 7)
 			{
 				Waste_Bump_Count++;
 				Wash_Sencond = 0;
 				Waste_Bump_Closed = 0;
 				Waste_Bump_Open = 1;
-				/* 开始清洗  */
+				/* 停止清洗  */
 				Buffer[0] = 0X01;
 				Comm_CanDirectSend(STDID_BUMP_WASH_START, Buffer, 1);
-				if(Waste_Bump_Count > 4)
-				{
-					DIAP_PUMP_CLOSED();
-					Waste_Bump_Open = 0;
-					Waste_Bump_Count = 0;
-					Waste_Bump_Closed = 0;
 
-					/* 停止清洗  */
-					Buffer[0] = 0X00;
-					Comm_CanDirectSend(STDID_PUMP_WASH_PREARE, Buffer, 1);
-					HostComm_Cmd_Send_RawData(1, fBuffer,CMD_CODE_WASH);
-				}
-				else
-				{
-					/* 打开阀门及隔膜泵   关闭废液隔膜泵 */
-					VAVLE_OPEN();
-					DIAP_PUMP_CLOSED();
-					DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
-				}
+				/* 打开阀门及隔膜泵   关闭废液隔膜泵 */
+				VAVLE_CLOSED();
+				DIAP_PUMP_OPEN();
 			}
 		}
 		else

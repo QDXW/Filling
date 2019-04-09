@@ -245,11 +245,27 @@ void Comm_CanRxDataGet(void)
 			ProcessCMD_Extract();
 			break;
 
-		case STDID_SEND_BACK_ZERO_ACHIEVE:
-			/* 初始化泵 */
+		case STDID_RX_INIPUMP:
+			/* 初始化柱塞泵 */
 			Movement_GotoInitialPosition();
 			Delay_ms_SW(100);
+#if CH1_ENABLED
+			VAVLE_CLOSED();
+			DIAP_PUMP_OPEN();
+#endif
+#if CH2_ENABLED
+			if(RxMsg.Data[0])
+			{
+				VAVLE_CLOSED();
+			}
+			else
+			{
+				VAVLE_OPEN();
+			}
+#endif
+			break;
 
+		case STDID_SEND_BACK_ZERO_ACHIEVE:
 			/* 抽空气  */
 			Infusion_Air_70ul();
 #if CH1_ENABLED
@@ -289,25 +305,42 @@ void Comm_CanRxDataGet(void)
 			break;
 #endif
 
-#if CH1_ENABLED
+
 		case STDID_FILLING_ACHIEVE:
+			/* 初始化泵 */
+			Movement_GotoInitialPosition();
+#if CH1_ENABLED
 			/* 灌装完成 */
 			Buffer[0] = 0;
 			HostComm_Cmd_Send_RawData(1, Buffer, CMD_CODE_BUMP_FILLING);
-			break;
 #endif
+			break;
 
 		case STDID_BUMP_WASH_START:
 			/* 打开阀门及隔膜泵   关闭废液隔膜泵 */
-			VAVLE_OPEN();
-			DIAP_PUMP_CLOSED();
-			DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
+#if CH1_ENABLED
+			VAVLE_CLOSED();
+			DIAP_PUMP_OPEN();
+#endif
+#if CH2_ENABLED
+			if(RxMsg.Data[0])
+			{
+				VAVLE_CLOSED();
+			}
+			else
+			{
+				VAVLE_OPEN();
+			}
+#endif
 			Waste_Bump_Open = 1;
 		break;
 
 		case STDID_PUMP_WASH_ACHIEVE:
+			Wash_Sencond = 0;
 			VAVLE_CLOSED();
+#if CH1_ENABLED
 			DIAP_PUMP_CLOSED();
+#endif
 		break;
 
 #if CH2_ENABLED

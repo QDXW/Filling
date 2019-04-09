@@ -4,7 +4,7 @@
 .\objects\global_variable.o: Source\System\comDef.h
 .\objects\global_variable.o: Source\System\stm32f10x.h
 .\objects\global_variable.o: .\Source\CORE\core_cm3.h
-.\objects\global_variable.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\global_variable.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\global_variable.o: Source\System\system_stm32f10x.h
 .\objects\global_variable.o: Source\System\stm32f10x_conf.h
 .\objects\global_variable.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\global_variable.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\global_variable.o: .\Source\Modules\Movement\Movement.h
 .\objects\global_variable.o: .\Source\Modules\Flash\Flash.h
-.\objects\global_variable.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\global_variable.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\global_variable.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\global_variable.o: .\Source\Modules\Comm\Comm.h
 .\objects\global_variable.o: .\Source\Modules\adc\adc.h
 .\objects\global_variable.o: .\Source\Modules\DMA\dma.h
-.\objects\global_variable.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\global_variable.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\global_variable.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\global_variable.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

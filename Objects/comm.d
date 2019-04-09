@@ -3,7 +3,7 @@
 .\objects\comm.o: .\Source\System\comDef.h
 .\objects\comm.o: .\Source\System\stm32f10x.h
 .\objects\comm.o: .\Source\CORE\core_cm3.h
-.\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\comm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\comm.o: .\Source\System\system_stm32f10x.h
 .\objects\comm.o: .\Source\System\stm32f10x_conf.h
 .\objects\comm.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -32,7 +32,7 @@
 .\objects\comm.o: .\Source\FWLib\inc\misc.h
 .\objects\comm.o: Source\Modules\Comm\Comm_CAN.h
 .\objects\comm.o: Source\Modules\Comm\Comm_CAN_FIFO.h
-.\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\comm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h
 .\objects\comm.o: .\Source\Modules\Movement\Movement.h
 .\objects\comm.o: .\Source\System\Project_File.h
 .\objects\comm.o: .\Source\System\Global_variable.h
@@ -48,8 +48,8 @@
 .\objects\comm.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\comm.o: .\Source\Modules\Movement\Movement.h
 .\objects\comm.o: .\Source\Modules\Flash\Flash.h
-.\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\comm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\comm.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\comm.o: .\Source\Modules\adc\adc.h
 .\objects\comm.o: .\Source\Modules\DMA\dma.h
-.\objects\comm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\comm.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h

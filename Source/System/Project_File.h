@@ -33,8 +33,8 @@
 #include "string.h"
 
 /******************************************************************************/
-#define CH1_ENABLED                 1
-#define CH2_ENABLED                 0
+#define CH1_ENABLED                 0
+#define CH2_ENABLED                 1
 
 /******************************************************************************/
 #define TIMER1_M10_R1_R2_ENABLED    1 /* M10 - R1 - R2 */

@@ -9,6 +9,7 @@
 
 /******************************************************************************/
 DIAP_PUMP_NUM DIAP_PUMP;
+uint8 Pump_status = 3;
 
 /******************************************************************************/
 void Devices_Init(void)
@@ -30,6 +31,53 @@ void Devices_Init(void)
 
 	/* 阀门全部关闭  */
 	VAVLE_CLOSED();
+
+	while(Pump_status--)
+	{
+		Movement_M10_GotoTarget(DIR_CCW, 5 * PumpPrecision_Step_R1);
+		Movement_M3_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_M);
+		Movement_M6_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_W);
+		Movement_M4_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_BASE);
+		Movement_M1_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_W);
+
+		while(Movement_M10_start);
+		while(Movement_M6_start);
+		while(Movement_M4_start);
+		while(Movement_M3_start);
+		while(Movement_M1_start);
+
+		if(Pos_Read_Sensor(SWITCH10))
+		{
+			Movement_M10_GotoTarget(DIR_CW, 5 * PumpPrecision_Step_R1);
+		}
+
+		if(Pos_Read_Sensor(SWITCH3))
+		{
+			Movement_M3_GotoTarget(DIR_CW, 3 * PumpPrecision_Step_M);
+		}
+
+		if(Pos_Read_Sensor(SWITCH6))
+		{
+			Movement_M6_GotoTarget(DIR_CW, 3 * PumpPrecision_Step_W);
+		}
+
+		if(Pos_Read_Sensor(SWITCH4))
+		{
+			Movement_M4_GotoTarget(DIR_CW, 3 * PumpPrecision_Step_BASE);
+		}
+
+		if(Pos_Read_Sensor(SWITCH1))
+		{
+			Movement_M1_GotoTarget(DIR_CW, 3 * PumpPrecision_Step_W);
+		}
+
+		while(Movement_M10_start);
+		while(Movement_M6_start);
+		while(Movement_M4_start);
+		while(Movement_M3_start);
+		while(Movement_M1_start);
+	}
+	Movement_GotoInitialPosition();
 }
 
 /******************************************************************************/
@@ -41,8 +89,8 @@ void Set_Initialize_Parameter(void)
 	Infusion_Air_50ul_1ml = 50 * Base_Calculation_1ml;
 	Infusion_Air_50ul_5ml = 50 * Base_Calculation_5ml;
 
-	Infusion_Air_70ul_1ml = 70 * Base_Calculation_1ml;
-	Infusion_Air_70ul_5ml = 70 * Base_Calculation_5ml;
+	Infusion_Air_70ul_1ml = 200 * Base_Calculation_1ml;
+	Infusion_Air_70ul_5ml = 200 * Base_Calculation_5ml;
 
 	PumpPrecision_Step_R1 = 100 * Base_Calculation_1ml;
 	PumpPrecision_Step_R2 = 100 * Base_Calculation_1ml;
@@ -50,8 +98,6 @@ void Set_Initialize_Parameter(void)
 	PumpPrecision_Step_W = 300 * Base_Calculation_5ml;
 	PumpPrecision_Step_BASE = 300 * Base_Calculation_5ml;
 
-//	PumpPrecision_Step_5ml = 1920;
-//	PumpPrecision_Step_1ml = 1600;
 }
 
 /******************************************************************************/
@@ -176,18 +222,22 @@ void DIAP_PUMP_Control(DIAP_PUMP_NUM DIAP_PUMP,FunctionalState status)
 void DIAP_PUMP_OPEN(void)
 {
 #if CH1_ENABLED
-	DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP2,ENABLE);
-	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP5,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP6,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP7,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP8,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP9,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
+	Movement_M7_MotorDriver_DIR(DIR_CW);
+	Movement_M9_MotorDriver_DIR(DIR_CW);
+	Movement_M7_Start();
+	Movement_M9_Start();
+//	DIAP_PUMP_Control(DIAP_PUMP1,ENABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP2,ENABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP5,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP6,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP7,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP8,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP9,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
 #endif
 }
 
@@ -195,20 +245,23 @@ void DIAP_PUMP_OPEN(void)
 void DIAP_PUMP_CLOSED(void)
 {
 #if CH1_ENABLED
-	DIAP_PUMP_Control(DIAP_PUMP1,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP2,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP5,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP6,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP7,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP8,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP9,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
-	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP1,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP2,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP3,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP4,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP5,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP6,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP7,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP8,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP9,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP10,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP15,DISABLE);
+//	DIAP_PUMP_Control(DIAP_PUMP16,DISABLE);
+	Movement_M7_Stop();
+	Movement_M9_Stop();
 #endif
 }
+
 
 /******************************************************************************/
 void VAVLE_Init (void)
@@ -293,6 +346,7 @@ void VAVLE_CLOSED (void)
 	Valve3_Control(DISABLE);
 	Valve4_Control(DISABLE);
 	Valve5_Control(DISABLE);
+
 }
 
 /******************************************************************************/

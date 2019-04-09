@@ -14,6 +14,7 @@ uint8 recBuffer[30] = {0},cmdBuffer[30] = {0},respBuffer[30] = {0};
 uint8 cmdType = 0,cmdCode = 0,contReceive = 0,Bump_Wash = 0;
 uint8 Waste_Bump = 0,Bump_Init = 0,Waste_Bump_Closed = 0;
 uint8 Waste_Bump_Count = 0,Waste_Bump_Open = 0;
+uint8 Wash_Sencond = 0;
 
 uint16 recCount = 0;
 uint16 HostComm_RecBufSize = 0,cmdLength = 0,respLength = 0,Fiber_Optic = 0;

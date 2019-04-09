@@ -3,7 +3,7 @@
 .\objects\main.o: Source\System\comDef.h
 .\objects\main.o: Source\System\stm32f10x.h
 .\objects\main.o: .\Source\CORE\core_cm3.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: Source\System\system_stm32f10x.h
 .\objects\main.o: Source\System\stm32f10x_conf.h
 .\objects\main.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -44,10 +44,10 @@
 .\objects\main.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\main.o: .\Source\Modules\Movement\Movement.h
 .\objects\main.o: .\Source\Modules\Flash\Flash.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\main.o: .\Source\Modules\Comm\Comm.h
 .\objects\main.o: .\Source\Modules\adc\adc.h
 .\objects\main.o: .\Source\Modules\DMA\dma.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

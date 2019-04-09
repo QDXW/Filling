@@ -4,7 +4,7 @@
 .\objects\timer5.o: .\Source\System\comDef.h
 .\objects\timer5.o: .\Source\System\stm32f10x.h
 .\objects\timer5.o: .\Source\CORE\core_cm3.h
-.\objects\timer5.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\timer5.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\timer5.o: .\Source\System\system_stm32f10x.h
 .\objects\timer5.o: .\Source\System\stm32f10x_conf.h
 .\objects\timer5.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\timer5.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\timer5.o: .\Source\Modules\Movement\Movement.h
 .\objects\timer5.o: .\Source\Modules\Flash\Flash.h
-.\objects\timer5.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\timer5.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\timer5.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\timer5.o: .\Source\Modules\Comm\Comm.h
 .\objects\timer5.o: .\Source\Modules\adc\adc.h
 .\objects\timer5.o: .\Source\Modules\DMA\dma.h
-.\objects\timer5.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\timer5.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\timer5.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\timer5.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

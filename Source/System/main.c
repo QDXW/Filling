@@ -30,6 +30,10 @@ int main(void)
 	Devices_Init();
 
 //	Pump_Test();
+//	Movement_M7_MotorDriver_DIR(DIR_CW);
+//	Movement_M9_MotorDriver_DIR(DIR_CW);
+//	Movement_M7_Start();
+//	Movement_M9_Start();
 
 	while(1)
 	{

@@ -22,7 +22,7 @@ extern void Infusion_Air_70ul(void);
 extern void ProcessCMD_Extract(void);
 extern void Inject_Achieve(uint8 *data);
 extern void ProcessCMD_Inject(uint8 *data);
-extern void ProcessCMD_Inject_Single_Row (void);
+extern void ProcessCMD_Inject_Single_Row (uint8 *data);
 extern void ProcessCMD_Inject_Double_Row (uint8 *data);
 
 /******************************************************************************/

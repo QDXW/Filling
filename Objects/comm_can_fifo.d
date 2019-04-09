@@ -4,7 +4,7 @@
 .\objects\comm_can_fifo.o: .\Source\FWLib\inc\stm32f10x_can.h
 .\objects\comm_can_fifo.o: .\Source\System\stm32f10x.h
 .\objects\comm_can_fifo.o: .\Source\CORE\core_cm3.h
-.\objects\comm_can_fifo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\comm_can_fifo.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\comm_can_fifo.o: .\Source\System\system_stm32f10x.h
 .\objects\comm_can_fifo.o: .\Source\System\stm32f10x_conf.h
 .\objects\comm_can_fifo.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -33,4 +33,4 @@
 .\objects\comm_can_fifo.o: .\Source\FWLib\inc\misc.h
 .\objects\comm_can_fifo.o: Source\Modules\Comm\Comm.h
 .\objects\comm_can_fifo.o: Source\Modules\Comm\Comm_CAN.h
-.\objects\comm_can_fifo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\comm_can_fifo.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h

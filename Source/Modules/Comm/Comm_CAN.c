@@ -150,7 +150,7 @@ static void Comm_CAN_FilterInit(void)
 
 	Comm_CAN_FilterNumInit(5,
 			STDID_RX_INJECT,
-			STDID_RX_INVALID,
+			STDID_RX_INIPUMP,
 			STDID_RX_INVALID,
 			STDID_RX_INVALID);
 }

@@ -4,7 +4,7 @@
 .\objects\hostprocess.o: .\Source\System\comDef.h
 .\objects\hostprocess.o: .\Source\System\stm32f10x.h
 .\objects\hostprocess.o: .\Source\CORE\core_cm3.h
-.\objects\hostprocess.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hostprocess.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hostprocess.o: .\Source\System\system_stm32f10x.h
 .\objects\hostprocess.o: .\Source\System\stm32f10x_conf.h
 .\objects\hostprocess.o: .\Source\FWLib\inc\stm32f10x_adc.h
@@ -45,10 +45,10 @@
 .\objects\hostprocess.o: .\Source\Modules\Laminating\Laminating.h
 .\objects\hostprocess.o: .\Source\Modules\Movement\Movement.h
 .\objects\hostprocess.o: .\Source\Modules\Flash\Flash.h
-.\objects\hostprocess.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\hostprocess.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\hostprocess.o: .\Source\Modules\TIMER\Timer5.h
 .\objects\hostprocess.o: .\Source\Modules\Comm\Comm.h
 .\objects\hostprocess.o: .\Source\Modules\adc\adc.h
 .\objects\hostprocess.o: .\Source\Modules\DMA\dma.h
-.\objects\hostprocess.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\hostprocess.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\hostprocess.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\math.h
+.\objects\hostprocess.o: D:\Keil 5.0\ARM\ARMCC\Bin\..\include\string.h
