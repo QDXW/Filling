@@ -249,20 +249,20 @@ void Comm_CanRxDataGet(void)
 			/* ³õÊ¼»¯ÖùÈû±Ã */
 			Movement_GotoInitialPosition();
 			Delay_ms_SW(100);
-#if CH1_ENABLED
-			VAVLE_CLOSED();
-			DIAP_PUMP_OPEN();
-#endif
-#if CH2_ENABLED
-			if(RxMsg.Data[0])
-			{
-				VAVLE_CLOSED();
-			}
-			else
-			{
-				VAVLE_OPEN();
-			}
-#endif
+//#if CH1_ENABLED
+//			VAVLE_CLOSED();
+//			DIAP_PUMP_OPEN();
+//#endif
+//#if CH2_ENABLED
+//			if(RxMsg.Data[0])
+//			{
+//				VAVLE_CLOSED();
+//			}
+//			else
+//			{
+//				VAVLE_OPEN();
+//			}
+//#endif
 			break;
 
 		case STDID_SEND_BACK_ZERO_ACHIEVE:

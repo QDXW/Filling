@@ -34,7 +34,7 @@ void Devices_Init(void)
 
 	while(Pump_status--)
 	{
-		Movement_M10_GotoTarget(DIR_CCW, 5 * PumpPrecision_Step_R1);
+		Movement_M10_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_R1);
 		Movement_M3_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_M);
 		Movement_M6_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_W);
 		Movement_M4_GotoTarget(DIR_CCW, 3 * PumpPrecision_Step_BASE);
@@ -48,7 +48,7 @@ void Devices_Init(void)
 
 		if(Pos_Read_Sensor(SWITCH10))
 		{
-			Movement_M10_GotoTarget(DIR_CW, 5 * PumpPrecision_Step_R1);
+			Movement_M10_GotoTarget(DIR_CW, 3 * PumpPrecision_Step_R1);
 		}
 
 		if(Pos_Read_Sensor(SWITCH3))

@@ -148,7 +148,7 @@ void Movement_M1_Stop(void)
 	TIM5->CCR1 = 0;
 	Movement_M1_start = FALSE;
 //	Movement_M1_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M1_MotorDriver_PWM(DISABLE);
+//	Movement_M1_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -278,7 +278,7 @@ void Movement_M2_Stop(void)
 	TIM2->CCR2 = 0;
 	Movement_M2_start = FALSE;
 //	Movement_M2_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M2_MotorDriver_PWM(DISABLE);
+//	Movement_M2_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -330,7 +330,7 @@ void Movement_M3_Stop(void)
 	TIM2->CCR3 = 0;
 	Movement_M3_start = FALSE;
 //	Movement_M3_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M3_MotorDriver_PWM(DISABLE);
+//	Movement_M3_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -459,7 +459,7 @@ void Movement_M4_Stop(void)
 	TIM4->CCR3 = 0;
 	Movement_M4_start = FALSE;
 //	Movement_M4_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M4_MotorDriver_PWM(DISABLE);
+//	Movement_M4_MotorDriver_PWM(DISABLE)
 }
 
 /******************************************************************************/
@@ -504,7 +504,7 @@ void Movement_M5_Stop(void)
 	TIM4->CCR4 = 0;
 	Movement_M5_start = FALSE;
 //	Movement_M5_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M5_MotorDriver_PWM(DISABLE);
+//	Movement_M5_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -672,7 +672,7 @@ void Movement_M6_Stop(void)
 	TIM3->CCR1 = 0;
 	Movement_M6_start = FALSE;
 //	Movement_M6_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M6_MotorDriver_PWM(DISABLE);
+//	Movement_M6_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -717,7 +717,7 @@ void Movement_M7_Stop(void)
 	TIM3->CCR2 = 0;
 	Movement_M7_start = FALSE;
 //	Movement_M7_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M7_MotorDriver_PWM(DISABLE);
+//	Movement_M7_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -762,7 +762,7 @@ void Movement_M8_Stop(void)
 	TIM3->CCR3 = 0;
 	Movement_M8_start = FALSE;
 //	Movement_M8_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M8_MotorDriver_PWM(DISABLE);
+//	Movement_M8_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -807,7 +807,7 @@ void Movement_M9_Stop(void)
 	TIM3->CCR4 = 0;
 	Movement_M9_start = FALSE;
 //	Movement_M9_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M9_MotorDriver_PWM(DISABLE);
+//	Movement_M9_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
@@ -920,7 +920,7 @@ void Movement_M10_Stop(void)
 	TIM1->CCR1 = 0;
 	Movement_M10_start = FALSE;
 //	Movement_M10_MotorDriver_EN(LEVEL_HIGH);
-	Movement_M10_MotorDriver_PWM(DISABLE);
+//	Movement_M10_MotorDriver_PWM(DISABLE);
 }
 
 /******************************************************************************/
