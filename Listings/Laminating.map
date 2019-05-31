@@ -83,7 +83,9 @@ Section Cross References
     stm32f10x_it.o(i.EXTI0_IRQHandler) refers to global_variable.o(.data) for Movement_M4_pulseNumber
     stm32f10x_it.o(i.EXTI0_IRQHandler) refers to movement.o(.data) for Movement_M4_initPos
     stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_GetITStatus) for EXTI_GetITStatus
+    stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_ClearITPendingBit) for EXTI_ClearITPendingBit
+    stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to stm32f10x_gpio.o(i.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
     stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to motor.o(i.Movement_M10_Stop) for Movement_M10_Stop
     stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to global_variable.o(.data) for Movement_M9_pulseNumber
     stm32f10x_it.o(i.EXTI15_10_IRQHandler) refers to movement.o(.data) for Movement_M10_initPos
@@ -94,6 +96,8 @@ Section Cross References
     stm32f10x_it.o(i.EXTI2_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_GetITStatus) for EXTI_GetITStatus
     stm32f10x_it.o(i.EXTI2_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_ClearITPendingBit) for EXTI_ClearITPendingBit
     stm32f10x_it.o(i.EXTI3_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_GetITStatus) for EXTI_GetITStatus
+    stm32f10x_it.o(i.EXTI3_IRQHandler) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
+    stm32f10x_it.o(i.EXTI3_IRQHandler) refers to stm32f10x_gpio.o(i.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
     stm32f10x_it.o(i.EXTI3_IRQHandler) refers to motor.o(i.Movement_M1_Stop) for Movement_M1_Stop
     stm32f10x_it.o(i.EXTI3_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_ClearITPendingBit) for EXTI_ClearITPendingBit
     stm32f10x_it.o(i.EXTI3_IRQHandler) refers to global_variable.o(.data) for Movement_M1_pulseNumber
@@ -102,6 +106,8 @@ Section Cross References
     stm32f10x_it.o(i.EXTI4_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_ClearITPendingBit) for EXTI_ClearITPendingBit
     stm32f10x_it.o(i.EXTI4_IRQHandler) refers to global_variable.o(.data) for Movement_M9_pulseNumber
     stm32f10x_it.o(i.EXTI9_5_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_GetITStatus) for EXTI_GetITStatus
+    stm32f10x_it.o(i.EXTI9_5_IRQHandler) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
+    stm32f10x_it.o(i.EXTI9_5_IRQHandler) refers to stm32f10x_gpio.o(i.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
     stm32f10x_it.o(i.EXTI9_5_IRQHandler) refers to motor.o(i.Movement_M3_Stop) for Movement_M3_Stop
     stm32f10x_it.o(i.EXTI9_5_IRQHandler) refers to stm32f10x_exti.o(i.EXTI_ClearITPendingBit) for EXTI_ClearITPendingBit
     stm32f10x_it.o(i.EXTI9_5_IRQHandler) refers to motor.o(i.Movement_M6_Stop) for Movement_M6_Stop
@@ -190,15 +196,6 @@ Section Cross References
     devices.o(i.Devices_Init) refers to motor.o(i.Motor_Init) for Motor_Init
     devices.o(i.Devices_Init) refers to devices.o(i.DIAP_PUMP_CLOSED) for DIAP_PUMP_CLOSED
     devices.o(i.Devices_Init) refers to devices.o(i.VAVLE_CLOSED) for VAVLE_CLOSED
-    devices.o(i.Devices_Init) refers to movement.o(i.Movement_M10_GotoTarget) for Movement_M10_GotoTarget
-    devices.o(i.Devices_Init) refers to movement.o(i.Movement_M3_GotoTarget) for Movement_M3_GotoTarget
-    devices.o(i.Devices_Init) refers to movement.o(i.Movement_M6_GotoTarget) for Movement_M6_GotoTarget
-    devices.o(i.Devices_Init) refers to movement.o(i.Movement_M4_GotoTarget) for Movement_M4_GotoTarget
-    devices.o(i.Devices_Init) refers to movement.o(i.Movement_M1_GotoTarget) for Movement_M1_GotoTarget
-    devices.o(i.Devices_Init) refers to sensor.o(i.Pos_Read_Sensor) for Pos_Read_Sensor
-    devices.o(i.Devices_Init) refers to movement.o(i.Movement_GotoInitialPosition) for Movement_GotoInitialPosition
-    devices.o(i.Devices_Init) refers to global_variable.o(.data) for PumpPrecision_Step_R1
-    devices.o(i.Devices_Init) refers to devices.o(.data) for Pump_status
     devices.o(i.Set_Initialize_Parameter) refers to fmul.o(.text) for __aeabi_fmul
     devices.o(i.Set_Initialize_Parameter) refers to ffixui.o(.text) for __aeabi_f2uiz
     devices.o(i.Set_Initialize_Parameter) refers to global_variable.o(.data) for Base_Calculation_1ml
@@ -212,6 +209,7 @@ Section Cross References
     devices.o(i.VAVLE_CLOSED) refers to devices.o(i.Valve3_Control) for Valve3_Control
     devices.o(i.VAVLE_CLOSED) refers to devices.o(i.Valve4_Control) for Valve4_Control
     devices.o(i.VAVLE_CLOSED) refers to devices.o(i.Valve5_Control) for Valve5_Control
+    devices.o(i.VAVLE_CLOSED) refers to devices.o(i.DIAP_PUMP_Control) for DIAP_PUMP_Control
     devices.o(i.VAVLE_Init) refers to stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
     devices.o(i.VAVLE_Init) refers to stm32f10x_gpio.o(i.GPIO_PinRemapConfig) for GPIO_PinRemapConfig
     devices.o(i.VAVLE_Init) refers to stm32f10x_gpio.o(i.GPIO_Init) for GPIO_Init
@@ -225,6 +223,7 @@ Section Cross References
     devices.o(i.VAVLE_OPEN) refers to devices.o(i.Valve8_Control) for Valve8_Control
     devices.o(i.VAVLE_OPEN) refers to devices.o(i.Valve9_Control) for Valve9_Control
     devices.o(i.VAVLE_OPEN) refers to devices.o(i.Valve10_Control) for Valve10_Control
+    devices.o(i.VAVLE_OPEN) refers to devices.o(i.DIAP_PUMP_Control) for DIAP_PUMP_Control
     devices.o(i.Valve10_Control) refers to stm32f10x_gpio.o(i.GPIO_SetBits) for GPIO_SetBits
     devices.o(i.Valve10_Control) refers to stm32f10x_gpio.o(i.GPIO_ResetBits) for GPIO_ResetBits
     devices.o(i.Valve1_Control) refers to stm32f10x_gpio.o(i.GPIO_SetBits) for GPIO_SetBits
@@ -278,6 +277,7 @@ Section Cross References
     movement.o(i.Movement_GotoInitialPosition) refers to sensor.o(i.PosSensor_M4_ENABLE) for PosSensor_M4_ENABLE
     movement.o(i.Movement_GotoInitialPosition) refers to sensor.o(i.PosSensor_M1_ENABLE) for PosSensor_M1_ENABLE
     movement.o(i.Movement_GotoInitialPosition) refers to sensor.o(i.Pos_Read_Sensor) for Pos_Read_Sensor
+    movement.o(i.Movement_GotoInitialPosition) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_GotoInitialPosition) refers to motor.o(i.Movement_M10_MotorDriver_DIR) for Movement_M10_MotorDriver_DIR
     movement.o(i.Movement_GotoInitialPosition) refers to motor.o(i.Movement_M10_Start) for Movement_M10_Start
     movement.o(i.Movement_GotoInitialPosition) refers to motor.o(i.Movement_M3_MotorDriver_DIR) for Movement_M3_MotorDriver_DIR
@@ -294,33 +294,43 @@ Section Cross References
     movement.o(i.Movement_GotoInitialPosition) refers to sensor.o(i.PosSensor_M4_DISABLE) for PosSensor_M4_DISABLE
     movement.o(i.Movement_GotoInitialPosition) refers to sensor.o(i.PosSensor_M1_DISABLE) for PosSensor_M1_DISABLE
     movement.o(i.Movement_GotoInitialPosition) refers to movement.o(.data) for Movement_M10_initPos
+    movement.o(i.Movement_M10_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M10_GotoTarget) refers to motor.o(i.Movement_M10_MotorDriver_DIR) for Movement_M10_MotorDriver_DIR
     movement.o(i.Movement_M10_GotoTarget) refers to motor.o(i.Movement_M10_Start) for Movement_M10_Start
     movement.o(i.Movement_M10_GotoTarget) refers to global_variable.o(.data) for Movement_M10_pulseNumber
+    movement.o(i.Movement_M1_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M1_GotoTarget) refers to motor.o(i.Movement_M1_MotorDriver_DIR) for Movement_M1_MotorDriver_DIR
     movement.o(i.Movement_M1_GotoTarget) refers to motor.o(i.Movement_M1_Start) for Movement_M1_Start
     movement.o(i.Movement_M1_GotoTarget) refers to global_variable.o(.data) for Movement_M1_pulseNumber
+    movement.o(i.Movement_M2_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M2_GotoTarget) refers to motor.o(i.Movement_M2_MotorDriver_DIR) for Movement_M2_MotorDriver_DIR
     movement.o(i.Movement_M2_GotoTarget) refers to motor.o(i.Movement_M2_Start) for Movement_M2_Start
     movement.o(i.Movement_M2_GotoTarget) refers to global_variable.o(.data) for Movement_M2_pulseNumber
+    movement.o(i.Movement_M3_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M3_GotoTarget) refers to motor.o(i.Movement_M3_MotorDriver_DIR) for Movement_M3_MotorDriver_DIR
     movement.o(i.Movement_M3_GotoTarget) refers to motor.o(i.Movement_M3_Start) for Movement_M3_Start
     movement.o(i.Movement_M3_GotoTarget) refers to global_variable.o(.data) for Movement_M3_pulseNumber
+    movement.o(i.Movement_M4_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M4_GotoTarget) refers to motor.o(i.Movement_M4_MotorDriver_DIR) for Movement_M4_MotorDriver_DIR
     movement.o(i.Movement_M4_GotoTarget) refers to motor.o(i.Movement_M4_Start) for Movement_M4_Start
     movement.o(i.Movement_M4_GotoTarget) refers to global_variable.o(.data) for Movement_M4_pulseNumber
+    movement.o(i.Movement_M5_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M5_GotoTarget) refers to motor.o(i.Movement_M5_MotorDriver_DIR) for Movement_M5_MotorDriver_DIR
     movement.o(i.Movement_M5_GotoTarget) refers to motor.o(i.Movement_M5_Start) for Movement_M5_Start
     movement.o(i.Movement_M5_GotoTarget) refers to global_variable.o(.data) for Movement_M5_pulseNumber
+    movement.o(i.Movement_M6_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M6_GotoTarget) refers to motor.o(i.Movement_M6_MotorDriver_DIR) for Movement_M6_MotorDriver_DIR
     movement.o(i.Movement_M6_GotoTarget) refers to motor.o(i.Movement_M6_Start) for Movement_M6_Start
     movement.o(i.Movement_M6_GotoTarget) refers to global_variable.o(.data) for Movement_M6_pulseNumber
+    movement.o(i.Movement_M7_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M7_GotoTarget) refers to motor.o(i.Movement_M7_MotorDriver_DIR) for Movement_M7_MotorDriver_DIR
     movement.o(i.Movement_M7_GotoTarget) refers to motor.o(i.Movement_M7_Start) for Movement_M7_Start
     movement.o(i.Movement_M7_GotoTarget) refers to global_variable.o(.data) for Movement_M7_pulseNumber
+    movement.o(i.Movement_M8_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M8_GotoTarget) refers to motor.o(i.Movement_M8_MotorDriver_DIR) for Movement_M8_MotorDriver_DIR
     movement.o(i.Movement_M8_GotoTarget) refers to motor.o(i.Movement_M8_Start) for Movement_M8_Start
     movement.o(i.Movement_M8_GotoTarget) refers to global_variable.o(.data) for Movement_M8_pulseNumber
+    movement.o(i.Movement_M9_GotoTarget) refers to common.o(i.Delay_ms_SW) for Delay_ms_SW
     movement.o(i.Movement_M9_GotoTarget) refers to motor.o(i.Movement_M9_MotorDriver_DIR) for Movement_M9_MotorDriver_DIR
     movement.o(i.Movement_M9_GotoTarget) refers to motor.o(i.Movement_M9_Start) for Movement_M9_Start
     movement.o(i.Movement_M9_GotoTarget) refers to global_variable.o(.data) for Movement_M9_pulseNumber
@@ -416,6 +426,7 @@ Section Cross References
     comm.o(i.Comm_CanRxDataGet) refers to movement.o(i.ProcessCMD_Inject_Double_Row) for ProcessCMD_Inject_Double_Row
     comm.o(i.Comm_CanRxDataGet) refers to devices.o(i.VAVLE_CLOSED) for VAVLE_CLOSED
     comm.o(i.Comm_CanRxDataGet) refers to devices.o(i.VAVLE_OPEN) for VAVLE_OPEN
+    comm.o(i.Comm_CanRxDataGet) refers to devices.o(i.DIAP_PUMP_CLOSED) for DIAP_PUMP_CLOSED
     comm.o(i.Comm_CanRxDataGet) refers to device_action.o(i.Set_Volume) for Set_Volume
     comm.o(i.Comm_CanRxDataGet) refers to comm_can_fifo.o(.bss) for RxDataFIFO
     comm.o(i.Comm_CanRxDataGet) refers to global_variable.o(.data) for Waste_Bump_Open
@@ -1011,17 +1022,16 @@ Removing Unused input sections from the image.
     Removing dma.o(i.UART4_DMA_StartConversion_1_times), (76 bytes).
     Removing dma.o(.bss), (300 bytes).
     Removing dma.o(.data), (6 bytes).
-    Removing devices.o(i.DIAP_PUMP_Control), (200 bytes).
     Removing devices.o(i.DIAP_PUMP_OPEN), (2 bytes).
-    Removing devices.o(i.DIAP_PUMP_Set), (32 bytes).
+    Removing devices.o(.data), (2 bytes).
     Removing sensor.o(.bss), (9 bytes).
     Removing sensor.o(.data), (1 bytes).
     Removing movement.o(i.Inject_Achieve), (76 bytes).
-    Removing movement.o(i.Movement_M2_GotoTarget), (48 bytes).
-    Removing movement.o(i.Movement_M5_GotoTarget), (48 bytes).
-    Removing movement.o(i.Movement_M7_GotoTarget), (48 bytes).
-    Removing movement.o(i.Movement_M8_GotoTarget), (48 bytes).
-    Removing movement.o(i.Movement_M9_GotoTarget), (48 bytes).
+    Removing movement.o(i.Movement_M2_GotoTarget), (52 bytes).
+    Removing movement.o(i.Movement_M5_GotoTarget), (52 bytes).
+    Removing movement.o(i.Movement_M7_GotoTarget), (52 bytes).
+    Removing movement.o(i.Movement_M8_GotoTarget), (52 bytes).
+    Removing movement.o(i.Movement_M9_GotoTarget), (52 bytes).
     Removing flash.o(i.Flash_Read), (34 bytes).
     Removing flash.o(i.Flash_ReadHalfWord), (6 bytes).
     Removing flash.o(i.Flash_Write), (232 bytes).
@@ -1066,7 +1076,7 @@ Removing Unused input sections from the image.
     Removing motor.o(i.Movement_M9_Start), (44 bytes).
     Removing motor.o(i.Movement_M9_Stop), (20 bytes).
 
-340 unused section(s) (total 20661 bytes) removed from the image.
+339 unused section(s) (total 20451 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1077,20 +1087,20 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  fadd.o ABSOLUTE
@@ -1156,8 +1166,8 @@ Image Symbol Table
     .text                                    0x08000260   Section        0  fmul.o(.text)
     .text                                    0x080002c4   Section        0  ffltui.o(.text)
     .text                                    0x080002ce   Section        0  ffixui.o(.text)
-    .text                                    0x080002f6   Section        0  iusefp.o(.text)
     .text                                    0x080002f6   Section        0  fepilogue.o(.text)
+    .text                                    0x080002f6   Section        0  iusefp.o(.text)
     .text                                    0x08000364   Section       36  init.o(.text)
     i.BusFault_Handler                       0x08000388   Section        0  stm32f10x_it.o(i.BusFault_Handler)
     i.CAN_ClearITPendingBit                  0x0800038c   Section        0  stm32f10x_can.o(i.CAN_ClearITPendingBit)
@@ -1181,22 +1191,24 @@ Image Symbol Table
     i.Comm_CAN_Init                          0x08000cac   Section        0  comm_can.o(i.Comm_CAN_Init)
     i.Comm_CanRxData                         0x08000d80   Section        0  comm.o(i.Comm_CanRxData)
     i.Comm_CanRxDataGet                      0x08000d94   Section        0  comm.o(i.Comm_CanRxDataGet)
-    i.Comm_CanTxDataSend                     0x08000e64   Section        0  comm.o(i.Comm_CanTxDataSend)
-    i.Comm_Init                              0x08000eb8   Section        0  comm.o(i.Comm_Init)
-    i.Comm_Process                           0x08000ed4   Section        0  comm.o(i.Comm_Process)
-    i.Common_EXTI_Init                       0x08000ee0   Section        0  common.o(i.Common_EXTI_Init)
-    i.DIAP_PUMP_CLOSED                       0x08000fb4   Section        0  devices.o(i.DIAP_PUMP_CLOSED)
-    i.DIAP_PUMP_Init                         0x08000fb8   Section        0  devices.o(i.DIAP_PUMP_Init)
-    i.DebugMon_Handler                       0x08001174   Section        0  stm32f10x_it.o(i.DebugMon_Handler)
-    i.Delay_ms_SW                            0x08001176   Section        0  common.o(i.Delay_ms_SW)
-    i.Devices_Init                           0x08001194   Section        0  devices.o(i.Devices_Init)
-    i.EXTI0_IRQHandler                       0x08001308   Section        0  stm32f10x_it.o(i.EXTI0_IRQHandler)
-    i.EXTI15_10_IRQHandler                   0x08001338   Section        0  stm32f10x_it.o(i.EXTI15_10_IRQHandler)
-    i.EXTI1_IRQHandler                       0x080013d8   Section        0  stm32f10x_it.o(i.EXTI1_IRQHandler)
-    i.EXTI2_IRQHandler                       0x08001400   Section        0  stm32f10x_it.o(i.EXTI2_IRQHandler)
-    i.EXTI3_IRQHandler                       0x08001414   Section        0  stm32f10x_it.o(i.EXTI3_IRQHandler)
-    i.EXTI4_IRQHandler                       0x08001444   Section        0  stm32f10x_it.o(i.EXTI4_IRQHandler)
-    i.EXTI9_5_IRQHandler                     0x08001468   Section        0  stm32f10x_it.o(i.EXTI9_5_IRQHandler)
+    i.Comm_CanTxDataSend                     0x08000e7c   Section        0  comm.o(i.Comm_CanTxDataSend)
+    i.Comm_Init                              0x08000ed0   Section        0  comm.o(i.Comm_Init)
+    i.Comm_Process                           0x08000eec   Section        0  comm.o(i.Comm_Process)
+    i.Common_EXTI_Init                       0x08000ef8   Section        0  common.o(i.Common_EXTI_Init)
+    i.DIAP_PUMP_CLOSED                       0x08000fcc   Section        0  devices.o(i.DIAP_PUMP_CLOSED)
+    i.DIAP_PUMP_Control                      0x08000fd0   Section        0  devices.o(i.DIAP_PUMP_Control)
+    i.DIAP_PUMP_Init                         0x08001098   Section        0  devices.o(i.DIAP_PUMP_Init)
+    i.DIAP_PUMP_Set                          0x08001254   Section        0  devices.o(i.DIAP_PUMP_Set)
+    i.DebugMon_Handler                       0x08001274   Section        0  stm32f10x_it.o(i.DebugMon_Handler)
+    i.Delay_ms_SW                            0x08001276   Section        0  common.o(i.Delay_ms_SW)
+    i.Devices_Init                           0x08001294   Section        0  devices.o(i.Devices_Init)
+    i.EXTI0_IRQHandler                       0x080012b0   Section        0  stm32f10x_it.o(i.EXTI0_IRQHandler)
+    i.EXTI15_10_IRQHandler                   0x080012e0   Section        0  stm32f10x_it.o(i.EXTI15_10_IRQHandler)
+    i.EXTI1_IRQHandler                       0x0800139c   Section        0  stm32f10x_it.o(i.EXTI1_IRQHandler)
+    i.EXTI2_IRQHandler                       0x080013c4   Section        0  stm32f10x_it.o(i.EXTI2_IRQHandler)
+    i.EXTI3_IRQHandler                       0x080013d8   Section        0  stm32f10x_it.o(i.EXTI3_IRQHandler)
+    i.EXTI4_IRQHandler                       0x0800141c   Section        0  stm32f10x_it.o(i.EXTI4_IRQHandler)
+    i.EXTI9_5_IRQHandler                     0x08001440   Section        0  stm32f10x_it.o(i.EXTI9_5_IRQHandler)
     i.EXTI_ClearITPendingBit                 0x0800151c   Section        0  stm32f10x_exti.o(i.EXTI_ClearITPendingBit)
     i.EXTI_GetITStatus                       0x08001528   Section        0  stm32f10x_exti.o(i.EXTI_GetITStatus)
     i.EXTI_Init                              0x08001550   Section        0  stm32f10x_exti.o(i.EXTI_Init)
@@ -1228,145 +1240,144 @@ Image Symbol Table
     i.Motor_TIMER4_M4_Init                   0x08001ed8   Section        0  motor.o(i.Motor_TIMER4_M4_Init)
     i.Motor_TIMER5_M1_Init                   0x0800203c   Section        0  motor.o(i.Motor_TIMER5_M1_Init)
     i.Movement_GotoInitialPosition           0x08002134   Section        0  movement.o(i.Movement_GotoInitialPosition)
-    i.Movement_M10_GotoTarget                0x0800223c   Section        0  movement.o(i.Movement_M10_GotoTarget)
-    i.Movement_M10_MotorDriver_DIR           0x0800226c   Section        0  motor.o(i.Movement_M10_MotorDriver_DIR)
-    i.Movement_M10_MotorDriver_EN            0x08002290   Section        0  motor.o(i.Movement_M10_MotorDriver_EN)
-    i.Movement_M10_MotorDriver_PWM           0x080022b4   Section        0  motor.o(i.Movement_M10_MotorDriver_PWM)
-    i.Movement_M10_Start                     0x080022d0   Section        0  motor.o(i.Movement_M10_Start)
-    i.Movement_M10_Stop                      0x080022fc   Section        0  motor.o(i.Movement_M10_Stop)
-    i.Movement_M1_GotoTarget                 0x08002310   Section        0  movement.o(i.Movement_M1_GotoTarget)
-    i.Movement_M1_MotorDriver_DIR            0x08002340   Section        0  motor.o(i.Movement_M1_MotorDriver_DIR)
-    i.Movement_M1_MotorDriver_EN             0x08002364   Section        0  motor.o(i.Movement_M1_MotorDriver_EN)
-    i.Movement_M1_MotorDriver_PWM            0x08002384   Section        0  motor.o(i.Movement_M1_MotorDriver_PWM)
-    i.Movement_M1_Start                      0x080023a0   Section        0  motor.o(i.Movement_M1_Start)
-    i.Movement_M1_Stop                       0x080023cc   Section        0  motor.o(i.Movement_M1_Stop)
-    i.Movement_M2_MotorDriver_DIR            0x080023e0   Section        0  motor.o(i.Movement_M2_MotorDriver_DIR)
-    i.Movement_M2_MotorDriver_EN             0x08002404   Section        0  motor.o(i.Movement_M2_MotorDriver_EN)
-    i.Movement_M2_MotorDriver_PWM            0x08002424   Section        0  motor.o(i.Movement_M2_MotorDriver_PWM)
-    i.Movement_M3_GotoTarget                 0x08002440   Section        0  movement.o(i.Movement_M3_GotoTarget)
-    i.Movement_M3_MotorDriver_DIR            0x08002470   Section        0  motor.o(i.Movement_M3_MotorDriver_DIR)
-    i.Movement_M3_MotorDriver_EN             0x08002494   Section        0  motor.o(i.Movement_M3_MotorDriver_EN)
-    i.Movement_M3_MotorDriver_PWM            0x080024b4   Section        0  motor.o(i.Movement_M3_MotorDriver_PWM)
-    i.Movement_M3_Start                      0x080024ce   Section        0  motor.o(i.Movement_M3_Start)
-    i.Movement_M3_Stop                       0x080024f8   Section        0  motor.o(i.Movement_M3_Stop)
-    i.Movement_M4_GotoTarget                 0x0800250c   Section        0  movement.o(i.Movement_M4_GotoTarget)
-    i.Movement_M4_MotorDriver_DIR            0x0800253c   Section        0  motor.o(i.Movement_M4_MotorDriver_DIR)
-    i.Movement_M4_MotorDriver_EN             0x08002560   Section        0  motor.o(i.Movement_M4_MotorDriver_EN)
-    i.Movement_M4_MotorDriver_PWM            0x08002580   Section        0  motor.o(i.Movement_M4_MotorDriver_PWM)
-    i.Movement_M4_Start                      0x0800259c   Section        0  motor.o(i.Movement_M4_Start)
-    i.Movement_M4_Stop                       0x080025c8   Section        0  motor.o(i.Movement_M4_Stop)
-    i.Movement_M5_MotorDriver_DIR            0x080025dc   Section        0  motor.o(i.Movement_M5_MotorDriver_DIR)
-    i.Movement_M5_MotorDriver_EN             0x08002600   Section        0  motor.o(i.Movement_M5_MotorDriver_EN)
-    i.Movement_M5_MotorDriver_PWM            0x08002624   Section        0  motor.o(i.Movement_M5_MotorDriver_PWM)
-    i.Movement_M5_Stop                       0x08002640   Section        0  motor.o(i.Movement_M5_Stop)
-    i.Movement_M6_GotoTarget                 0x08002654   Section        0  movement.o(i.Movement_M6_GotoTarget)
-    i.Movement_M6_MotorDriver_DIR            0x08002684   Section        0  motor.o(i.Movement_M6_MotorDriver_DIR)
-    i.Movement_M6_MotorDriver_EN             0x080026a8   Section        0  motor.o(i.Movement_M6_MotorDriver_EN)
-    i.Movement_M6_MotorDriver_PWM            0x080026cc   Section        0  motor.o(i.Movement_M6_MotorDriver_PWM)
-    i.Movement_M6_Start                      0x080026e8   Section        0  motor.o(i.Movement_M6_Start)
-    i.Movement_M6_Stop                       0x08002714   Section        0  motor.o(i.Movement_M6_Stop)
-    i.Movement_M7_MotorDriver_DIR            0x08002728   Section        0  motor.o(i.Movement_M7_MotorDriver_DIR)
-    i.Movement_M7_MotorDriver_EN             0x0800274c   Section        0  motor.o(i.Movement_M7_MotorDriver_EN)
-    i.Movement_M7_MotorDriver_PWM            0x08002770   Section        0  motor.o(i.Movement_M7_MotorDriver_PWM)
-    i.Movement_M8_MotorDriver_DIR            0x0800278c   Section        0  motor.o(i.Movement_M8_MotorDriver_DIR)
-    i.Movement_M8_MotorDriver_EN             0x080027b0   Section        0  motor.o(i.Movement_M8_MotorDriver_EN)
-    i.Movement_M8_MotorDriver_PWM            0x080027d4   Section        0  motor.o(i.Movement_M8_MotorDriver_PWM)
-    i.Movement_M8_Stop                       0x080027f0   Section        0  motor.o(i.Movement_M8_Stop)
-    i.Movement_M9_MotorDriver_DIR            0x08002804   Section        0  motor.o(i.Movement_M9_MotorDriver_DIR)
-    i.Movement_M9_MotorDriver_EN             0x08002828   Section        0  motor.o(i.Movement_M9_MotorDriver_EN)
-    i.Movement_M9_MotorDriver_PWM            0x0800284c   Section        0  motor.o(i.Movement_M9_MotorDriver_PWM)
-    i.NMI_Handler                            0x08002868   Section        0  stm32f10x_it.o(i.NMI_Handler)
-    i.NVIC_Init                              0x0800286c   Section        0  misc.o(i.NVIC_Init)
-    i.NVIC_PriorityGroupConfig               0x080028dc   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
-    i.PendSV_Handler                         0x080028f0   Section        0  stm32f10x_it.o(i.PendSV_Handler)
-    i.PosSensor_Init                         0x080028f4   Section        0  sensor.o(i.PosSensor_Init)
-    i.PosSensor_M10_DISABLE                  0x080029b4   Section        0  sensor.o(i.PosSensor_M10_DISABLE)
-    i.PosSensor_M10_ENABLE                   0x080029e0   Section        0  sensor.o(i.PosSensor_M10_ENABLE)
-    i.PosSensor_M1_DISABLE                   0x08002a10   Section        0  sensor.o(i.PosSensor_M1_DISABLE)
-    i.PosSensor_M1_ENABLE                    0x08002a3c   Section        0  sensor.o(i.PosSensor_M1_ENABLE)
-    i.PosSensor_M3_DISABLE                   0x08002a68   Section        0  sensor.o(i.PosSensor_M3_DISABLE)
-    i.PosSensor_M3_ENABLE                    0x08002a94   Section        0  sensor.o(i.PosSensor_M3_ENABLE)
-    i.PosSensor_M4_DISABLE                   0x08002ac4   Section        0  sensor.o(i.PosSensor_M4_DISABLE)
-    i.PosSensor_M4_ENABLE                    0x08002af0   Section        0  sensor.o(i.PosSensor_M4_ENABLE)
-    i.PosSensor_M6_DISABLE                   0x08002b20   Section        0  sensor.o(i.PosSensor_M6_DISABLE)
-    i.PosSensor_M6_ENABLE                    0x08002b4c   Section        0  sensor.o(i.PosSensor_M6_ENABLE)
-    i.Pos_Read_Sensor                        0x08002b7c   Section        0  sensor.o(i.Pos_Read_Sensor)
-    i.ProcessCMD_Extract                     0x08002c68   Section        0  movement.o(i.ProcessCMD_Extract)
-    i.ProcessCMD_Inject                      0x08002dc4   Section        0  movement.o(i.ProcessCMD_Inject)
-    i.ProcessCMD_Inject_Double_Row           0x08002dd0   Section        0  movement.o(i.ProcessCMD_Inject_Double_Row)
-    i.ProcessCMD_Inject_Single_Row           0x08002fa4   Section        0  movement.o(i.ProcessCMD_Inject_Single_Row)
-    i.RAM_PUMP_Init                          0x08003110   Section        0  motor.o(i.RAM_PUMP_Init)
-    i.RCC_APB1PeriphClockCmd                 0x08003128   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
-    i.RCC_APB2PeriphClockCmd                 0x08003148   Section        0  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
-    i.RCC_Configuration                      0x08003168   Section        0  main.o(i.RCC_Configuration)
-    i.RCC_GetClocksFreq                      0x08003174   Section        0  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
-    i.SVC_Handler                            0x08003248   Section        0  stm32f10x_it.o(i.SVC_Handler)
-    i.SetSysClock                            0x0800324a   Section        0  system_stm32f10x.o(i.SetSysClock)
-    SetSysClock                              0x0800324b   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo72                        0x08003254   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
-    SetSysClockTo72                          0x08003255   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
-    i.Set_Initialize_Parameter               0x08003334   Section        0  devices.o(i.Set_Initialize_Parameter)
-    i.Set_Volume                             0x0800343c   Section        0  device_action.o(i.Set_Volume)
-    i.SysTick_Handler                        0x080034e0   Section        0  stm32f10x_it.o(i.SysTick_Handler)
-    i.SysTick_Init                           0x080034e8   Section        0  common.o(i.SysTick_Init)
-    i.SystemInit                             0x08003548   Section        0  system_stm32f10x.o(i.SystemInit)
-    i.TIM1_UP_IRQHandler                     0x080035a8   Section        0  motor.o(i.TIM1_UP_IRQHandler)
-    i.TIM2_IRQHandler                        0x080035f8   Section        0  motor.o(i.TIM2_IRQHandler)
-    i.TIM3_IRQHandler                        0x08003644   Section        0  motor.o(i.TIM3_IRQHandler)
-    i.TIM4_IRQHandler                        0x08003694   Section        0  motor.o(i.TIM4_IRQHandler)
-    i.TIM5_IRQHandler                        0x080036e4   Section        0  motor.o(i.TIM5_IRQHandler)
-    i.TIM6_IRQHandler                        0x08003734   Section        0  stm32f10x_it.o(i.TIM6_IRQHandler)
-    i.TIM6_Int_Init                          0x08003750   Section        0  timer5.o(i.TIM6_Int_Init)
-    i.TIM_ClearFlag                          0x080037b0   Section        0  stm32f10x_tim.o(i.TIM_ClearFlag)
-    i.TIM_Cmd                                0x080037b6   Section        0  stm32f10x_tim.o(i.TIM_Cmd)
-    i.TIM_CtrlPWMOutputs                     0x080037ce   Section        0  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
-    i.TIM_GetITStatus                        0x080037ec   Section        0  stm32f10x_tim.o(i.TIM_GetITStatus)
-    i.TIM_ITConfig                           0x0800380e   Section        0  stm32f10x_tim.o(i.TIM_ITConfig)
-    i.TIM_OC1Init                            0x08003820   Section        0  stm32f10x_tim.o(i.TIM_OC1Init)
-    i.TIM_OC1PreloadConfig                   0x080038b8   Section        0  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
-    i.TIM_OC2Init                            0x080038cc   Section        0  stm32f10x_tim.o(i.TIM_OC2Init)
-    i.TIM_OC2PreloadConfig                   0x08003970   Section        0  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
-    i.TIM_OC3Init                            0x0800398c   Section        0  stm32f10x_tim.o(i.TIM_OC3Init)
-    i.TIM_OC3PreloadConfig                   0x08003a2c   Section        0  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
-    i.TIM_OC4Init                            0x08003a40   Section        0  stm32f10x_tim.o(i.TIM_OC4Init)
-    i.TIM_OC4PreloadConfig                   0x08003abc   Section        0  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
-    i.TIM_TimeBaseInit                       0x08003ad8   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    i.TimingDelay_Decrement                  0x08003b7c   Section        0  common.o(i.TimingDelay_Decrement)
-    i.USART1_IRQHandler                      0x08003b94   Section        0  hostcomm.o(i.USART1_IRQHandler)
-    i.USART_ClearFlag                        0x08003c7c   Section        0  stm32f10x_usart.o(i.USART_ClearFlag)
-    i.USART_ClearITPendingBit                0x08003c8e   Section        0  stm32f10x_usart.o(i.USART_ClearITPendingBit)
-    i.USART_Cmd                              0x08003cac   Section        0  stm32f10x_usart.o(i.USART_Cmd)
-    i.USART_GetITStatus                      0x08003cc4   Section        0  stm32f10x_usart.o(i.USART_GetITStatus)
-    i.USART_ITConfig                         0x08003d18   Section        0  stm32f10x_usart.o(i.USART_ITConfig)
-    i.USART_Init                             0x08003d64   Section        0  stm32f10x_usart.o(i.USART_Init)
-    i.USART_ReceiveData                      0x08003e3c   Section        0  stm32f10x_usart.o(i.USART_ReceiveData)
-    i.USB_LP_CAN1_RX0_IRQHandler             0x08003e48   Section        0  comm_can.o(i.USB_LP_CAN1_RX0_IRQHandler)
-    i.UsageFault_Handler                     0x08003e88   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
-    i.VAVLE_CLOSED                           0x08003e8c   Section        0  devices.o(i.VAVLE_CLOSED)
-    i.VAVLE_Init                             0x08003ecc   Section        0  devices.o(i.VAVLE_Init)
-    i.VAVLE_OPEN                             0x08003f9c   Section        0  devices.o(i.VAVLE_OPEN)
-    i.Valve10_Control                        0x08003fdc   Section        0  devices.o(i.Valve10_Control)
-    i.Valve1_Control                         0x08003ffc   Section        0  devices.o(i.Valve1_Control)
-    i.Valve2_Control                         0x08004020   Section        0  devices.o(i.Valve2_Control)
-    i.Valve3_Control                         0x08004044   Section        0  devices.o(i.Valve3_Control)
-    i.Valve4_Control                         0x08004068   Section        0  devices.o(i.Valve4_Control)
-    i.Valve5_Control                         0x0800408c   Section        0  devices.o(i.Valve5_Control)
-    i.Valve6_Control                         0x080040b0   Section        0  devices.o(i.Valve6_Control)
-    i.Valve7_Control                         0x080040d4   Section        0  devices.o(i.Valve7_Control)
-    i.Valve8_Control                         0x080040f4   Section        0  devices.o(i.Valve8_Control)
-    i.Valve9_Control                         0x08004114   Section        0  devices.o(i.Valve9_Control)
-    i.__scatterload_copy                     0x08004134   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08004142   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08004144   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x08004152   Section        0  main.o(i.main)
+    i.Movement_M10_GotoTarget                0x0800225c   Section        0  movement.o(i.Movement_M10_GotoTarget)
+    i.Movement_M10_MotorDriver_DIR           0x08002290   Section        0  motor.o(i.Movement_M10_MotorDriver_DIR)
+    i.Movement_M10_MotorDriver_EN            0x080022b4   Section        0  motor.o(i.Movement_M10_MotorDriver_EN)
+    i.Movement_M10_MotorDriver_PWM           0x080022d8   Section        0  motor.o(i.Movement_M10_MotorDriver_PWM)
+    i.Movement_M10_Start                     0x080022f4   Section        0  motor.o(i.Movement_M10_Start)
+    i.Movement_M10_Stop                      0x08002320   Section        0  motor.o(i.Movement_M10_Stop)
+    i.Movement_M1_GotoTarget                 0x08002334   Section        0  movement.o(i.Movement_M1_GotoTarget)
+    i.Movement_M1_MotorDriver_DIR            0x08002368   Section        0  motor.o(i.Movement_M1_MotorDriver_DIR)
+    i.Movement_M1_MotorDriver_EN             0x0800238c   Section        0  motor.o(i.Movement_M1_MotorDriver_EN)
+    i.Movement_M1_MotorDriver_PWM            0x080023ac   Section        0  motor.o(i.Movement_M1_MotorDriver_PWM)
+    i.Movement_M1_Start                      0x080023c8   Section        0  motor.o(i.Movement_M1_Start)
+    i.Movement_M1_Stop                       0x080023f4   Section        0  motor.o(i.Movement_M1_Stop)
+    i.Movement_M2_MotorDriver_DIR            0x08002408   Section        0  motor.o(i.Movement_M2_MotorDriver_DIR)
+    i.Movement_M2_MotorDriver_EN             0x0800242c   Section        0  motor.o(i.Movement_M2_MotorDriver_EN)
+    i.Movement_M2_MotorDriver_PWM            0x0800244c   Section        0  motor.o(i.Movement_M2_MotorDriver_PWM)
+    i.Movement_M3_GotoTarget                 0x08002468   Section        0  movement.o(i.Movement_M3_GotoTarget)
+    i.Movement_M3_MotorDriver_DIR            0x0800249c   Section        0  motor.o(i.Movement_M3_MotorDriver_DIR)
+    i.Movement_M3_MotorDriver_EN             0x080024c0   Section        0  motor.o(i.Movement_M3_MotorDriver_EN)
+    i.Movement_M3_MotorDriver_PWM            0x080024e0   Section        0  motor.o(i.Movement_M3_MotorDriver_PWM)
+    i.Movement_M3_Start                      0x080024fa   Section        0  motor.o(i.Movement_M3_Start)
+    i.Movement_M3_Stop                       0x08002524   Section        0  motor.o(i.Movement_M3_Stop)
+    i.Movement_M4_GotoTarget                 0x08002538   Section        0  movement.o(i.Movement_M4_GotoTarget)
+    i.Movement_M4_MotorDriver_DIR            0x0800256c   Section        0  motor.o(i.Movement_M4_MotorDriver_DIR)
+    i.Movement_M4_MotorDriver_EN             0x08002590   Section        0  motor.o(i.Movement_M4_MotorDriver_EN)
+    i.Movement_M4_MotorDriver_PWM            0x080025b0   Section        0  motor.o(i.Movement_M4_MotorDriver_PWM)
+    i.Movement_M4_Start                      0x080025cc   Section        0  motor.o(i.Movement_M4_Start)
+    i.Movement_M4_Stop                       0x080025f8   Section        0  motor.o(i.Movement_M4_Stop)
+    i.Movement_M5_MotorDriver_DIR            0x0800260c   Section        0  motor.o(i.Movement_M5_MotorDriver_DIR)
+    i.Movement_M5_MotorDriver_EN             0x08002630   Section        0  motor.o(i.Movement_M5_MotorDriver_EN)
+    i.Movement_M5_MotorDriver_PWM            0x08002654   Section        0  motor.o(i.Movement_M5_MotorDriver_PWM)
+    i.Movement_M5_Stop                       0x08002670   Section        0  motor.o(i.Movement_M5_Stop)
+    i.Movement_M6_GotoTarget                 0x08002684   Section        0  movement.o(i.Movement_M6_GotoTarget)
+    i.Movement_M6_MotorDriver_DIR            0x080026b8   Section        0  motor.o(i.Movement_M6_MotorDriver_DIR)
+    i.Movement_M6_MotorDriver_EN             0x080026dc   Section        0  motor.o(i.Movement_M6_MotorDriver_EN)
+    i.Movement_M6_MotorDriver_PWM            0x08002700   Section        0  motor.o(i.Movement_M6_MotorDriver_PWM)
+    i.Movement_M6_Start                      0x0800271c   Section        0  motor.o(i.Movement_M6_Start)
+    i.Movement_M6_Stop                       0x08002748   Section        0  motor.o(i.Movement_M6_Stop)
+    i.Movement_M7_MotorDriver_DIR            0x0800275c   Section        0  motor.o(i.Movement_M7_MotorDriver_DIR)
+    i.Movement_M7_MotorDriver_EN             0x08002780   Section        0  motor.o(i.Movement_M7_MotorDriver_EN)
+    i.Movement_M7_MotorDriver_PWM            0x080027a4   Section        0  motor.o(i.Movement_M7_MotorDriver_PWM)
+    i.Movement_M8_MotorDriver_DIR            0x080027c0   Section        0  motor.o(i.Movement_M8_MotorDriver_DIR)
+    i.Movement_M8_MotorDriver_EN             0x080027e4   Section        0  motor.o(i.Movement_M8_MotorDriver_EN)
+    i.Movement_M8_MotorDriver_PWM            0x08002808   Section        0  motor.o(i.Movement_M8_MotorDriver_PWM)
+    i.Movement_M8_Stop                       0x08002824   Section        0  motor.o(i.Movement_M8_Stop)
+    i.Movement_M9_MotorDriver_DIR            0x08002838   Section        0  motor.o(i.Movement_M9_MotorDriver_DIR)
+    i.Movement_M9_MotorDriver_EN             0x0800285c   Section        0  motor.o(i.Movement_M9_MotorDriver_EN)
+    i.Movement_M9_MotorDriver_PWM            0x08002880   Section        0  motor.o(i.Movement_M9_MotorDriver_PWM)
+    i.NMI_Handler                            0x0800289c   Section        0  stm32f10x_it.o(i.NMI_Handler)
+    i.NVIC_Init                              0x080028a0   Section        0  misc.o(i.NVIC_Init)
+    i.NVIC_PriorityGroupConfig               0x08002910   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
+    i.PendSV_Handler                         0x08002924   Section        0  stm32f10x_it.o(i.PendSV_Handler)
+    i.PosSensor_Init                         0x08002928   Section        0  sensor.o(i.PosSensor_Init)
+    i.PosSensor_M10_DISABLE                  0x080029e8   Section        0  sensor.o(i.PosSensor_M10_DISABLE)
+    i.PosSensor_M10_ENABLE                   0x08002a14   Section        0  sensor.o(i.PosSensor_M10_ENABLE)
+    i.PosSensor_M1_DISABLE                   0x08002a44   Section        0  sensor.o(i.PosSensor_M1_DISABLE)
+    i.PosSensor_M1_ENABLE                    0x08002a70   Section        0  sensor.o(i.PosSensor_M1_ENABLE)
+    i.PosSensor_M3_DISABLE                   0x08002a9c   Section        0  sensor.o(i.PosSensor_M3_DISABLE)
+    i.PosSensor_M3_ENABLE                    0x08002ac8   Section        0  sensor.o(i.PosSensor_M3_ENABLE)
+    i.PosSensor_M4_DISABLE                   0x08002af8   Section        0  sensor.o(i.PosSensor_M4_DISABLE)
+    i.PosSensor_M4_ENABLE                    0x08002b24   Section        0  sensor.o(i.PosSensor_M4_ENABLE)
+    i.PosSensor_M6_DISABLE                   0x08002b54   Section        0  sensor.o(i.PosSensor_M6_DISABLE)
+    i.PosSensor_M6_ENABLE                    0x08002b80   Section        0  sensor.o(i.PosSensor_M6_ENABLE)
+    i.Pos_Read_Sensor                        0x08002bb0   Section        0  sensor.o(i.Pos_Read_Sensor)
+    i.ProcessCMD_Extract                     0x08002c9c   Section        0  movement.o(i.ProcessCMD_Extract)
+    i.ProcessCMD_Inject                      0x08002df8   Section        0  movement.o(i.ProcessCMD_Inject)
+    i.ProcessCMD_Inject_Double_Row           0x08002e04   Section        0  movement.o(i.ProcessCMD_Inject_Double_Row)
+    i.ProcessCMD_Inject_Single_Row           0x08002fd8   Section        0  movement.o(i.ProcessCMD_Inject_Single_Row)
+    i.RAM_PUMP_Init                          0x08003144   Section        0  motor.o(i.RAM_PUMP_Init)
+    i.RCC_APB1PeriphClockCmd                 0x0800315c   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
+    i.RCC_APB2PeriphClockCmd                 0x0800317c   Section        0  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
+    i.RCC_Configuration                      0x0800319c   Section        0  main.o(i.RCC_Configuration)
+    i.RCC_GetClocksFreq                      0x080031a8   Section        0  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
+    i.SVC_Handler                            0x0800327c   Section        0  stm32f10x_it.o(i.SVC_Handler)
+    i.SetSysClock                            0x0800327e   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x0800327f   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x08003288   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x08003289   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
+    i.Set_Initialize_Parameter               0x08003368   Section        0  devices.o(i.Set_Initialize_Parameter)
+    i.Set_Volume                             0x08003470   Section        0  device_action.o(i.Set_Volume)
+    i.SysTick_Handler                        0x08003514   Section        0  stm32f10x_it.o(i.SysTick_Handler)
+    i.SysTick_Init                           0x0800351c   Section        0  common.o(i.SysTick_Init)
+    i.SystemInit                             0x0800357c   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.TIM1_UP_IRQHandler                     0x080035dc   Section        0  motor.o(i.TIM1_UP_IRQHandler)
+    i.TIM2_IRQHandler                        0x0800362c   Section        0  motor.o(i.TIM2_IRQHandler)
+    i.TIM3_IRQHandler                        0x08003678   Section        0  motor.o(i.TIM3_IRQHandler)
+    i.TIM4_IRQHandler                        0x080036c8   Section        0  motor.o(i.TIM4_IRQHandler)
+    i.TIM5_IRQHandler                        0x08003718   Section        0  motor.o(i.TIM5_IRQHandler)
+    i.TIM6_IRQHandler                        0x08003768   Section        0  stm32f10x_it.o(i.TIM6_IRQHandler)
+    i.TIM6_Int_Init                          0x08003784   Section        0  timer5.o(i.TIM6_Int_Init)
+    i.TIM_ClearFlag                          0x080037e4   Section        0  stm32f10x_tim.o(i.TIM_ClearFlag)
+    i.TIM_Cmd                                0x080037ea   Section        0  stm32f10x_tim.o(i.TIM_Cmd)
+    i.TIM_CtrlPWMOutputs                     0x08003802   Section        0  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
+    i.TIM_GetITStatus                        0x08003820   Section        0  stm32f10x_tim.o(i.TIM_GetITStatus)
+    i.TIM_ITConfig                           0x08003842   Section        0  stm32f10x_tim.o(i.TIM_ITConfig)
+    i.TIM_OC1Init                            0x08003854   Section        0  stm32f10x_tim.o(i.TIM_OC1Init)
+    i.TIM_OC1PreloadConfig                   0x080038ec   Section        0  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
+    i.TIM_OC2Init                            0x08003900   Section        0  stm32f10x_tim.o(i.TIM_OC2Init)
+    i.TIM_OC2PreloadConfig                   0x080039a4   Section        0  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
+    i.TIM_OC3Init                            0x080039c0   Section        0  stm32f10x_tim.o(i.TIM_OC3Init)
+    i.TIM_OC3PreloadConfig                   0x08003a60   Section        0  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
+    i.TIM_OC4Init                            0x08003a74   Section        0  stm32f10x_tim.o(i.TIM_OC4Init)
+    i.TIM_OC4PreloadConfig                   0x08003af0   Section        0  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
+    i.TIM_TimeBaseInit                       0x08003b0c   Section        0  stm32f10x_tim.o(i.TIM_TimeBaseInit)
+    i.TimingDelay_Decrement                  0x08003bb0   Section        0  common.o(i.TimingDelay_Decrement)
+    i.USART1_IRQHandler                      0x08003bc8   Section        0  hostcomm.o(i.USART1_IRQHandler)
+    i.USART_ClearFlag                        0x08003cb0   Section        0  stm32f10x_usart.o(i.USART_ClearFlag)
+    i.USART_ClearITPendingBit                0x08003cc2   Section        0  stm32f10x_usart.o(i.USART_ClearITPendingBit)
+    i.USART_Cmd                              0x08003ce0   Section        0  stm32f10x_usart.o(i.USART_Cmd)
+    i.USART_GetITStatus                      0x08003cf8   Section        0  stm32f10x_usart.o(i.USART_GetITStatus)
+    i.USART_ITConfig                         0x08003d4c   Section        0  stm32f10x_usart.o(i.USART_ITConfig)
+    i.USART_Init                             0x08003d98   Section        0  stm32f10x_usart.o(i.USART_Init)
+    i.USART_ReceiveData                      0x08003e70   Section        0  stm32f10x_usart.o(i.USART_ReceiveData)
+    i.USB_LP_CAN1_RX0_IRQHandler             0x08003e7c   Section        0  comm_can.o(i.USB_LP_CAN1_RX0_IRQHandler)
+    i.UsageFault_Handler                     0x08003ebc   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
+    i.VAVLE_CLOSED                           0x08003ec0   Section        0  devices.o(i.VAVLE_CLOSED)
+    i.VAVLE_Init                             0x08003f08   Section        0  devices.o(i.VAVLE_Init)
+    i.VAVLE_OPEN                             0x08003fd8   Section        0  devices.o(i.VAVLE_OPEN)
+    i.Valve10_Control                        0x08004020   Section        0  devices.o(i.Valve10_Control)
+    i.Valve1_Control                         0x08004040   Section        0  devices.o(i.Valve1_Control)
+    i.Valve2_Control                         0x08004064   Section        0  devices.o(i.Valve2_Control)
+    i.Valve3_Control                         0x08004088   Section        0  devices.o(i.Valve3_Control)
+    i.Valve4_Control                         0x080040ac   Section        0  devices.o(i.Valve4_Control)
+    i.Valve5_Control                         0x080040d0   Section        0  devices.o(i.Valve5_Control)
+    i.Valve6_Control                         0x080040f4   Section        0  devices.o(i.Valve6_Control)
+    i.Valve7_Control                         0x08004118   Section        0  devices.o(i.Valve7_Control)
+    i.Valve8_Control                         0x08004138   Section        0  devices.o(i.Valve8_Control)
+    i.Valve9_Control                         0x08004158   Section        0  devices.o(i.Valve9_Control)
+    i.__scatterload_copy                     0x08004178   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08004186   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08004188   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x08004196   Section        0  main.o(i.main)
     .data                                    0x20000000   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000000   Data          16  stm32f10x_rcc.o(.data)
     ADCPrescTable                            0x20000010   Data           4  stm32f10x_rcc.o(.data)
     .data                                    0x20000014   Section      173  global_variable.o(.data)
     .data                                    0x200000c4   Section        5  common.o(.data)
     TimingDelay                              0x200000c4   Data           4  common.o(.data)
-    .data                                    0x200000c9   Section        2  devices.o(.data)
-    .data                                    0x200000cb   Section        5  movement.o(.data)
+    .data                                    0x200000c9   Section        5  movement.o(.data)
     .bss                                     0x200000d0   Section       90  global_variable.o(.bss)
     .bss                                     0x2000012a   Section      289  comm_can_fifo.o(.bss)
     STACK                                    0x20000250   Section     1024  startup_stm32f10x_hd.o(STACK)
@@ -1476,23 +1487,25 @@ Image Symbol Table
     Comm_CAN_FIFO_TxDataGet                  0x08000b55   Thumb Code   112  comm_can_fifo.o(i.Comm_CAN_FIFO_TxDataGet)
     Comm_CAN_Init                            0x08000cad   Thumb Code   202  comm_can.o(i.Comm_CAN_Init)
     Comm_CanRxData                           0x08000d81   Thumb Code    20  comm.o(i.Comm_CanRxData)
-    Comm_CanRxDataGet                        0x08000d95   Thumb Code   194  comm.o(i.Comm_CanRxDataGet)
-    Comm_CanTxDataSend                       0x08000e65   Thumb Code    76  comm.o(i.Comm_CanTxDataSend)
-    Comm_Init                                0x08000eb9   Thumb Code    20  comm.o(i.Comm_Init)
-    Comm_Process                             0x08000ed5   Thumb Code    12  comm.o(i.Comm_Process)
-    Common_EXTI_Init                         0x08000ee1   Thumb Code   192  common.o(i.Common_EXTI_Init)
-    DIAP_PUMP_CLOSED                         0x08000fb5   Thumb Code     2  devices.o(i.DIAP_PUMP_CLOSED)
-    DIAP_PUMP_Init                           0x08000fb9   Thumb Code   424  devices.o(i.DIAP_PUMP_Init)
-    DebugMon_Handler                         0x08001175   Thumb Code     2  stm32f10x_it.o(i.DebugMon_Handler)
-    Delay_ms_SW                              0x08001177   Thumb Code    30  common.o(i.Delay_ms_SW)
-    Devices_Init                             0x08001195   Thumb Code   332  devices.o(i.Devices_Init)
-    EXTI0_IRQHandler                         0x08001309   Thumb Code    36  stm32f10x_it.o(i.EXTI0_IRQHandler)
-    EXTI15_10_IRQHandler                     0x08001339   Thumb Code   138  stm32f10x_it.o(i.EXTI15_10_IRQHandler)
-    EXTI1_IRQHandler                         0x080013d9   Thumb Code    30  stm32f10x_it.o(i.EXTI1_IRQHandler)
-    EXTI2_IRQHandler                         0x08001401   Thumb Code    18  stm32f10x_it.o(i.EXTI2_IRQHandler)
-    EXTI3_IRQHandler                         0x08001415   Thumb Code    36  stm32f10x_it.o(i.EXTI3_IRQHandler)
-    EXTI4_IRQHandler                         0x08001445   Thumb Code    26  stm32f10x_it.o(i.EXTI4_IRQHandler)
-    EXTI9_5_IRQHandler                       0x08001469   Thumb Code   138  stm32f10x_it.o(i.EXTI9_5_IRQHandler)
+    Comm_CanRxDataGet                        0x08000d95   Thumb Code   210  comm.o(i.Comm_CanRxDataGet)
+    Comm_CanTxDataSend                       0x08000e7d   Thumb Code    76  comm.o(i.Comm_CanTxDataSend)
+    Comm_Init                                0x08000ed1   Thumb Code    20  comm.o(i.Comm_Init)
+    Comm_Process                             0x08000eed   Thumb Code    12  comm.o(i.Comm_Process)
+    Common_EXTI_Init                         0x08000ef9   Thumb Code   192  common.o(i.Common_EXTI_Init)
+    DIAP_PUMP_CLOSED                         0x08000fcd   Thumb Code     2  devices.o(i.DIAP_PUMP_CLOSED)
+    DIAP_PUMP_Control                        0x08000fd1   Thumb Code   182  devices.o(i.DIAP_PUMP_Control)
+    DIAP_PUMP_Init                           0x08001099   Thumb Code   424  devices.o(i.DIAP_PUMP_Init)
+    DIAP_PUMP_Set                            0x08001255   Thumb Code    32  devices.o(i.DIAP_PUMP_Set)
+    DebugMon_Handler                         0x08001275   Thumb Code     2  stm32f10x_it.o(i.DebugMon_Handler)
+    Delay_ms_SW                              0x08001277   Thumb Code    30  common.o(i.Delay_ms_SW)
+    Devices_Init                             0x08001295   Thumb Code    28  devices.o(i.Devices_Init)
+    EXTI0_IRQHandler                         0x080012b1   Thumb Code    36  stm32f10x_it.o(i.EXTI0_IRQHandler)
+    EXTI15_10_IRQHandler                     0x080012e1   Thumb Code   162  stm32f10x_it.o(i.EXTI15_10_IRQHandler)
+    EXTI1_IRQHandler                         0x0800139d   Thumb Code    30  stm32f10x_it.o(i.EXTI1_IRQHandler)
+    EXTI2_IRQHandler                         0x080013c5   Thumb Code    18  stm32f10x_it.o(i.EXTI2_IRQHandler)
+    EXTI3_IRQHandler                         0x080013d9   Thumb Code    52  stm32f10x_it.o(i.EXTI3_IRQHandler)
+    EXTI4_IRQHandler                         0x0800141d   Thumb Code    26  stm32f10x_it.o(i.EXTI4_IRQHandler)
+    EXTI9_5_IRQHandler                       0x08001441   Thumb Code   170  stm32f10x_it.o(i.EXTI9_5_IRQHandler)
     EXTI_ClearITPendingBit                   0x0800151d   Thumb Code     6  stm32f10x_exti.o(i.EXTI_ClearITPendingBit)
     EXTI_GetITStatus                         0x08001529   Thumb Code    34  stm32f10x_exti.o(i.EXTI_GetITStatus)
     EXTI_Init                                0x08001551   Thumb Code   142  stm32f10x_exti.o(i.EXTI_Init)
@@ -1515,136 +1528,136 @@ Image Symbol Table
     Motor_TIMER3_M6_Init                     0x08001cc1   Thumb Code   510  motor.o(i.Motor_TIMER3_M6_Init)
     Motor_TIMER4_M4_Init                     0x08001ed9   Thumb Code   334  motor.o(i.Motor_TIMER4_M4_Init)
     Motor_TIMER5_M1_Init                     0x0800203d   Thumb Code   236  motor.o(i.Motor_TIMER5_M1_Init)
-    Movement_GotoInitialPosition             0x08002135   Thumb Code   244  movement.o(i.Movement_GotoInitialPosition)
-    Movement_M10_GotoTarget                  0x0800223d   Thumb Code    34  movement.o(i.Movement_M10_GotoTarget)
-    Movement_M10_MotorDriver_DIR             0x0800226d   Thumb Code    30  motor.o(i.Movement_M10_MotorDriver_DIR)
-    Movement_M10_MotorDriver_EN              0x08002291   Thumb Code    30  motor.o(i.Movement_M10_MotorDriver_EN)
-    Movement_M10_MotorDriver_PWM             0x080022b5   Thumb Code    22  motor.o(i.Movement_M10_MotorDriver_PWM)
-    Movement_M10_Start                       0x080022d1   Thumb Code    38  motor.o(i.Movement_M10_Start)
-    Movement_M10_Stop                        0x080022fd   Thumb Code    12  motor.o(i.Movement_M10_Stop)
-    Movement_M1_GotoTarget                   0x08002311   Thumb Code    34  movement.o(i.Movement_M1_GotoTarget)
-    Movement_M1_MotorDriver_DIR              0x08002341   Thumb Code    30  motor.o(i.Movement_M1_MotorDriver_DIR)
-    Movement_M1_MotorDriver_EN               0x08002365   Thumb Code    28  motor.o(i.Movement_M1_MotorDriver_EN)
-    Movement_M1_MotorDriver_PWM              0x08002385   Thumb Code    22  motor.o(i.Movement_M1_MotorDriver_PWM)
-    Movement_M1_Start                        0x080023a1   Thumb Code    38  motor.o(i.Movement_M1_Start)
-    Movement_M1_Stop                         0x080023cd   Thumb Code    12  motor.o(i.Movement_M1_Stop)
-    Movement_M2_MotorDriver_DIR              0x080023e1   Thumb Code    30  motor.o(i.Movement_M2_MotorDriver_DIR)
-    Movement_M2_MotorDriver_EN               0x08002405   Thumb Code    28  motor.o(i.Movement_M2_MotorDriver_EN)
-    Movement_M2_MotorDriver_PWM              0x08002425   Thumb Code    26  motor.o(i.Movement_M2_MotorDriver_PWM)
-    Movement_M3_GotoTarget                   0x08002441   Thumb Code    34  movement.o(i.Movement_M3_GotoTarget)
-    Movement_M3_MotorDriver_DIR              0x08002471   Thumb Code    30  motor.o(i.Movement_M3_MotorDriver_DIR)
-    Movement_M3_MotorDriver_EN               0x08002495   Thumb Code    28  motor.o(i.Movement_M3_MotorDriver_EN)
-    Movement_M3_MotorDriver_PWM              0x080024b5   Thumb Code    26  motor.o(i.Movement_M3_MotorDriver_PWM)
-    Movement_M3_Start                        0x080024cf   Thumb Code    40  motor.o(i.Movement_M3_Start)
-    Movement_M3_Stop                         0x080024f9   Thumb Code    14  motor.o(i.Movement_M3_Stop)
-    Movement_M4_GotoTarget                   0x0800250d   Thumb Code    34  movement.o(i.Movement_M4_GotoTarget)
-    Movement_M4_MotorDriver_DIR              0x0800253d   Thumb Code    30  motor.o(i.Movement_M4_MotorDriver_DIR)
-    Movement_M4_MotorDriver_EN               0x08002561   Thumb Code    28  motor.o(i.Movement_M4_MotorDriver_EN)
-    Movement_M4_MotorDriver_PWM              0x08002581   Thumb Code    22  motor.o(i.Movement_M4_MotorDriver_PWM)
-    Movement_M4_Start                        0x0800259d   Thumb Code    38  motor.o(i.Movement_M4_Start)
-    Movement_M4_Stop                         0x080025c9   Thumb Code    12  motor.o(i.Movement_M4_Stop)
-    Movement_M5_MotorDriver_DIR              0x080025dd   Thumb Code    30  motor.o(i.Movement_M5_MotorDriver_DIR)
-    Movement_M5_MotorDriver_EN               0x08002601   Thumb Code    30  motor.o(i.Movement_M5_MotorDriver_EN)
-    Movement_M5_MotorDriver_PWM              0x08002625   Thumb Code    22  motor.o(i.Movement_M5_MotorDriver_PWM)
-    Movement_M5_Stop                         0x08002641   Thumb Code    12  motor.o(i.Movement_M5_Stop)
-    Movement_M6_GotoTarget                   0x08002655   Thumb Code    34  movement.o(i.Movement_M6_GotoTarget)
-    Movement_M6_MotorDriver_DIR              0x08002685   Thumb Code    30  motor.o(i.Movement_M6_MotorDriver_DIR)
-    Movement_M6_MotorDriver_EN               0x080026a9   Thumb Code    30  motor.o(i.Movement_M6_MotorDriver_EN)
-    Movement_M6_MotorDriver_PWM              0x080026cd   Thumb Code    22  motor.o(i.Movement_M6_MotorDriver_PWM)
-    Movement_M6_Start                        0x080026e9   Thumb Code    38  motor.o(i.Movement_M6_Start)
-    Movement_M6_Stop                         0x08002715   Thumb Code    12  motor.o(i.Movement_M6_Stop)
-    Movement_M7_MotorDriver_DIR              0x08002729   Thumb Code    30  motor.o(i.Movement_M7_MotorDriver_DIR)
-    Movement_M7_MotorDriver_EN               0x0800274d   Thumb Code    30  motor.o(i.Movement_M7_MotorDriver_EN)
-    Movement_M7_MotorDriver_PWM              0x08002771   Thumb Code    22  motor.o(i.Movement_M7_MotorDriver_PWM)
-    Movement_M8_MotorDriver_DIR              0x0800278d   Thumb Code    30  motor.o(i.Movement_M8_MotorDriver_DIR)
-    Movement_M8_MotorDriver_EN               0x080027b1   Thumb Code    30  motor.o(i.Movement_M8_MotorDriver_EN)
-    Movement_M8_MotorDriver_PWM              0x080027d5   Thumb Code    22  motor.o(i.Movement_M8_MotorDriver_PWM)
-    Movement_M8_Stop                         0x080027f1   Thumb Code    12  motor.o(i.Movement_M8_Stop)
-    Movement_M9_MotorDriver_DIR              0x08002805   Thumb Code    30  motor.o(i.Movement_M9_MotorDriver_DIR)
-    Movement_M9_MotorDriver_EN               0x08002829   Thumb Code    30  motor.o(i.Movement_M9_MotorDriver_EN)
-    Movement_M9_MotorDriver_PWM              0x0800284d   Thumb Code    22  motor.o(i.Movement_M9_MotorDriver_PWM)
-    NMI_Handler                              0x08002869   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
-    NVIC_Init                                0x0800286d   Thumb Code   100  misc.o(i.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x080028dd   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
-    PendSV_Handler                           0x080028f1   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
-    PosSensor_Init                           0x080028f5   Thumb Code   176  sensor.o(i.PosSensor_Init)
-    PosSensor_M10_DISABLE                    0x080029b5   Thumb Code    40  sensor.o(i.PosSensor_M10_DISABLE)
-    PosSensor_M10_ENABLE                     0x080029e1   Thumb Code    42  sensor.o(i.PosSensor_M10_ENABLE)
-    PosSensor_M1_DISABLE                     0x08002a11   Thumb Code    40  sensor.o(i.PosSensor_M1_DISABLE)
-    PosSensor_M1_ENABLE                      0x08002a3d   Thumb Code    40  sensor.o(i.PosSensor_M1_ENABLE)
-    PosSensor_M3_DISABLE                     0x08002a69   Thumb Code    40  sensor.o(i.PosSensor_M3_DISABLE)
-    PosSensor_M3_ENABLE                      0x08002a95   Thumb Code    42  sensor.o(i.PosSensor_M3_ENABLE)
-    PosSensor_M4_DISABLE                     0x08002ac5   Thumb Code    40  sensor.o(i.PosSensor_M4_DISABLE)
-    PosSensor_M4_ENABLE                      0x08002af1   Thumb Code    42  sensor.o(i.PosSensor_M4_ENABLE)
-    PosSensor_M6_DISABLE                     0x08002b21   Thumb Code    40  sensor.o(i.PosSensor_M6_DISABLE)
-    PosSensor_M6_ENABLE                      0x08002b4d   Thumb Code    42  sensor.o(i.PosSensor_M6_ENABLE)
-    Pos_Read_Sensor                          0x08002b7d   Thumb Code   220  sensor.o(i.Pos_Read_Sensor)
-    ProcessCMD_Extract                       0x08002c69   Thumb Code   298  movement.o(i.ProcessCMD_Extract)
-    ProcessCMD_Inject                        0x08002dc5   Thumb Code    12  movement.o(i.ProcessCMD_Inject)
-    ProcessCMD_Inject_Double_Row             0x08002dd1   Thumb Code   424  movement.o(i.ProcessCMD_Inject_Double_Row)
-    ProcessCMD_Inject_Single_Row             0x08002fa5   Thumb Code   320  movement.o(i.ProcessCMD_Inject_Single_Row)
-    RAM_PUMP_Init                            0x08003111   Thumb Code    24  motor.o(i.RAM_PUMP_Init)
-    RCC_APB1PeriphClockCmd                   0x08003129   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
-    RCC_APB2PeriphClockCmd                   0x08003149   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
-    RCC_Configuration                        0x08003169   Thumb Code    12  main.o(i.RCC_Configuration)
-    RCC_GetClocksFreq                        0x08003175   Thumb Code   192  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
-    SVC_Handler                              0x08003249   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
-    Set_Initialize_Parameter                 0x08003335   Thumb Code   198  devices.o(i.Set_Initialize_Parameter)
-    Set_Volume                               0x0800343d   Thumb Code   144  device_action.o(i.Set_Volume)
-    SysTick_Handler                          0x080034e1   Thumb Code     8  stm32f10x_it.o(i.SysTick_Handler)
-    SysTick_Init                             0x080034e9   Thumb Code    82  common.o(i.SysTick_Init)
-    SystemInit                               0x08003549   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
-    TIM1_UP_IRQHandler                       0x080035a9   Thumb Code    64  motor.o(i.TIM1_UP_IRQHandler)
-    TIM2_IRQHandler                          0x080035f9   Thumb Code    64  motor.o(i.TIM2_IRQHandler)
-    TIM3_IRQHandler                          0x08003645   Thumb Code    64  motor.o(i.TIM3_IRQHandler)
-    TIM4_IRQHandler                          0x08003695   Thumb Code    64  motor.o(i.TIM4_IRQHandler)
-    TIM5_IRQHandler                          0x080036e5   Thumb Code    64  motor.o(i.TIM5_IRQHandler)
-    TIM6_IRQHandler                          0x08003735   Thumb Code    22  stm32f10x_it.o(i.TIM6_IRQHandler)
-    TIM6_Int_Init                            0x08003751   Thumb Code    90  timer5.o(i.TIM6_Int_Init)
-    TIM_ClearFlag                            0x080037b1   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearFlag)
-    TIM_Cmd                                  0x080037b7   Thumb Code    24  stm32f10x_tim.o(i.TIM_Cmd)
-    TIM_CtrlPWMOutputs                       0x080037cf   Thumb Code    30  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
-    TIM_GetITStatus                          0x080037ed   Thumb Code    34  stm32f10x_tim.o(i.TIM_GetITStatus)
-    TIM_ITConfig                             0x0800380f   Thumb Code    18  stm32f10x_tim.o(i.TIM_ITConfig)
-    TIM_OC1Init                              0x08003821   Thumb Code   132  stm32f10x_tim.o(i.TIM_OC1Init)
-    TIM_OC1PreloadConfig                     0x080038b9   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
-    TIM_OC2Init                              0x080038cd   Thumb Code   154  stm32f10x_tim.o(i.TIM_OC2Init)
-    TIM_OC2PreloadConfig                     0x08003971   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
-    TIM_OC3Init                              0x0800398d   Thumb Code   150  stm32f10x_tim.o(i.TIM_OC3Init)
-    TIM_OC3PreloadConfig                     0x08003a2d   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
-    TIM_OC4Init                              0x08003a41   Thumb Code   114  stm32f10x_tim.o(i.TIM_OC4Init)
-    TIM_OC4PreloadConfig                     0x08003abd   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
-    TIM_TimeBaseInit                         0x08003ad9   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
-    TimingDelay_Decrement                    0x08003b7d   Thumb Code    18  common.o(i.TimingDelay_Decrement)
-    USART1_IRQHandler                        0x08003b95   Thumb Code   200  hostcomm.o(i.USART1_IRQHandler)
-    USART_ClearFlag                          0x08003c7d   Thumb Code    18  stm32f10x_usart.o(i.USART_ClearFlag)
-    USART_ClearITPendingBit                  0x08003c8f   Thumb Code    30  stm32f10x_usart.o(i.USART_ClearITPendingBit)
-    USART_Cmd                                0x08003cad   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
-    USART_GetITStatus                        0x08003cc5   Thumb Code    84  stm32f10x_usart.o(i.USART_GetITStatus)
-    USART_ITConfig                           0x08003d19   Thumb Code    74  stm32f10x_usart.o(i.USART_ITConfig)
-    USART_Init                               0x08003d65   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
-    USART_ReceiveData                        0x08003e3d   Thumb Code    10  stm32f10x_usart.o(i.USART_ReceiveData)
-    USB_LP_CAN1_RX0_IRQHandler               0x08003e49   Thumb Code    56  comm_can.o(i.USB_LP_CAN1_RX0_IRQHandler)
-    UsageFault_Handler                       0x08003e89   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
-    VAVLE_CLOSED                             0x08003e8d   Thumb Code    64  devices.o(i.VAVLE_CLOSED)
-    VAVLE_Init                               0x08003ecd   Thumb Code   190  devices.o(i.VAVLE_Init)
-    VAVLE_OPEN                               0x08003f9d   Thumb Code    64  devices.o(i.VAVLE_OPEN)
-    Valve10_Control                          0x08003fdd   Thumb Code    28  devices.o(i.Valve10_Control)
-    Valve1_Control                           0x08003ffd   Thumb Code    30  devices.o(i.Valve1_Control)
-    Valve2_Control                           0x08004021   Thumb Code    30  devices.o(i.Valve2_Control)
-    Valve3_Control                           0x08004045   Thumb Code    30  devices.o(i.Valve3_Control)
-    Valve4_Control                           0x08004069   Thumb Code    30  devices.o(i.Valve4_Control)
-    Valve5_Control                           0x0800408d   Thumb Code    30  devices.o(i.Valve5_Control)
-    Valve6_Control                           0x080040b1   Thumb Code    30  devices.o(i.Valve6_Control)
-    Valve7_Control                           0x080040d5   Thumb Code    28  devices.o(i.Valve7_Control)
-    Valve8_Control                           0x080040f5   Thumb Code    28  devices.o(i.Valve8_Control)
-    Valve9_Control                           0x08004115   Thumb Code    28  devices.o(i.Valve9_Control)
-    __scatterload_copy                       0x08004135   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08004143   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08004145   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x08004153   Thumb Code    48  main.o(i.main)
-    Region$$Table$$Base                      0x08004184   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080041a4   Number         0  anon$$obj.o(Region$$Table)
+    Movement_GotoInitialPosition             0x08002135   Thumb Code   274  movement.o(i.Movement_GotoInitialPosition)
+    Movement_M10_GotoTarget                  0x0800225d   Thumb Code    40  movement.o(i.Movement_M10_GotoTarget)
+    Movement_M10_MotorDriver_DIR             0x08002291   Thumb Code    30  motor.o(i.Movement_M10_MotorDriver_DIR)
+    Movement_M10_MotorDriver_EN              0x080022b5   Thumb Code    30  motor.o(i.Movement_M10_MotorDriver_EN)
+    Movement_M10_MotorDriver_PWM             0x080022d9   Thumb Code    22  motor.o(i.Movement_M10_MotorDriver_PWM)
+    Movement_M10_Start                       0x080022f5   Thumb Code    38  motor.o(i.Movement_M10_Start)
+    Movement_M10_Stop                        0x08002321   Thumb Code    12  motor.o(i.Movement_M10_Stop)
+    Movement_M1_GotoTarget                   0x08002335   Thumb Code    40  movement.o(i.Movement_M1_GotoTarget)
+    Movement_M1_MotorDriver_DIR              0x08002369   Thumb Code    30  motor.o(i.Movement_M1_MotorDriver_DIR)
+    Movement_M1_MotorDriver_EN               0x0800238d   Thumb Code    28  motor.o(i.Movement_M1_MotorDriver_EN)
+    Movement_M1_MotorDriver_PWM              0x080023ad   Thumb Code    22  motor.o(i.Movement_M1_MotorDriver_PWM)
+    Movement_M1_Start                        0x080023c9   Thumb Code    38  motor.o(i.Movement_M1_Start)
+    Movement_M1_Stop                         0x080023f5   Thumb Code    12  motor.o(i.Movement_M1_Stop)
+    Movement_M2_MotorDriver_DIR              0x08002409   Thumb Code    30  motor.o(i.Movement_M2_MotorDriver_DIR)
+    Movement_M2_MotorDriver_EN               0x0800242d   Thumb Code    28  motor.o(i.Movement_M2_MotorDriver_EN)
+    Movement_M2_MotorDriver_PWM              0x0800244d   Thumb Code    26  motor.o(i.Movement_M2_MotorDriver_PWM)
+    Movement_M3_GotoTarget                   0x08002469   Thumb Code    40  movement.o(i.Movement_M3_GotoTarget)
+    Movement_M3_MotorDriver_DIR              0x0800249d   Thumb Code    30  motor.o(i.Movement_M3_MotorDriver_DIR)
+    Movement_M3_MotorDriver_EN               0x080024c1   Thumb Code    28  motor.o(i.Movement_M3_MotorDriver_EN)
+    Movement_M3_MotorDriver_PWM              0x080024e1   Thumb Code    26  motor.o(i.Movement_M3_MotorDriver_PWM)
+    Movement_M3_Start                        0x080024fb   Thumb Code    40  motor.o(i.Movement_M3_Start)
+    Movement_M3_Stop                         0x08002525   Thumb Code    14  motor.o(i.Movement_M3_Stop)
+    Movement_M4_GotoTarget                   0x08002539   Thumb Code    40  movement.o(i.Movement_M4_GotoTarget)
+    Movement_M4_MotorDriver_DIR              0x0800256d   Thumb Code    30  motor.o(i.Movement_M4_MotorDriver_DIR)
+    Movement_M4_MotorDriver_EN               0x08002591   Thumb Code    28  motor.o(i.Movement_M4_MotorDriver_EN)
+    Movement_M4_MotorDriver_PWM              0x080025b1   Thumb Code    22  motor.o(i.Movement_M4_MotorDriver_PWM)
+    Movement_M4_Start                        0x080025cd   Thumb Code    38  motor.o(i.Movement_M4_Start)
+    Movement_M4_Stop                         0x080025f9   Thumb Code    12  motor.o(i.Movement_M4_Stop)
+    Movement_M5_MotorDriver_DIR              0x0800260d   Thumb Code    30  motor.o(i.Movement_M5_MotorDriver_DIR)
+    Movement_M5_MotorDriver_EN               0x08002631   Thumb Code    30  motor.o(i.Movement_M5_MotorDriver_EN)
+    Movement_M5_MotorDriver_PWM              0x08002655   Thumb Code    22  motor.o(i.Movement_M5_MotorDriver_PWM)
+    Movement_M5_Stop                         0x08002671   Thumb Code    12  motor.o(i.Movement_M5_Stop)
+    Movement_M6_GotoTarget                   0x08002685   Thumb Code    40  movement.o(i.Movement_M6_GotoTarget)
+    Movement_M6_MotorDriver_DIR              0x080026b9   Thumb Code    30  motor.o(i.Movement_M6_MotorDriver_DIR)
+    Movement_M6_MotorDriver_EN               0x080026dd   Thumb Code    30  motor.o(i.Movement_M6_MotorDriver_EN)
+    Movement_M6_MotorDriver_PWM              0x08002701   Thumb Code    22  motor.o(i.Movement_M6_MotorDriver_PWM)
+    Movement_M6_Start                        0x0800271d   Thumb Code    38  motor.o(i.Movement_M6_Start)
+    Movement_M6_Stop                         0x08002749   Thumb Code    12  motor.o(i.Movement_M6_Stop)
+    Movement_M7_MotorDriver_DIR              0x0800275d   Thumb Code    30  motor.o(i.Movement_M7_MotorDriver_DIR)
+    Movement_M7_MotorDriver_EN               0x08002781   Thumb Code    30  motor.o(i.Movement_M7_MotorDriver_EN)
+    Movement_M7_MotorDriver_PWM              0x080027a5   Thumb Code    22  motor.o(i.Movement_M7_MotorDriver_PWM)
+    Movement_M8_MotorDriver_DIR              0x080027c1   Thumb Code    30  motor.o(i.Movement_M8_MotorDriver_DIR)
+    Movement_M8_MotorDriver_EN               0x080027e5   Thumb Code    30  motor.o(i.Movement_M8_MotorDriver_EN)
+    Movement_M8_MotorDriver_PWM              0x08002809   Thumb Code    22  motor.o(i.Movement_M8_MotorDriver_PWM)
+    Movement_M8_Stop                         0x08002825   Thumb Code    12  motor.o(i.Movement_M8_Stop)
+    Movement_M9_MotorDriver_DIR              0x08002839   Thumb Code    30  motor.o(i.Movement_M9_MotorDriver_DIR)
+    Movement_M9_MotorDriver_EN               0x0800285d   Thumb Code    30  motor.o(i.Movement_M9_MotorDriver_EN)
+    Movement_M9_MotorDriver_PWM              0x08002881   Thumb Code    22  motor.o(i.Movement_M9_MotorDriver_PWM)
+    NMI_Handler                              0x0800289d   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
+    NVIC_Init                                0x080028a1   Thumb Code   100  misc.o(i.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x08002911   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
+    PendSV_Handler                           0x08002925   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
+    PosSensor_Init                           0x08002929   Thumb Code   176  sensor.o(i.PosSensor_Init)
+    PosSensor_M10_DISABLE                    0x080029e9   Thumb Code    40  sensor.o(i.PosSensor_M10_DISABLE)
+    PosSensor_M10_ENABLE                     0x08002a15   Thumb Code    42  sensor.o(i.PosSensor_M10_ENABLE)
+    PosSensor_M1_DISABLE                     0x08002a45   Thumb Code    40  sensor.o(i.PosSensor_M1_DISABLE)
+    PosSensor_M1_ENABLE                      0x08002a71   Thumb Code    40  sensor.o(i.PosSensor_M1_ENABLE)
+    PosSensor_M3_DISABLE                     0x08002a9d   Thumb Code    40  sensor.o(i.PosSensor_M3_DISABLE)
+    PosSensor_M3_ENABLE                      0x08002ac9   Thumb Code    42  sensor.o(i.PosSensor_M3_ENABLE)
+    PosSensor_M4_DISABLE                     0x08002af9   Thumb Code    40  sensor.o(i.PosSensor_M4_DISABLE)
+    PosSensor_M4_ENABLE                      0x08002b25   Thumb Code    42  sensor.o(i.PosSensor_M4_ENABLE)
+    PosSensor_M6_DISABLE                     0x08002b55   Thumb Code    40  sensor.o(i.PosSensor_M6_DISABLE)
+    PosSensor_M6_ENABLE                      0x08002b81   Thumb Code    42  sensor.o(i.PosSensor_M6_ENABLE)
+    Pos_Read_Sensor                          0x08002bb1   Thumb Code   220  sensor.o(i.Pos_Read_Sensor)
+    ProcessCMD_Extract                       0x08002c9d   Thumb Code   298  movement.o(i.ProcessCMD_Extract)
+    ProcessCMD_Inject                        0x08002df9   Thumb Code    12  movement.o(i.ProcessCMD_Inject)
+    ProcessCMD_Inject_Double_Row             0x08002e05   Thumb Code   424  movement.o(i.ProcessCMD_Inject_Double_Row)
+    ProcessCMD_Inject_Single_Row             0x08002fd9   Thumb Code   320  movement.o(i.ProcessCMD_Inject_Single_Row)
+    RAM_PUMP_Init                            0x08003145   Thumb Code    24  motor.o(i.RAM_PUMP_Init)
+    RCC_APB1PeriphClockCmd                   0x0800315d   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
+    RCC_APB2PeriphClockCmd                   0x0800317d   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
+    RCC_Configuration                        0x0800319d   Thumb Code    12  main.o(i.RCC_Configuration)
+    RCC_GetClocksFreq                        0x080031a9   Thumb Code   192  stm32f10x_rcc.o(i.RCC_GetClocksFreq)
+    SVC_Handler                              0x0800327d   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
+    Set_Initialize_Parameter                 0x08003369   Thumb Code   198  devices.o(i.Set_Initialize_Parameter)
+    Set_Volume                               0x08003471   Thumb Code   144  device_action.o(i.Set_Volume)
+    SysTick_Handler                          0x08003515   Thumb Code     8  stm32f10x_it.o(i.SysTick_Handler)
+    SysTick_Init                             0x0800351d   Thumb Code    82  common.o(i.SysTick_Init)
+    SystemInit                               0x0800357d   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
+    TIM1_UP_IRQHandler                       0x080035dd   Thumb Code    64  motor.o(i.TIM1_UP_IRQHandler)
+    TIM2_IRQHandler                          0x0800362d   Thumb Code    64  motor.o(i.TIM2_IRQHandler)
+    TIM3_IRQHandler                          0x08003679   Thumb Code    64  motor.o(i.TIM3_IRQHandler)
+    TIM4_IRQHandler                          0x080036c9   Thumb Code    64  motor.o(i.TIM4_IRQHandler)
+    TIM5_IRQHandler                          0x08003719   Thumb Code    64  motor.o(i.TIM5_IRQHandler)
+    TIM6_IRQHandler                          0x08003769   Thumb Code    22  stm32f10x_it.o(i.TIM6_IRQHandler)
+    TIM6_Int_Init                            0x08003785   Thumb Code    90  timer5.o(i.TIM6_Int_Init)
+    TIM_ClearFlag                            0x080037e5   Thumb Code     6  stm32f10x_tim.o(i.TIM_ClearFlag)
+    TIM_Cmd                                  0x080037eb   Thumb Code    24  stm32f10x_tim.o(i.TIM_Cmd)
+    TIM_CtrlPWMOutputs                       0x08003803   Thumb Code    30  stm32f10x_tim.o(i.TIM_CtrlPWMOutputs)
+    TIM_GetITStatus                          0x08003821   Thumb Code    34  stm32f10x_tim.o(i.TIM_GetITStatus)
+    TIM_ITConfig                             0x08003843   Thumb Code    18  stm32f10x_tim.o(i.TIM_ITConfig)
+    TIM_OC1Init                              0x08003855   Thumb Code   132  stm32f10x_tim.o(i.TIM_OC1Init)
+    TIM_OC1PreloadConfig                     0x080038ed   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC1PreloadConfig)
+    TIM_OC2Init                              0x08003901   Thumb Code   154  stm32f10x_tim.o(i.TIM_OC2Init)
+    TIM_OC2PreloadConfig                     0x080039a5   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC2PreloadConfig)
+    TIM_OC3Init                              0x080039c1   Thumb Code   150  stm32f10x_tim.o(i.TIM_OC3Init)
+    TIM_OC3PreloadConfig                     0x08003a61   Thumb Code    18  stm32f10x_tim.o(i.TIM_OC3PreloadConfig)
+    TIM_OC4Init                              0x08003a75   Thumb Code   114  stm32f10x_tim.o(i.TIM_OC4Init)
+    TIM_OC4PreloadConfig                     0x08003af1   Thumb Code    26  stm32f10x_tim.o(i.TIM_OC4PreloadConfig)
+    TIM_TimeBaseInit                         0x08003b0d   Thumb Code   122  stm32f10x_tim.o(i.TIM_TimeBaseInit)
+    TimingDelay_Decrement                    0x08003bb1   Thumb Code    18  common.o(i.TimingDelay_Decrement)
+    USART1_IRQHandler                        0x08003bc9   Thumb Code   200  hostcomm.o(i.USART1_IRQHandler)
+    USART_ClearFlag                          0x08003cb1   Thumb Code    18  stm32f10x_usart.o(i.USART_ClearFlag)
+    USART_ClearITPendingBit                  0x08003cc3   Thumb Code    30  stm32f10x_usart.o(i.USART_ClearITPendingBit)
+    USART_Cmd                                0x08003ce1   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
+    USART_GetITStatus                        0x08003cf9   Thumb Code    84  stm32f10x_usart.o(i.USART_GetITStatus)
+    USART_ITConfig                           0x08003d4d   Thumb Code    74  stm32f10x_usart.o(i.USART_ITConfig)
+    USART_Init                               0x08003d99   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
+    USART_ReceiveData                        0x08003e71   Thumb Code    10  stm32f10x_usart.o(i.USART_ReceiveData)
+    USB_LP_CAN1_RX0_IRQHandler               0x08003e7d   Thumb Code    56  comm_can.o(i.USB_LP_CAN1_RX0_IRQHandler)
+    UsageFault_Handler                       0x08003ebd   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
+    VAVLE_CLOSED                             0x08003ec1   Thumb Code    72  devices.o(i.VAVLE_CLOSED)
+    VAVLE_Init                               0x08003f09   Thumb Code   190  devices.o(i.VAVLE_Init)
+    VAVLE_OPEN                               0x08003fd9   Thumb Code    72  devices.o(i.VAVLE_OPEN)
+    Valve10_Control                          0x08004021   Thumb Code    28  devices.o(i.Valve10_Control)
+    Valve1_Control                           0x08004041   Thumb Code    30  devices.o(i.Valve1_Control)
+    Valve2_Control                           0x08004065   Thumb Code    30  devices.o(i.Valve2_Control)
+    Valve3_Control                           0x08004089   Thumb Code    30  devices.o(i.Valve3_Control)
+    Valve4_Control                           0x080040ad   Thumb Code    30  devices.o(i.Valve4_Control)
+    Valve5_Control                           0x080040d1   Thumb Code    30  devices.o(i.Valve5_Control)
+    Valve6_Control                           0x080040f5   Thumb Code    30  devices.o(i.Valve6_Control)
+    Valve7_Control                           0x08004119   Thumb Code    28  devices.o(i.Valve7_Control)
+    Valve8_Control                           0x08004139   Thumb Code    28  devices.o(i.Valve8_Control)
+    Valve9_Control                           0x08004159   Thumb Code    28  devices.o(i.Valve9_Control)
+    __scatterload_copy                       0x08004179   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08004187   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08004189   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x08004197   Thumb Code    48  main.o(i.main)
+    Region$$Table$$Base                      0x080041c8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080041e8   Number         0  anon$$obj.o(Region$$Table)
     HostComm_RecBufAvailable                 0x20000014   Data           1  global_variable.o(.data)
     Bump_Switch                              0x20000015   Data           1  global_variable.o(.data)
     cmdType                                  0x20000016   Data           1  global_variable.o(.data)
@@ -1711,13 +1724,11 @@ Image Symbol Table
     fBuffer                                  0x200000bd   Data           2  global_variable.o(.data)
     Buffer                                   0x200000bf   Data           2  global_variable.o(.data)
     SystemMode_Status                        0x200000c8   Data           1  common.o(.data)
-    DIAP_PUMP                                0x200000c9   Data           1  devices.o(.data)
-    Pump_status                              0x200000ca   Data           1  devices.o(.data)
-    Movement_M1_initPos                      0x200000cb   Data           1  movement.o(.data)
-    Movement_M3_initPos                      0x200000cc   Data           1  movement.o(.data)
-    Movement_M4_initPos                      0x200000cd   Data           1  movement.o(.data)
-    Movement_M6_initPos                      0x200000ce   Data           1  movement.o(.data)
-    Movement_M10_initPos                     0x200000cf   Data           1  movement.o(.data)
+    Movement_M1_initPos                      0x200000c9   Data           1  movement.o(.data)
+    Movement_M3_initPos                      0x200000ca   Data           1  movement.o(.data)
+    Movement_M4_initPos                      0x200000cb   Data           1  movement.o(.data)
+    Movement_M6_initPos                      0x200000cc   Data           1  movement.o(.data)
+    Movement_M10_initPos                     0x200000cd   Data           1  movement.o(.data)
     recBuffer                                0x200000d0   Data          30  global_variable.o(.bss)
     cmdBuffer                                0x200000ee   Data          30  global_variable.o(.bss)
     respBuffer                               0x2000010c   Data          30  global_variable.o(.bss)
@@ -1734,9 +1745,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004274, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000042b8, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000041a4, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000041e8, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1778,25 +1789,27 @@ Memory Map of the image
     0x08000c46   0x00000066   Code   RO         3093    i.Comm_CAN_FilterNumInit  comm_can.o
     0x08000cac   0x000000d4   Code   RO         3094    i.Comm_CAN_Init     comm_can.o
     0x08000d80   0x00000014   Code   RO         3013    i.Comm_CanRxData    comm.o
-    0x08000d94   0x000000d0   Code   RO         3014    i.Comm_CanRxDataGet  comm.o
-    0x08000e64   0x00000054   Code   RO         3016    i.Comm_CanTxDataSend  comm.o
-    0x08000eb8   0x0000001c   Code   RO         3019    i.Comm_Init         comm.o
-    0x08000ed4   0x0000000c   Code   RO         3020    i.Comm_Process      comm.o
-    0x08000ee0   0x000000d4   Code   RO         2377    i.Common_EXTI_Init  common.o
-    0x08000fb4   0x00000002   Code   RO         2511    i.DIAP_PUMP_CLOSED  devices.o
-    0x08000fb6   0x00000002   PAD
-    0x08000fb8   0x000001bc   Code   RO         2513    i.DIAP_PUMP_Init    devices.o
-    0x08001174   0x00000002   Code   RO         2046    i.DebugMon_Handler  stm32f10x_it.o
-    0x08001176   0x0000001e   Code   RO         2381    i.Delay_ms_SW       common.o
-    0x08001194   0x00000174   Code   RO         2516    i.Devices_Init      devices.o
-    0x08001308   0x00000030   Code   RO         2047    i.EXTI0_IRQHandler  stm32f10x_it.o
-    0x08001338   0x000000a0   Code   RO         2048    i.EXTI15_10_IRQHandler  stm32f10x_it.o
-    0x080013d8   0x00000028   Code   RO         2049    i.EXTI1_IRQHandler  stm32f10x_it.o
-    0x08001400   0x00000012   Code   RO         2050    i.EXTI2_IRQHandler  stm32f10x_it.o
-    0x08001412   0x00000002   PAD
-    0x08001414   0x00000030   Code   RO         2051    i.EXTI3_IRQHandler  stm32f10x_it.o
-    0x08001444   0x00000024   Code   RO         2052    i.EXTI4_IRQHandler  stm32f10x_it.o
-    0x08001468   0x000000b4   Code   RO         2053    i.EXTI9_5_IRQHandler  stm32f10x_it.o
+    0x08000d94   0x000000e8   Code   RO         3014    i.Comm_CanRxDataGet  comm.o
+    0x08000e7c   0x00000054   Code   RO         3016    i.Comm_CanTxDataSend  comm.o
+    0x08000ed0   0x0000001c   Code   RO         3019    i.Comm_Init         comm.o
+    0x08000eec   0x0000000c   Code   RO         3020    i.Comm_Process      comm.o
+    0x08000ef8   0x000000d4   Code   RO         2377    i.Common_EXTI_Init  common.o
+    0x08000fcc   0x00000002   Code   RO         2511    i.DIAP_PUMP_CLOSED  devices.o
+    0x08000fce   0x00000002   PAD
+    0x08000fd0   0x000000c8   Code   RO         2512    i.DIAP_PUMP_Control  devices.o
+    0x08001098   0x000001bc   Code   RO         2513    i.DIAP_PUMP_Init    devices.o
+    0x08001254   0x00000020   Code   RO         2515    i.DIAP_PUMP_Set     devices.o
+    0x08001274   0x00000002   Code   RO         2046    i.DebugMon_Handler  stm32f10x_it.o
+    0x08001276   0x0000001e   Code   RO         2381    i.Delay_ms_SW       common.o
+    0x08001294   0x0000001c   Code   RO         2516    i.Devices_Init      devices.o
+    0x080012b0   0x00000030   Code   RO         2047    i.EXTI0_IRQHandler  stm32f10x_it.o
+    0x080012e0   0x000000bc   Code   RO         2048    i.EXTI15_10_IRQHandler  stm32f10x_it.o
+    0x0800139c   0x00000028   Code   RO         2049    i.EXTI1_IRQHandler  stm32f10x_it.o
+    0x080013c4   0x00000012   Code   RO         2050    i.EXTI2_IRQHandler  stm32f10x_it.o
+    0x080013d6   0x00000002   PAD
+    0x080013d8   0x00000044   Code   RO         2051    i.EXTI3_IRQHandler  stm32f10x_it.o
+    0x0800141c   0x00000024   Code   RO         2052    i.EXTI4_IRQHandler  stm32f10x_it.o
+    0x08001440   0x000000dc   Code   RO         2053    i.EXTI9_5_IRQHandler  stm32f10x_it.o
     0x0800151c   0x0000000c   Code   RO          561    i.EXTI_ClearITPendingBit  stm32f10x_exti.o
     0x08001528   0x00000028   Code   RO          565    i.EXTI_GetITStatus  stm32f10x_exti.o
     0x08001550   0x00000094   Code   RO          566    i.EXTI_Init         stm32f10x_exti.o
@@ -1824,149 +1837,149 @@ Memory Map of the image
     0x08001cc0   0x00000218   Code   RO         3247    i.Motor_TIMER3_M6_Init  motor.o
     0x08001ed8   0x00000164   Code   RO         3248    i.Motor_TIMER4_M4_Init  motor.o
     0x0800203c   0x000000f8   Code   RO         3249    i.Motor_TIMER5_M1_Init  motor.o
-    0x08002134   0x00000108   Code   RO         2731    i.Movement_GotoInitialPosition  movement.o
-    0x0800223c   0x00000030   Code   RO         2732    i.Movement_M10_GotoTarget  movement.o
-    0x0800226c   0x00000024   Code   RO         3250    i.Movement_M10_MotorDriver_DIR  motor.o
-    0x08002290   0x00000024   Code   RO         3251    i.Movement_M10_MotorDriver_EN  motor.o
-    0x080022b4   0x0000001c   Code   RO         3252    i.Movement_M10_MotorDriver_PWM  motor.o
-    0x080022d0   0x0000002c   Code   RO         3253    i.Movement_M10_Start  motor.o
-    0x080022fc   0x00000014   Code   RO         3254    i.Movement_M10_Stop  motor.o
-    0x08002310   0x00000030   Code   RO         2733    i.Movement_M1_GotoTarget  movement.o
-    0x08002340   0x00000024   Code   RO         3255    i.Movement_M1_MotorDriver_DIR  motor.o
-    0x08002364   0x00000020   Code   RO         3256    i.Movement_M1_MotorDriver_EN  motor.o
-    0x08002384   0x0000001c   Code   RO         3257    i.Movement_M1_MotorDriver_PWM  motor.o
-    0x080023a0   0x0000002c   Code   RO         3258    i.Movement_M1_Start  motor.o
-    0x080023cc   0x00000014   Code   RO         3259    i.Movement_M1_Stop  motor.o
-    0x080023e0   0x00000024   Code   RO         3260    i.Movement_M2_MotorDriver_DIR  motor.o
-    0x08002404   0x00000020   Code   RO         3261    i.Movement_M2_MotorDriver_EN  motor.o
-    0x08002424   0x0000001a   Code   RO         3262    i.Movement_M2_MotorDriver_PWM  motor.o
-    0x0800243e   0x00000002   PAD
-    0x08002440   0x00000030   Code   RO         2735    i.Movement_M3_GotoTarget  movement.o
-    0x08002470   0x00000024   Code   RO         3265    i.Movement_M3_MotorDriver_DIR  motor.o
-    0x08002494   0x00000020   Code   RO         3266    i.Movement_M3_MotorDriver_EN  motor.o
-    0x080024b4   0x0000001a   Code   RO         3267    i.Movement_M3_MotorDriver_PWM  motor.o
-    0x080024ce   0x00000028   Code   RO         3268    i.Movement_M3_Start  motor.o
-    0x080024f6   0x00000002   PAD
-    0x080024f8   0x00000014   Code   RO         3269    i.Movement_M3_Stop  motor.o
-    0x0800250c   0x00000030   Code   RO         2736    i.Movement_M4_GotoTarget  movement.o
-    0x0800253c   0x00000024   Code   RO         3270    i.Movement_M4_MotorDriver_DIR  motor.o
-    0x08002560   0x00000020   Code   RO         3271    i.Movement_M4_MotorDriver_EN  motor.o
-    0x08002580   0x0000001c   Code   RO         3272    i.Movement_M4_MotorDriver_PWM  motor.o
-    0x0800259c   0x0000002c   Code   RO         3273    i.Movement_M4_Start  motor.o
-    0x080025c8   0x00000014   Code   RO         3274    i.Movement_M4_Stop  motor.o
-    0x080025dc   0x00000024   Code   RO         3275    i.Movement_M5_MotorDriver_DIR  motor.o
-    0x08002600   0x00000024   Code   RO         3276    i.Movement_M5_MotorDriver_EN  motor.o
-    0x08002624   0x0000001c   Code   RO         3277    i.Movement_M5_MotorDriver_PWM  motor.o
-    0x08002640   0x00000014   Code   RO         3279    i.Movement_M5_Stop  motor.o
-    0x08002654   0x00000030   Code   RO         2738    i.Movement_M6_GotoTarget  movement.o
-    0x08002684   0x00000024   Code   RO         3280    i.Movement_M6_MotorDriver_DIR  motor.o
-    0x080026a8   0x00000024   Code   RO         3281    i.Movement_M6_MotorDriver_EN  motor.o
-    0x080026cc   0x0000001c   Code   RO         3282    i.Movement_M6_MotorDriver_PWM  motor.o
-    0x080026e8   0x0000002c   Code   RO         3283    i.Movement_M6_Start  motor.o
-    0x08002714   0x00000014   Code   RO         3284    i.Movement_M6_Stop  motor.o
-    0x08002728   0x00000024   Code   RO         3285    i.Movement_M7_MotorDriver_DIR  motor.o
-    0x0800274c   0x00000024   Code   RO         3286    i.Movement_M7_MotorDriver_EN  motor.o
-    0x08002770   0x0000001c   Code   RO         3287    i.Movement_M7_MotorDriver_PWM  motor.o
-    0x0800278c   0x00000024   Code   RO         3290    i.Movement_M8_MotorDriver_DIR  motor.o
-    0x080027b0   0x00000024   Code   RO         3291    i.Movement_M8_MotorDriver_EN  motor.o
-    0x080027d4   0x0000001c   Code   RO         3292    i.Movement_M8_MotorDriver_PWM  motor.o
-    0x080027f0   0x00000014   Code   RO         3294    i.Movement_M8_Stop  motor.o
-    0x08002804   0x00000024   Code   RO         3295    i.Movement_M9_MotorDriver_DIR  motor.o
-    0x08002828   0x00000024   Code   RO         3296    i.Movement_M9_MotorDriver_EN  motor.o
-    0x0800284c   0x0000001c   Code   RO         3297    i.Movement_M9_MotorDriver_PWM  motor.o
-    0x08002868   0x00000002   Code   RO         2056    i.NMI_Handler       stm32f10x_it.o
-    0x0800286a   0x00000002   PAD
-    0x0800286c   0x00000070   Code   RO           24    i.NVIC_Init         misc.o
-    0x080028dc   0x00000014   Code   RO           25    i.NVIC_PriorityGroupConfig  misc.o
-    0x080028f0   0x00000002   Code   RO         2057    i.PendSV_Handler    stm32f10x_it.o
-    0x080028f2   0x00000002   PAD
-    0x080028f4   0x000000c0   Code   RO         2643    i.PosSensor_Init    sensor.o
-    0x080029b4   0x0000002c   Code   RO         2644    i.PosSensor_M10_DISABLE  sensor.o
-    0x080029e0   0x00000030   Code   RO         2645    i.PosSensor_M10_ENABLE  sensor.o
-    0x08002a10   0x0000002c   Code   RO         2646    i.PosSensor_M1_DISABLE  sensor.o
-    0x08002a3c   0x0000002c   Code   RO         2647    i.PosSensor_M1_ENABLE  sensor.o
-    0x08002a68   0x0000002c   Code   RO         2648    i.PosSensor_M3_DISABLE  sensor.o
-    0x08002a94   0x00000030   Code   RO         2649    i.PosSensor_M3_ENABLE  sensor.o
-    0x08002ac4   0x0000002c   Code   RO         2650    i.PosSensor_M4_DISABLE  sensor.o
-    0x08002af0   0x00000030   Code   RO         2651    i.PosSensor_M4_ENABLE  sensor.o
-    0x08002b20   0x0000002c   Code   RO         2652    i.PosSensor_M6_DISABLE  sensor.o
-    0x08002b4c   0x00000030   Code   RO         2653    i.PosSensor_M6_ENABLE  sensor.o
-    0x08002b7c   0x000000ec   Code   RO         2654    i.Pos_Read_Sensor   sensor.o
-    0x08002c68   0x0000015c   Code   RO         2742    i.ProcessCMD_Extract  movement.o
-    0x08002dc4   0x0000000c   Code   RO         2743    i.ProcessCMD_Inject  movement.o
-    0x08002dd0   0x000001d4   Code   RO         2744    i.ProcessCMD_Inject_Double_Row  movement.o
-    0x08002fa4   0x0000016c   Code   RO         2745    i.ProcessCMD_Inject_Single_Row  movement.o
-    0x08003110   0x00000018   Code   RO         3300    i.RAM_PUMP_Init     motor.o
-    0x08003128   0x00000020   Code   RO          790    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
-    0x08003148   0x00000020   Code   RO          792    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08003168   0x0000000c   Code   RO         2290    i.RCC_Configuration  main.o
-    0x08003174   0x000000d4   Code   RO          800    i.RCC_GetClocksFreq  stm32f10x_rcc.o
-    0x08003248   0x00000002   Code   RO         2058    i.SVC_Handler       stm32f10x_it.o
-    0x0800324a   0x00000008   Code   RO         2230    i.SetSysClock       system_stm32f10x.o
-    0x08003252   0x00000002   PAD
-    0x08003254   0x000000e0   Code   RO         2231    i.SetSysClockTo72   system_stm32f10x.o
-    0x08003334   0x00000108   Code   RO         2517    i.Set_Initialize_Parameter  devices.o
-    0x0800343c   0x000000a4   Code   RO         3194    i.Set_Volume        device_action.o
-    0x080034e0   0x00000008   Code   RO         2059    i.SysTick_Handler   stm32f10x_it.o
-    0x080034e8   0x00000060   Code   RO         2384    i.SysTick_Init      common.o
-    0x08003548   0x00000060   Code   RO         2233    i.SystemInit        system_stm32f10x.o
-    0x080035a8   0x00000050   Code   RO         3301    i.TIM1_UP_IRQHandler  motor.o
-    0x080035f8   0x0000004c   Code   RO         3302    i.TIM2_IRQHandler   motor.o
-    0x08003644   0x00000050   Code   RO         3303    i.TIM3_IRQHandler   motor.o
-    0x08003694   0x00000050   Code   RO         3304    i.TIM4_IRQHandler   motor.o
-    0x080036e4   0x00000050   Code   RO         3305    i.TIM5_IRQHandler   motor.o
-    0x08003734   0x0000001c   Code   RO         2060    i.TIM6_IRQHandler   stm32f10x_it.o
-    0x08003750   0x00000060   Code   RO         3625    i.TIM6_Int_Init     timer5.o
-    0x080037b0   0x00000006   Code   RO          998    i.TIM_ClearFlag     stm32f10x_tim.o
-    0x080037b6   0x00000018   Code   RO         1004    i.TIM_Cmd           stm32f10x_tim.o
-    0x080037ce   0x0000001e   Code   RO         1006    i.TIM_CtrlPWMOutputs  stm32f10x_tim.o
-    0x080037ec   0x00000022   Code   RO         1025    i.TIM_GetITStatus   stm32f10x_tim.o
-    0x0800380e   0x00000012   Code   RO         1029    i.TIM_ITConfig      stm32f10x_tim.o
-    0x08003820   0x00000098   Code   RO         1033    i.TIM_OC1Init       stm32f10x_tim.o
-    0x080038b8   0x00000012   Code   RO         1036    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
-    0x080038ca   0x00000002   PAD
-    0x080038cc   0x000000a4   Code   RO         1038    i.TIM_OC2Init       stm32f10x_tim.o
-    0x08003970   0x0000001a   Code   RO         1041    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
-    0x0800398a   0x00000002   PAD
-    0x0800398c   0x000000a0   Code   RO         1043    i.TIM_OC3Init       stm32f10x_tim.o
-    0x08003a2c   0x00000012   Code   RO         1046    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
-    0x08003a3e   0x00000002   PAD
-    0x08003a40   0x0000007c   Code   RO         1048    i.TIM_OC4Init       stm32f10x_tim.o
-    0x08003abc   0x0000001a   Code   RO         1050    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
-    0x08003ad6   0x00000002   PAD
-    0x08003ad8   0x000000a4   Code   RO         1075    i.TIM_TimeBaseInit  stm32f10x_tim.o
-    0x08003b7c   0x00000018   Code   RO         2385    i.TimingDelay_Decrement  common.o
-    0x08003b94   0x000000e8   Code   RO         2918    i.USART1_IRQHandler  hostcomm.o
-    0x08003c7c   0x00000012   Code   RO         1536    i.USART_ClearFlag   stm32f10x_usart.o
-    0x08003c8e   0x0000001e   Code   RO         1537    i.USART_ClearITPendingBit  stm32f10x_usart.o
-    0x08003cac   0x00000018   Code   RO         1540    i.USART_Cmd         stm32f10x_usart.o
-    0x08003cc4   0x00000054   Code   RO         1544    i.USART_GetITStatus  stm32f10x_usart.o
-    0x08003d18   0x0000004a   Code   RO         1546    i.USART_ITConfig    stm32f10x_usart.o
-    0x08003d62   0x00000002   PAD
-    0x08003d64   0x000000d8   Code   RO         1547    i.USART_Init        stm32f10x_usart.o
-    0x08003e3c   0x0000000a   Code   RO         1554    i.USART_ReceiveData  stm32f10x_usart.o
-    0x08003e46   0x00000002   PAD
-    0x08003e48   0x00000040   Code   RO         3095    i.USB_LP_CAN1_RX0_IRQHandler  comm_can.o
-    0x08003e88   0x00000004   Code   RO         2061    i.UsageFault_Handler  stm32f10x_it.o
-    0x08003e8c   0x00000040   Code   RO         2518    i.VAVLE_CLOSED      devices.o
-    0x08003ecc   0x000000d0   Code   RO         2519    i.VAVLE_Init        devices.o
-    0x08003f9c   0x00000040   Code   RO         2520    i.VAVLE_OPEN        devices.o
-    0x08003fdc   0x00000020   Code   RO         2521    i.Valve10_Control   devices.o
-    0x08003ffc   0x00000024   Code   RO         2522    i.Valve1_Control    devices.o
-    0x08004020   0x00000024   Code   RO         2523    i.Valve2_Control    devices.o
-    0x08004044   0x00000024   Code   RO         2524    i.Valve3_Control    devices.o
-    0x08004068   0x00000024   Code   RO         2525    i.Valve4_Control    devices.o
-    0x0800408c   0x00000024   Code   RO         2526    i.Valve5_Control    devices.o
-    0x080040b0   0x00000024   Code   RO         2527    i.Valve6_Control    devices.o
-    0x080040d4   0x00000020   Code   RO         2528    i.Valve7_Control    devices.o
-    0x080040f4   0x00000020   Code   RO         2529    i.Valve8_Control    devices.o
-    0x08004114   0x00000020   Code   RO         2530    i.Valve9_Control    devices.o
-    0x08004134   0x0000000e   Code   RO         3678    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08004142   0x00000002   Code   RO         3679    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08004144   0x0000000e   Code   RO         3680    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08004152   0x00000030   Code   RO         2291    i.main              main.o
-    0x08004182   0x00000002   PAD
-    0x08004184   0x00000020   Data   RO         3676    Region$$Table       anon$$obj.o
+    0x08002134   0x00000128   Code   RO         2731    i.Movement_GotoInitialPosition  movement.o
+    0x0800225c   0x00000034   Code   RO         2732    i.Movement_M10_GotoTarget  movement.o
+    0x08002290   0x00000024   Code   RO         3250    i.Movement_M10_MotorDriver_DIR  motor.o
+    0x080022b4   0x00000024   Code   RO         3251    i.Movement_M10_MotorDriver_EN  motor.o
+    0x080022d8   0x0000001c   Code   RO         3252    i.Movement_M10_MotorDriver_PWM  motor.o
+    0x080022f4   0x0000002c   Code   RO         3253    i.Movement_M10_Start  motor.o
+    0x08002320   0x00000014   Code   RO         3254    i.Movement_M10_Stop  motor.o
+    0x08002334   0x00000034   Code   RO         2733    i.Movement_M1_GotoTarget  movement.o
+    0x08002368   0x00000024   Code   RO         3255    i.Movement_M1_MotorDriver_DIR  motor.o
+    0x0800238c   0x00000020   Code   RO         3256    i.Movement_M1_MotorDriver_EN  motor.o
+    0x080023ac   0x0000001c   Code   RO         3257    i.Movement_M1_MotorDriver_PWM  motor.o
+    0x080023c8   0x0000002c   Code   RO         3258    i.Movement_M1_Start  motor.o
+    0x080023f4   0x00000014   Code   RO         3259    i.Movement_M1_Stop  motor.o
+    0x08002408   0x00000024   Code   RO         3260    i.Movement_M2_MotorDriver_DIR  motor.o
+    0x0800242c   0x00000020   Code   RO         3261    i.Movement_M2_MotorDriver_EN  motor.o
+    0x0800244c   0x0000001a   Code   RO         3262    i.Movement_M2_MotorDriver_PWM  motor.o
+    0x08002466   0x00000002   PAD
+    0x08002468   0x00000034   Code   RO         2735    i.Movement_M3_GotoTarget  movement.o
+    0x0800249c   0x00000024   Code   RO         3265    i.Movement_M3_MotorDriver_DIR  motor.o
+    0x080024c0   0x00000020   Code   RO         3266    i.Movement_M3_MotorDriver_EN  motor.o
+    0x080024e0   0x0000001a   Code   RO         3267    i.Movement_M3_MotorDriver_PWM  motor.o
+    0x080024fa   0x00000028   Code   RO         3268    i.Movement_M3_Start  motor.o
+    0x08002522   0x00000002   PAD
+    0x08002524   0x00000014   Code   RO         3269    i.Movement_M3_Stop  motor.o
+    0x08002538   0x00000034   Code   RO         2736    i.Movement_M4_GotoTarget  movement.o
+    0x0800256c   0x00000024   Code   RO         3270    i.Movement_M4_MotorDriver_DIR  motor.o
+    0x08002590   0x00000020   Code   RO         3271    i.Movement_M4_MotorDriver_EN  motor.o
+    0x080025b0   0x0000001c   Code   RO         3272    i.Movement_M4_MotorDriver_PWM  motor.o
+    0x080025cc   0x0000002c   Code   RO         3273    i.Movement_M4_Start  motor.o
+    0x080025f8   0x00000014   Code   RO         3274    i.Movement_M4_Stop  motor.o
+    0x0800260c   0x00000024   Code   RO         3275    i.Movement_M5_MotorDriver_DIR  motor.o
+    0x08002630   0x00000024   Code   RO         3276    i.Movement_M5_MotorDriver_EN  motor.o
+    0x08002654   0x0000001c   Code   RO         3277    i.Movement_M5_MotorDriver_PWM  motor.o
+    0x08002670   0x00000014   Code   RO         3279    i.Movement_M5_Stop  motor.o
+    0x08002684   0x00000034   Code   RO         2738    i.Movement_M6_GotoTarget  movement.o
+    0x080026b8   0x00000024   Code   RO         3280    i.Movement_M6_MotorDriver_DIR  motor.o
+    0x080026dc   0x00000024   Code   RO         3281    i.Movement_M6_MotorDriver_EN  motor.o
+    0x08002700   0x0000001c   Code   RO         3282    i.Movement_M6_MotorDriver_PWM  motor.o
+    0x0800271c   0x0000002c   Code   RO         3283    i.Movement_M6_Start  motor.o
+    0x08002748   0x00000014   Code   RO         3284    i.Movement_M6_Stop  motor.o
+    0x0800275c   0x00000024   Code   RO         3285    i.Movement_M7_MotorDriver_DIR  motor.o
+    0x08002780   0x00000024   Code   RO         3286    i.Movement_M7_MotorDriver_EN  motor.o
+    0x080027a4   0x0000001c   Code   RO         3287    i.Movement_M7_MotorDriver_PWM  motor.o
+    0x080027c0   0x00000024   Code   RO         3290    i.Movement_M8_MotorDriver_DIR  motor.o
+    0x080027e4   0x00000024   Code   RO         3291    i.Movement_M8_MotorDriver_EN  motor.o
+    0x08002808   0x0000001c   Code   RO         3292    i.Movement_M8_MotorDriver_PWM  motor.o
+    0x08002824   0x00000014   Code   RO         3294    i.Movement_M8_Stop  motor.o
+    0x08002838   0x00000024   Code   RO         3295    i.Movement_M9_MotorDriver_DIR  motor.o
+    0x0800285c   0x00000024   Code   RO         3296    i.Movement_M9_MotorDriver_EN  motor.o
+    0x08002880   0x0000001c   Code   RO         3297    i.Movement_M9_MotorDriver_PWM  motor.o
+    0x0800289c   0x00000002   Code   RO         2056    i.NMI_Handler       stm32f10x_it.o
+    0x0800289e   0x00000002   PAD
+    0x080028a0   0x00000070   Code   RO           24    i.NVIC_Init         misc.o
+    0x08002910   0x00000014   Code   RO           25    i.NVIC_PriorityGroupConfig  misc.o
+    0x08002924   0x00000002   Code   RO         2057    i.PendSV_Handler    stm32f10x_it.o
+    0x08002926   0x00000002   PAD
+    0x08002928   0x000000c0   Code   RO         2643    i.PosSensor_Init    sensor.o
+    0x080029e8   0x0000002c   Code   RO         2644    i.PosSensor_M10_DISABLE  sensor.o
+    0x08002a14   0x00000030   Code   RO         2645    i.PosSensor_M10_ENABLE  sensor.o
+    0x08002a44   0x0000002c   Code   RO         2646    i.PosSensor_M1_DISABLE  sensor.o
+    0x08002a70   0x0000002c   Code   RO         2647    i.PosSensor_M1_ENABLE  sensor.o
+    0x08002a9c   0x0000002c   Code   RO         2648    i.PosSensor_M3_DISABLE  sensor.o
+    0x08002ac8   0x00000030   Code   RO         2649    i.PosSensor_M3_ENABLE  sensor.o
+    0x08002af8   0x0000002c   Code   RO         2650    i.PosSensor_M4_DISABLE  sensor.o
+    0x08002b24   0x00000030   Code   RO         2651    i.PosSensor_M4_ENABLE  sensor.o
+    0x08002b54   0x0000002c   Code   RO         2652    i.PosSensor_M6_DISABLE  sensor.o
+    0x08002b80   0x00000030   Code   RO         2653    i.PosSensor_M6_ENABLE  sensor.o
+    0x08002bb0   0x000000ec   Code   RO         2654    i.Pos_Read_Sensor   sensor.o
+    0x08002c9c   0x0000015c   Code   RO         2742    i.ProcessCMD_Extract  movement.o
+    0x08002df8   0x0000000c   Code   RO         2743    i.ProcessCMD_Inject  movement.o
+    0x08002e04   0x000001d4   Code   RO         2744    i.ProcessCMD_Inject_Double_Row  movement.o
+    0x08002fd8   0x0000016c   Code   RO         2745    i.ProcessCMD_Inject_Single_Row  movement.o
+    0x08003144   0x00000018   Code   RO         3300    i.RAM_PUMP_Init     motor.o
+    0x0800315c   0x00000020   Code   RO          790    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
+    0x0800317c   0x00000020   Code   RO          792    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x0800319c   0x0000000c   Code   RO         2290    i.RCC_Configuration  main.o
+    0x080031a8   0x000000d4   Code   RO          800    i.RCC_GetClocksFreq  stm32f10x_rcc.o
+    0x0800327c   0x00000002   Code   RO         2058    i.SVC_Handler       stm32f10x_it.o
+    0x0800327e   0x00000008   Code   RO         2230    i.SetSysClock       system_stm32f10x.o
+    0x08003286   0x00000002   PAD
+    0x08003288   0x000000e0   Code   RO         2231    i.SetSysClockTo72   system_stm32f10x.o
+    0x08003368   0x00000108   Code   RO         2517    i.Set_Initialize_Parameter  devices.o
+    0x08003470   0x000000a4   Code   RO         3194    i.Set_Volume        device_action.o
+    0x08003514   0x00000008   Code   RO         2059    i.SysTick_Handler   stm32f10x_it.o
+    0x0800351c   0x00000060   Code   RO         2384    i.SysTick_Init      common.o
+    0x0800357c   0x00000060   Code   RO         2233    i.SystemInit        system_stm32f10x.o
+    0x080035dc   0x00000050   Code   RO         3301    i.TIM1_UP_IRQHandler  motor.o
+    0x0800362c   0x0000004c   Code   RO         3302    i.TIM2_IRQHandler   motor.o
+    0x08003678   0x00000050   Code   RO         3303    i.TIM3_IRQHandler   motor.o
+    0x080036c8   0x00000050   Code   RO         3304    i.TIM4_IRQHandler   motor.o
+    0x08003718   0x00000050   Code   RO         3305    i.TIM5_IRQHandler   motor.o
+    0x08003768   0x0000001c   Code   RO         2060    i.TIM6_IRQHandler   stm32f10x_it.o
+    0x08003784   0x00000060   Code   RO         3625    i.TIM6_Int_Init     timer5.o
+    0x080037e4   0x00000006   Code   RO          998    i.TIM_ClearFlag     stm32f10x_tim.o
+    0x080037ea   0x00000018   Code   RO         1004    i.TIM_Cmd           stm32f10x_tim.o
+    0x08003802   0x0000001e   Code   RO         1006    i.TIM_CtrlPWMOutputs  stm32f10x_tim.o
+    0x08003820   0x00000022   Code   RO         1025    i.TIM_GetITStatus   stm32f10x_tim.o
+    0x08003842   0x00000012   Code   RO         1029    i.TIM_ITConfig      stm32f10x_tim.o
+    0x08003854   0x00000098   Code   RO         1033    i.TIM_OC1Init       stm32f10x_tim.o
+    0x080038ec   0x00000012   Code   RO         1036    i.TIM_OC1PreloadConfig  stm32f10x_tim.o
+    0x080038fe   0x00000002   PAD
+    0x08003900   0x000000a4   Code   RO         1038    i.TIM_OC2Init       stm32f10x_tim.o
+    0x080039a4   0x0000001a   Code   RO         1041    i.TIM_OC2PreloadConfig  stm32f10x_tim.o
+    0x080039be   0x00000002   PAD
+    0x080039c0   0x000000a0   Code   RO         1043    i.TIM_OC3Init       stm32f10x_tim.o
+    0x08003a60   0x00000012   Code   RO         1046    i.TIM_OC3PreloadConfig  stm32f10x_tim.o
+    0x08003a72   0x00000002   PAD
+    0x08003a74   0x0000007c   Code   RO         1048    i.TIM_OC4Init       stm32f10x_tim.o
+    0x08003af0   0x0000001a   Code   RO         1050    i.TIM_OC4PreloadConfig  stm32f10x_tim.o
+    0x08003b0a   0x00000002   PAD
+    0x08003b0c   0x000000a4   Code   RO         1075    i.TIM_TimeBaseInit  stm32f10x_tim.o
+    0x08003bb0   0x00000018   Code   RO         2385    i.TimingDelay_Decrement  common.o
+    0x08003bc8   0x000000e8   Code   RO         2918    i.USART1_IRQHandler  hostcomm.o
+    0x08003cb0   0x00000012   Code   RO         1536    i.USART_ClearFlag   stm32f10x_usart.o
+    0x08003cc2   0x0000001e   Code   RO         1537    i.USART_ClearITPendingBit  stm32f10x_usart.o
+    0x08003ce0   0x00000018   Code   RO         1540    i.USART_Cmd         stm32f10x_usart.o
+    0x08003cf8   0x00000054   Code   RO         1544    i.USART_GetITStatus  stm32f10x_usart.o
+    0x08003d4c   0x0000004a   Code   RO         1546    i.USART_ITConfig    stm32f10x_usart.o
+    0x08003d96   0x00000002   PAD
+    0x08003d98   0x000000d8   Code   RO         1547    i.USART_Init        stm32f10x_usart.o
+    0x08003e70   0x0000000a   Code   RO         1554    i.USART_ReceiveData  stm32f10x_usart.o
+    0x08003e7a   0x00000002   PAD
+    0x08003e7c   0x00000040   Code   RO         3095    i.USB_LP_CAN1_RX0_IRQHandler  comm_can.o
+    0x08003ebc   0x00000004   Code   RO         2061    i.UsageFault_Handler  stm32f10x_it.o
+    0x08003ec0   0x00000048   Code   RO         2518    i.VAVLE_CLOSED      devices.o
+    0x08003f08   0x000000d0   Code   RO         2519    i.VAVLE_Init        devices.o
+    0x08003fd8   0x00000048   Code   RO         2520    i.VAVLE_OPEN        devices.o
+    0x08004020   0x00000020   Code   RO         2521    i.Valve10_Control   devices.o
+    0x08004040   0x00000024   Code   RO         2522    i.Valve1_Control    devices.o
+    0x08004064   0x00000024   Code   RO         2523    i.Valve2_Control    devices.o
+    0x08004088   0x00000024   Code   RO         2524    i.Valve3_Control    devices.o
+    0x080040ac   0x00000024   Code   RO         2525    i.Valve4_Control    devices.o
+    0x080040d0   0x00000024   Code   RO         2526    i.Valve5_Control    devices.o
+    0x080040f4   0x00000024   Code   RO         2527    i.Valve6_Control    devices.o
+    0x08004118   0x00000020   Code   RO         2528    i.Valve7_Control    devices.o
+    0x08004138   0x00000020   Code   RO         2529    i.Valve8_Control    devices.o
+    0x08004158   0x00000020   Code   RO         2530    i.Valve9_Control    devices.o
+    0x08004178   0x0000000e   Code   RO         3678    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08004186   0x00000002   Code   RO         3679    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08004188   0x0000000e   Code   RO         3680    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08004196   0x00000030   Code   RO         2291    i.main              main.o
+    0x080041c6   0x00000002   PAD
+    0x080041c8   0x00000020   Data   RO         3676    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000650, Max: 0x00010000, ABSOLUTE)
@@ -1977,8 +1990,8 @@ Memory Map of the image
     0x20000014   0x000000ad   Data   RW         2349    .data               global_variable.o
     0x200000c1   0x00000003   PAD
     0x200000c4   0x00000005   Data   RW         2386    .data               common.o
-    0x200000c9   0x00000002   Data   RW         2531    .data               devices.o
-    0x200000cb   0x00000005   Data   RW         2746    .data               movement.o
+    0x200000c9   0x00000005   Data   RW         2746    .data               movement.o
+    0x200000ce   0x00000002   PAD
     0x200000d0   0x0000005a   Zero   RW         2348    .bss                global_variable.o
     0x2000012a   0x00000121   Zero   RW         3134    .bss                comm_can_fifo.o
     0x2000024b   0x00000005   PAD
@@ -1992,26 +2005,26 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       352         30          0          0          0       4689   comm.o
+       376         38          0          0          0       4705   comm.o
        508         18          0          0          0       2341   comm_can.o
        378          0          0          0        289       4753   comm_can_fifo.o
        362         40          0          5          0      18799   common.o
          0          0          0          0          0       4536   core_cm3.o
        164         20          0          0          0        905   device_action.o
-      1762        196          0          2          0      10954   devices.o
+      1666        192          0          0          0      12046   devices.o
          0          0          0        173         90       4185   global_variable.o
        528         44          0          0          0       2988   hostcomm.o
         26          4          0          0          0        922   hostprocess.o
         60          0          0          0          0        879   main.o
        132         22          0          0          0     260667   misc.o
       3544        408          0          0          0      27890   motor.o
-      1960        284          0          5          0       7651   movement.o
+      2012        276          0          5          0       7691   movement.o
        884         92          0          0          0       6666   sensor.o
         36          8        304          0       1024        776   startup_stm32f10x_hd.o
       1726         38          0          0          0       6615   stm32f10x_can.o
        200         18          0          0          0       1936   stm32f10x_exti.o
        512         10          0          0          0       4784   stm32f10x_gpio.o
-       590        114          0          0          0       7471   stm32f10x_it.o
+       678        130          0          0          0       7527   stm32f10x_it.o
        276         32          0         20          0       4246   stm32f10x_rcc.o
        964         92          0          0          0       8647   stm32f10x_tim.o
        456          6          0          0          0       5810   stm32f10x_usart.o
@@ -2019,9 +2032,9 @@ Image component sizes
         96          6          0          0          0        620   timer5.o
 
     ----------------------------------------------------------------------
-     15874       1510        336        208       1408     402243   Object Totals
+     15942       1522        336        208       1408     403447   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        30          0          0          3          5          0   (incl. Padding)
+        30          0          0          5          5          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2067,15 +2080,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16468       1526        336        208       1408     393331   Grand Totals
-     16468       1526        336        208       1408     393331   ELF Image Totals
-     16468       1526        336        208          0          0   ROM Totals
+     16536       1538        336        208       1408     394431   Grand Totals
+     16536       1538        336        208       1408     394431   ELF Image Totals
+     16536       1538        336        208          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                16804 (  16.41kB)
+    Total RO  Size (Code + RO Data)                16872 (  16.48kB)
     Total RW  Size (RW Data + ZI Data)              1616 (   1.58kB)
-    Total ROM Size (Code + RO Data + RW Data)      17012 (  16.61kB)
+    Total ROM Size (Code + RO Data + RW Data)      17080 (  16.68kB)
 
 ==============================================================================
 
